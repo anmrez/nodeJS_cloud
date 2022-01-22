@@ -1,0 +1,27 @@
+{
+  "name": "nodesessions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "sass": "sass views\assets\style\sass\main.sass views\assets\main.css"
+  },
+  "keywords": [],
+  "author": "anmrez",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "connect-redis": "^6.0.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
+    "express-session": "^1.17.2",
+    "node-sass": "^7.0.1",
+    "redis": "^4.0.2",
+    "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "sass": "^1.49.0"
+  }
+}

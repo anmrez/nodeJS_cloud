@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/views/assets/style.css">
+    <title>Localhost</title>
+  </head>
+  <body>
+    <header>
+      <section>
+        <a href="/">home</a>
+        <a href="/get-cookie">get cookie</a>
+      </section>
+      <section>
+
+        {{#if cookieName}}
+          <div class="">
+            {{cookieName}}
+          </div>
+          {{else}}
+          <a href="/login">
+            Авторизоваться
+          </a>
+        {{/if}}
+      </section>
+    </header>
+    {{{body}}}
+  </body>
+</html>
