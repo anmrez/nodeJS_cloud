@@ -1,12 +1,21 @@
-<h1>Ваш куки:</h1>
-<div class="">
-  {{#if cookieToken}}
+<section class="block__1">
+  <section class="container">
+
     <div class="">
-      {{cookieToken}}
+    <h1>Ваш куки:</h1>
+      {{#if cookieName}}
+      <ul>
+        <li>
+          {{cookieName}}
+        </li>
+      </ul>
+
+
+      {{else}}
+      <div class="">
+        Куки не найден
+      </div>
+      {{/if}}
     </div>
-    {{else}}
-    <div class="">
-      Куки не найден
-    </div>
-  {{/if}}
-</div>
+  </section> {{!-- container --}}
+</section>  {{!-- block__1 --}}

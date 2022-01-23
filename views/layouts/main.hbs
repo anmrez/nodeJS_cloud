@@ -2,28 +2,33 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/views/assets/style.css">
+    <link rel="stylesheet" href="/views/assets/style/main.css">
     <title>Localhost</title>
   </head>
   <body>
-    <header>
-      <section>
-        <a href="/">home</a>
-        <a href="/get-cookie">get cookie</a>
-      </section>
-      <section>
+      <section class="container">
+        <header>
+          <section>
+            <a href="/" class="btn__header">Home</a>
+            <a href="/get-cookie" class="btn__header">Get cookie</a>
+          </section>
+          <section>
 
-        {{#if cookieName}}
-          <div class="">
-            {{cookieName}}
-          </div>
-          {{else}}
-          <a href="/login">
-            Авторизоваться
-          </a>
-        {{/if}}
+            {{#if cookieName}}
+            <div class="">
+              {{cookieName}}
+            </div>
+            {{else}}
+            <a href="/login" class="btn__header">
+              Login
+            </a>
+            {{/if}}
+          </section>
+        </header>
       </section>
-    </header>
+
+
+
     {{{body}}}
   </body>
 </html>

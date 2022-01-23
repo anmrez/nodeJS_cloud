@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "sass": "sass views\assets\style\sass\main.sass views\assets\main.css"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "anmrez",
@@ -17,7 +16,6 @@
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2",
     "express-session": "^1.17.2",
-    "node-sass": "^7.0.1",
     "redis": "^4.0.2",
     "serve-favicon": "^2.5.0"
   },
