@@ -1,21 +1,107 @@
+$font__size__header: 34px
+
 header
-  background: $color_BG
-  border-bottom: 1px solid $color_2
+  border-bottom: 2px solid $color_2
   display: flex
   justify-content: space-between
   width: 90%
   max-width: 1200px
-  padding: 10px 20px
-  margin-bottom: 20px
+  padding: 40px 20px 20px
+  margin-bottom: 40px
+  font-size: $font__size__header
 
   .btn__header
-    text-decoration: none
-    color: $color_Text
     margin-right: 15px
-    &:hover
-      color: $color_2
+    transition: $transition_Btn
+
+.header__right
+  display: flex
+  ul
+    display: flex
+    li
+      list-style-type: none
 
 
-.container
+.li_user__name
+  position: relative
+  display: inline-block
+  max-height: 50px
+
+// Выпадающие меню пользователя
+.user__name__menu
+  display: inline-block !important
+  position: relative !important
+  text-align: center
+  min-width: 140px
+  max-width: 160px
+  li
+    height: 40px
+    position: relative
+    display: none
+    margin: 5px 0
+    font-size: 20px
+    border: 2px solid $color_2
+  &:hover
+    li
+      display: flex
+      justify-content: center
+      align-items: center
+
+#exitUserName
+  color: #cc0000
+  width: 100%
+  height: 100%
+  padding: 0
+  background: #00000000
+  border: 0
+  font-size: 30px
+  cursor: pointer
+  &:hover
+    background: #cc0000
+    color: #fff
+
+// Иконка корзины
+.icon__basket
+  width: $font__size__header + 10px
+  transform: translateY(-2.5px)
+  margin-right: 15px
+  cursor: pointer
+  transition: $transition_Btn
+  &:hover
+    fill: $color_2
+    stroke: $color_2
+
+
+
+// Чек бокс
+.check__box
+  background: $color_BG_Light
+  width: 40px
+  height: 20px
+  border-radius: 15px
   display: flex
   justify-content: center
+  align-items: center
+  // cursor: pointer
+  border: 1px solid $color_2
+  margin-right: 20px
+  span
+    display: block
+    background: $color_2
+    border-radius: 50px
+    width: 14px
+    height: 14px
+    position: relative
+    transition: 0.3s
+    left: -8px
+.check__box.active
+  background: $color_BG_Dark
+  span
+    left: 8px !important
+.check__box__a
+  display: flex
+  justify-content: center
+  align-items: center
+  cursor: pointer
+  width: 100%
+  height: 100%

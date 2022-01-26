@@ -1,42 +1,169 @@
-body {
+.theme__dark {
   background: #222;
   color: #ddd;
+  fill: #ddd;
+  stroke: #ddd;
+  transition: 0.3s;
+}
+.theme__dark a {
+  color: #ddd;
+}
+
+.theme__light {
+  background: #fff !important;
+  color: #222 !important;
+  fill: #222 !important;
+  stroke: #222 !important;
+  transition: 0.3s;
+}
+.theme__light a {
+  color: #222;
+}
+
+a {
+  transition: 0.3s;
+}
+a:hover {
+  color: #4D3CA6;
+}
+
+body {
   font-family: sans-serif;
+  font-size: 34px;
 }
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
 }
 
 li {
   list-style-type: disc;
-  color: #4D3CA6;
-}
-
-header {
-  background: #222;
-  border-bottom: 1px solid #4D3CA6;
-  display: flex;
-  justify-content: space-between;
-  width: 90%;
-  max-width: 1200px;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-}
-header .btn__header {
-  text-decoration: none;
-  color: #ddd;
-  margin-right: 15px;
-}
-header .btn__header:hover {
-  color: #4D3CA6;
 }
 
 .container {
   display: flex;
   justify-content: center;
+}
+
+header {
+  border-bottom: 2px solid #4D3CA6;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 1200px;
+  padding: 40px 20px 20px;
+  margin-bottom: 40px;
+  font-size: 34px;
+}
+header .btn__header {
+  margin-right: 15px;
+  transition: 0.3s;
+}
+
+.header__right {
+  display: flex;
+}
+.header__right ul {
+  display: flex;
+}
+.header__right ul li {
+  list-style-type: none;
+}
+
+.li_user__name {
+  position: relative;
+  display: inline-block;
+  max-height: 50px;
+}
+
+.user__name__menu {
+  display: inline-block !important;
+  position: relative !important;
+  text-align: center;
+  min-width: 140px;
+  max-width: 160px;
+}
+.user__name__menu li {
+  height: 40px;
+  position: relative;
+  display: none;
+  margin: 5px 0;
+  font-size: 20px;
+  border: 2px solid #4D3CA6;
+}
+.user__name__menu:hover li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#exitUserName {
+  color: #cc0000;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: #00000000;
+  border: 0;
+  font-size: 30px;
+  cursor: pointer;
+}
+#exitUserName:hover {
+  background: #cc0000;
+  color: #fff;
+}
+
+.icon__basket {
+  width: 44px;
+  transform: translateY(-2.5px);
+  margin-right: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.icon__basket:hover {
+  fill: #4D3CA6;
+  stroke: #4D3CA6;
+}
+
+.check__box {
+  background: #fff;
+  width: 40px;
+  height: 20px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #4D3CA6;
+  margin-right: 20px;
+}
+.check__box span {
+  display: block;
+  background: #4D3CA6;
+  border-radius: 50px;
+  width: 14px;
+  height: 14px;
+  position: relative;
+  transition: 0.3s;
+  left: -8px;
+}
+
+.check__box.active {
+  background: #222;
+}
+.check__box.active span {
+  left: 8px !important;
+}
+
+.check__box__a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 
 .input {
@@ -46,7 +173,7 @@ header .btn__header:hover {
   flex-direction: column;
   align-items: start;
   overflow: hidden;
-  margin-bottom: 25px;
+  width: 400px;
 }
 
 .input input {
@@ -124,11 +251,12 @@ header .btn__header:hover {
 }
 
 .form__submit {
-  height: 25px;
+  font-size: 20px;
+  height: 40px;
   color: #ddd;
   background: #222;
   border: 1px solid #4D3CA6;
-  padding: 5px 5px 20px 5px;
+  padding: 10px 20px 35px 20px;
   cursor: pointer;
   transition: 0.3s;
   margin-left: 20px;

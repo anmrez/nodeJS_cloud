@@ -1,2 +1,0 @@
-"css": "sass views\assets\style\sass\main.sass views\assets\main.css"
-sass views\assets\style\sass\main.sass views\assets\main.css

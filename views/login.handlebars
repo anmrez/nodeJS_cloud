@@ -1,18 +1,21 @@
-{{!-- <section class="block__1"> --}}
-  <section class="container">
+<section class="container">
+  {{#if cookieName}}
+    <section>
+      <h1>Вы уже залогинились</h1>
+    </section>
+  {{else}}
     <form class="form_names" method="post">
-      <section class="input">
-        <input name="userName" type="text" required autocomplete="off" value="" />
-        <label class="label__input" for="name" >
-          <span>
-            Name
-          </span>
-        </label>
-      </section>
-      <section class="container__form__submit">
-        <input class="form__submit" type="submit" value="Send" />
-      </section>
-    </form>
-
-  </section>
-{{!-- </section> --}}
+    <section class="input">
+      <input name="userName" type="text" required autocomplete="off" value="" />
+      <label class="label__input" for="name" >
+        <span>
+          Name
+        </span>
+      </label>
+    </section>
+    <section class="container__form__submit">
+      <input class="form__submit" type="submit" value="Send"/>
+    </section>
+  </form>
+  {{/if}}
+</section>

@@ -10,7 +10,7 @@ const express = require('express'),
 // setting
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('view cache', false); // Кэширование
+app.set('view cache', false); // Кэширование handlebars (вкл. при хостинге!)
 app.set('port', process.env.PORT || 3000);
 
 app.use('/views/assets', express.static(__dirname + '/views/assets'));
@@ -18,7 +18,7 @@ app.use(favicon(path.join(__dirname,'views','assets','favicon.ico')));
 app.use(cookieParser('9918fdas726536718sda27'))
 
 
-// routing
+// routing  ========================
 // get-cookie page
 app.get('/get-cookie', (req, res) => {
   res.render('get__cookie',{
@@ -30,45 +30,50 @@ app.get('/get-cookie', (req, res) => {
 // login page
 app.get('/login', (req, res) => {
   res.render('login',{
-    cookieName: req.cookies.token,
+    cookieName: req.cookies.token
   })
 })
 
+// ответ из формы
 // создаем парсер для данных application/x-www-form-urlencoded
 const urlencodedParser = express.urlencoded({extended: false});
 app.post("/login", urlencodedParser, function (req, res) {
   if(!req.body) return res.sendStatus(400);
   console.log(req.body);
-  // res.send(`${req.body.userName} - ${req.body.userAge}`);
-  if (!req.cookies.token) {
+  if (!req.cookies.token) { // если нет куки 'token' то создай
     console.log('cookie "token"= undefined, create "token"');
+
+    // создание куки с значением в инпуте userName
     res.cookie('token', `${req.body.userName}`, {
-      maxAge: 3600 * 60 * 60 * 6,
+      maxAge: 1000 * 60 * 60 * 24, // устнавливаеться 'жизнь' (24ч.)
+      // signed: true
     })
-    console.log(`token create: ${req.body.userName}`)
+
+    console.log(`token create: '${req.body.userName}'`)
   }
 
-  res.redirect("/")
-});
+  res.redirect("/") // Перенаправить на домашнюю страницу
+}); // app.post "/login"
+// END login page
 
 
 // home page
 app.get('/', (req, res) => {
   res.render('home',{
     cookieName: req.cookies.token,
-  })
-  // console.log(req.cookies.token)
-  // if (!req.cookies.token) {
-  //   console.log('cookie "token"= undefined, create "token"');
-  //   res.cookie('token', `_ip=${req.ip};`, {
-  //     maxAge: 3600 * 60 * 60 * 6,
-  //   })
-  //   console.log(`token create: _ip=${req.ip};`)
-  // }
-})
+  }) // render 'home'
+}) // app.get '/'
 
-app.get('/', (req, res) => {
-})
+
+// app.post("/", urlencodedParser, function (req, res) {
+//   // console.log(req.body);
+//   if (req.body.UserExit == 'exit') {
+//     res.clearCookie("token")
+//   }
+//
+//   res.redirect('/')
+// })
+// END home page
 
 
 // page 404
@@ -79,6 +84,7 @@ app.use(function(req, response){
 
 
 
+// END routing
 // listen
 app.listen(app.get('port'), function(){
   console.log(`server started in http://127.0.0.1:${app.get('port')} Stop in CTRL + C`);
