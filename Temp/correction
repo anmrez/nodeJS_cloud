@@ -1,0 +1,6 @@
+v. 0.12
+- added checkbox theme in not logged
+- fixed cookie theme
+- added logging
+- installed Mongoose
+- edited 'handlebars' on 'hbs'

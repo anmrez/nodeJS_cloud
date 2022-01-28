@@ -16,8 +16,9 @@ function checkTheme() {
 
 
 
-let checkBox = document.getElementById('checkBoxTheme')
 function changeOfSubject(){
+  let checkBox;
+  checkBox = document.getElementById('checkBoxTheme')
   checkBox.classList.toggle('active')
 
   // смена темы

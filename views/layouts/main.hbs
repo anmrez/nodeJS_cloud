@@ -72,9 +72,19 @@
                     </li>
                   </ul>
                   {{else}}
-                  <a href="/login" class="btn__header">
-                    Login
-                  </a>
+                  <ul class="user__name__menu theme__dark">
+                    <a href="/login" class="btn__header">
+                      Login
+                    </a>
+                    <li onclick="changeOfSubject()">
+                      <a class="check__box__a">
+                        <div class="check__box" id="checkBoxTheme">
+                          <span></span>
+                        </div>
+                        <h4>Theme</h4>
+                      </a>
+                    </li>
+                  </ul>
                   {{/if}}
               </li> {{!-- li element #2 --}}
             </ul>
