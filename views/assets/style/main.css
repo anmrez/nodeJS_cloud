@@ -10,7 +10,7 @@
 }
 
 .theme__light {
-  background: #fff !important;
+  background: #f4f4f4 !important;
   color: #222 !important;
   fill: #222 !important;
   stroke: #222 !important;
@@ -24,7 +24,7 @@ a {
   transition: 0.3s;
 }
 a:hover {
-  color: #4D3CA6;
+  color: #a804ca;
 }
 
 body {
@@ -49,8 +49,13 @@ li {
   justify-content: center;
 }
 
+.users__db {
+  margin-top: 30px;
+  border-top: 2px solid #a804ca;
+}
+
 header {
-  border-bottom: 2px solid #4D3CA6;
+  border-bottom: 2px solid #a804ca;
   display: flex;
   justify-content: space-between;
   width: 90%;
@@ -93,7 +98,7 @@ header .btn__header {
   display: none;
   margin: 5px 0;
   font-size: 20px;
-  border: 2px solid #4D3CA6;
+  border: 2px solid #a804ca;
 }
 .user__name__menu:hover li {
   display: flex;
@@ -124,24 +129,24 @@ header .btn__header {
   transition: 0.3s;
 }
 .icon__basket:hover {
-  fill: #4D3CA6;
-  stroke: #4D3CA6;
+  fill: #a804ca;
+  stroke: #a804ca;
 }
 
 .check__box {
-  background: #fff;
+  background: #f4f4f4;
   width: 40px;
   height: 20px;
   border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #4D3CA6;
+  border: 1px solid #a804ca;
   margin-right: 20px;
 }
 .check__box span {
   display: block;
-  background: #4D3CA6;
+  background: #a804ca;
   border-radius: 50px;
   width: 14px;
   height: 14px;
@@ -203,7 +208,7 @@ header .btn__header {
   bottom: -1px;
   width: 100%;
   height: 100%;
-  border-bottom: 3px solid #4D3CA6;
+  border-bottom: 3px solid #a804ca;
   transform: translateX(-100%);
   transition: all 0.4s ease;
 }
@@ -255,14 +260,14 @@ header .btn__header {
   height: 40px;
   color: #ddd;
   background: #222;
-  border: 1px solid #4D3CA6;
+  border: 1px solid #a804ca;
   padding: 10px 20px 35px 20px;
   cursor: pointer;
   transition: 0.3s;
   margin-left: 20px;
 }
 .form__submit:hover {
-  background: #4D3CA6;
+  background: #a804ca;
 }
 
 /*# sourceMappingURL=main.css.map */
