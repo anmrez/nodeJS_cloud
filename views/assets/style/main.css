@@ -45,6 +45,11 @@ li {
 }
 
 .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.block {
   display: flex;
   justify-content: center;
 }
@@ -58,8 +63,6 @@ header {
   border-bottom: 2px solid #a804ca;
   display: flex;
   justify-content: space-between;
-  width: 90%;
-  max-width: 1200px;
   padding: 40px 20px 20px;
   margin-bottom: 40px;
   font-size: 34px;
@@ -268,6 +271,13 @@ header .btn__header {
 }
 .form__submit:hover {
   background: #a804ca;
+}
+
+.register {
+  margin-top: 50px;
+}
+.register a {
+  margin-left: 10px;
 }
 
 /*# sourceMappingURL=main.css.map */
