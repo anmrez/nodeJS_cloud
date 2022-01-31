@@ -1,7 +1,13 @@
 <section class="block">
 
   <section class="container">
-    <section class="df">
+    <section class="">
+      {{#if errors}}
+      <section class="df_ja err">
+        <span class="df_ja"> <p> ! </p> </span>
+        <p>Error: user not found </p>
+      </section>
+      {{/if}}
       {{#if cookieName}}
       <section>
         <h1>Вы уже залогинились</h1>
@@ -22,10 +28,15 @@
       </form>
     </section>
 
-    <section class="df register">
+    {{#if errors}}
+    <section class="register df_ja">
       not <a href="/registration"> registered?</a>
     </section>
     {{/if}}
+    {{/if}}
+
+
+
 
   </section>
 </section>

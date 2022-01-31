@@ -1,20 +1,28 @@
 <section class="block">
   <section class="container">
-    <section class="df">
-      <h1>Registration</h1>
-      <form class="" action="/registration" method="post">
-        <form class="form_names" method="post">
-          <section class="input">
-            <input name="userName" type="text" required autocomplete="off" value="" />
-            <label class="label__input" for="name" >
-              <span> Name </span>
-            </label>
-          </section>
-          <section class="container__form__submit">
-            <input class="form__submit" type="submit" value="registering"/>
-          </section>
+    <section class="">
+
+      {{#if cookieName}}
+      <section class="df_ja df_coll">
+        <h3>Вы уже залогинились</h3>
+        <a href="/">Home</a>
+      </section>
+        {{else}}
+        <h3>Registration</h3>
+        <form class="form_names" action="/registration" method="post">
+          <form class="form_names" method="post">
+            <section class="input">
+              <input name="userName" type="text" required autocomplete="off" value="" />
+              <label class="label__input" for="name" >
+                <span> Name </span>
+              </label>
+            </section>
+            <section class="container__form__submit">
+              <input class="form__submit" type="submit" value="registering"/>
+            </section>
+          </form>
         </form>
-      </form>
+      {{/if}}
     </section>
   </section>
 </section>
