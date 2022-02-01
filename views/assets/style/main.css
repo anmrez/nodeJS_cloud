@@ -289,6 +289,10 @@ header .btn__header {
   margin-left: 10px;
 }
 
+#validName {
+  display: none;
+}
+
 .df {
   display: flex;
 }
@@ -330,7 +334,7 @@ h4 {
 }
 
 h5 {
-  font-size: 40.8px;
+  font-size: 39.6666666667px;
 }
 
 /*# sourceMappingURL=main.css.map */

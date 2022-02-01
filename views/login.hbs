@@ -2,20 +2,19 @@
 
   <section class="container">
     <section class="">
-      {{#if errors}}
+      {{#if errors}} {{!-- errors --}}
       <section class="df_ja err">
         <span class="df_ja"> <p> ! </p> </span>
         <p>Error: user not found </p>
       </section>
-      {{/if}}
-      {{#if cookieName}}
-      <section>
-        <h1>Вы уже залогинились</h1>
-      </section>
-      {{else}}
+      {{/if}} {{!-- errors --}}
+      {{#if cookieName}}  {{!-- cookieName --}}
+      {{> check}}
+      {{else}}  {{!-- else cookieName --}}
+      <h3>Login</h3>
       <form class="form_names" method="post">
         <section class="input">
-          <input name="userName" type="text" required autocomplete="off" value="" />
+          <input id="inputName" name="userName" type="text" required autocomplete="off" value="" />
           <label class="label__input" for="name" >
             <span>
               Name
@@ -28,15 +27,15 @@
       </form>
     </section>
 
-    {{#if errors}}
+    {{#if errors}}  {{!-- errors --}}
     <section class="register df_ja">
       not <a href="/registration"> registered?</a>
     </section>
-    {{/if}}
-    {{/if}}
+    {{/if}} {{!-- errors --}}
+    {{/if}} {{!-- cookieName --}}
 
 
 
 
-  </section>
-</section>
+  </section>  {{!-- container --}}
+</section>  {{!-- block --}}
