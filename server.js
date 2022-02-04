@@ -10,7 +10,8 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   session = require('express-session'),
   routes = require('./lib/routing.js'),
-  mongoose = require('mongoose')
+  mongoose = require('mongoose'),
+  mongooseUrl = require('./.gitignore/connectedMongoose.js')
     // redisStorage = require('connect-redis')(session)
     // redis = require('redis'),
     // client = redis.createClient();
@@ -59,7 +60,7 @@ app.use(routes)
 
 async function start(){
   try {
-    await mongoose.connect('', {
+    await mongoose.connect(mongooseUrl.url, {
       useNewUrlParser: true
     })
     app.listen(app.get('port'), function(){

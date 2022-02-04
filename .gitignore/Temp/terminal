@@ -1,0 +1,2 @@
+sass --watch views\assets\style\sass\main.sass:views\assets\style\main.css
+nodemon server

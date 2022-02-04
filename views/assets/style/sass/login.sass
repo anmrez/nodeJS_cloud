@@ -51,7 +51,8 @@
 
 
 .input input:focus + .label__input::after,
-.input input:valid + .label__input::after
+.input input:valid + .label__input::after,
+.input input.active + .label__input::after
   transform: translateX(0%)
 
 .label__input span
@@ -62,9 +63,12 @@
 
 
 .input input:focus + .label__input span,
-.input input:valid + .label__input span
+.input input:valid + .label__input span,
+.input input.active + .label__input span
   transform: translateY(-150%)
   font-size: 20px !important
+
+
 
 
 .input input:focus + .label__input::before
@@ -76,6 +80,7 @@
 .container__form__submit
   display: flex
   align-items: center
+
 
 .form__submit
   font-size: 20px
@@ -89,7 +94,10 @@
   margin-left: 20px
   &:hover
     background: $color_2
-
+  &:disabled
+    border: 1px solid #2c2c2c
+    background: #2c2c2c
+    cursor: auto
 
 .register
   margin-top: 50px

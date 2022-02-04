@@ -1,0 +1,8 @@
+update v0.19
+- added blocking buttons during validation
+- fixed input focus
+- added folder ".gitignore"
+- database connection link moved to ".gitignore"
+- check on registration changed (in server)
+- added validation for "/registration" (in server)
+- added /lib/patternValidate.js (storage of "patterns" )

@@ -237,7 +237,8 @@ header .btn__header {
 }
 
 .input input:focus + .label__input::after,
-.input input:valid + .label__input::after {
+.input input:valid + .label__input::after,
+.input input.active + .label__input::after {
   transform: translateX(0%);
 }
 
@@ -249,7 +250,8 @@ header .btn__header {
 }
 
 .input input:focus + .label__input span,
-.input input:valid + .label__input span {
+.input input:valid + .label__input span,
+.input input.active + .label__input span {
   transform: translateY(-150%);
   font-size: 20px !important;
 }
@@ -280,6 +282,11 @@ header .btn__header {
 }
 .form__submit:hover {
   background: #a804ca;
+}
+.form__submit:disabled {
+  border: 1px solid #2c2c2c;
+  background: #2c2c2c;
+  cursor: auto;
 }
 
 .register {

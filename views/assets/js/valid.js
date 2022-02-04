@@ -8,7 +8,6 @@ let a = []
 
 inputName.addEventListener("input", function (event) {
   str = inputName.value.toString().split('')
-  console.log(btnSubmit);
   if (!/[a-zA-Z0-9_]/.test(str[str.length-1])) {
     btnSubmit.disabled = true
     // запись в 'А' нового символа если такого нет
@@ -23,16 +22,22 @@ inputName.addEventListener("input", function (event) {
       error.innerHTML = `${a}`
       validName.style.display = 'flex'
     }
-
   } else {
+
     btnSubmit.disabled = false
     forA(a, str)
     if (a == 0) validName.style.display = 'none'
 
   } // if (!/[a-zA-Z0-9_]/
-
+    if (inputName.textLength > 0) {
+      inputName.classList.add('active')
+    } else {
+      inputName.classList.remove('active')
+    }
   // console.log(`arr str: '${str}'  || a: '${a}' || a.length: '${a.length}'`);
 });
+
+
 
 
 function forA(a, str) {
