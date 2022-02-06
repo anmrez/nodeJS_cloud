@@ -219,8 +219,8 @@ header .btn__header {
   left: 0;
   bottom: -1px;
   width: 100%;
-  height: 100%;
-  border-bottom: 3px solid #a804ca;
+  height: 50%;
+  border-bottom: 2px solid #a804ca;
   transform: translateX(-100%);
   transition: all 0.4s ease;
 }
@@ -233,7 +233,15 @@ header .btn__header {
   transition: all 0.4s ease;
   opacity: 0;
   color: #ddddddaa;
+  content: "For example:";
+}
+
+#sectionInputName label::before {
   content: "For example: Alex";
+}
+
+#sectionInputPassword label::before {
+  content: "For example: Adam0_&_Eva1";
 }
 
 .input input:focus + .label__input::after,
@@ -322,6 +330,14 @@ header .btn__header {
 
 .df_coll {
   flex-direction: column;
+}
+
+.mt_10 {
+  margin-top: 10px;
+}
+
+.mt_20 {
+  margin-top: 20px;
 }
 
 h1 {

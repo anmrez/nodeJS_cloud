@@ -33,8 +33,8 @@
     left: 0
     bottom: -1px
     width: 100%
-    height: 100%
-    border-bottom: 3px solid $color_2
+    height: 50%
+    border-bottom: 2px solid $color_2
     transform: translateX(-100%)
     transition: all 0.4s ease
   &:before
@@ -46,8 +46,17 @@
     transition: all 0.4s ease
     opacity: 0
     color: $color_Text_Opacity
-    content: "For example: Alex"
+    content: "For example:"
 
+
+#sectionInputName
+  label
+    &::before
+      content: "For example: Alex"
+#sectionInputPassword
+  label
+    &::before
+      content: "For example: Adam0_&_Eva1"
 
 
 .input input:focus + .label__input::after,
@@ -67,8 +76,6 @@
 .input input.active + .label__input span
   transform: translateY(-150%)
   font-size: 20px !important
-
-
 
 
 .input input:focus + .label__input::before

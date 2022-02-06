@@ -1,8 +1,9 @@
 const inputName = document.getElementById('inputName')
 const validName = document.getElementById('validName')
+const validPass = document.getElementById('inputPassword')
 const error = document.getElementById('symbolError')
 const btnSubmit = document.getElementById('submit')
-let str
+let str, strP
 let a = []
 
 
@@ -46,7 +47,23 @@ inputName.addEventListener("input", function (event) {
   // console.log(`arr str: '${str}'  || a: '${a}' || a.length: '${a.length}'`);
 });
 
+validPass.addEventListener("input", function (event) {
+  // if (/\d [A-Z]*[a-zA-Z0-9_]/) {
+  strP = validPass.value.toString()
+  if (/[A-Z]/.test(strP) && /[0-9]/.test(strP)) {
 
+    console.log(`pass valid`);
+  } else {
+    console.log(`pass invalid`);
+  }
+
+
+  if (validPass.textLength > 0) {
+    validPass.classList.add('active')
+  } else {
+    validPass.classList.remove('active')
+  }
+})
 
 
 
@@ -55,7 +72,7 @@ inputName.addEventListener("input", function (event) {
 
 function checkInput() {
   if ( 2 >= inputName.textLength && a == 0) {
-    console.log(inputName.textLength);
+    // console.log(inputName.textLength);
     btnSubmit.disabled = true
   } else {
     btnSubmit.disabled = false
