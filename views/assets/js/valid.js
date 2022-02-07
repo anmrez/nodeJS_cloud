@@ -1,6 +1,6 @@
 const inputName = document.getElementById('inputName')
+const inputPass = document.getElementById('inputPassword')
 const validName = document.getElementById('validName')
-const validPass = document.getElementById('inputPassword')
 const error = document.getElementById('symbolError')
 const btnSubmit = document.getElementById('submit')
 let str, strP
@@ -13,10 +13,7 @@ checkInput()
 inputName.addEventListener("input", function (event) {
   str = inputName.value.toString().split('')
   if (!/[a-zA-Z0-9_]/.test(str[str.length-1])) {
-    // console.log(`invalid`);
     btnSubmit.disabled = true  // blocked button "submit"
-
-
     // writing a new character to 'a' if there is none
     if (!a.includes(str[str.length-1])) {
       a[a.length] = str[str.length-1]
@@ -34,10 +31,8 @@ inputName.addEventListener("input", function (event) {
     if (a == 0) {
       validName.style.display = 'none'
       checkInput()
-    }
-
+    } // (a == 0)
   } // if (!/[a-zA-Z0-9_]/
-
 
     if (inputName.textLength > 0) {
       inputName.classList.add('active')
@@ -47,35 +42,37 @@ inputName.addEventListener("input", function (event) {
   // console.log(`arr str: '${str}'  || a: '${a}' || a.length: '${a.length}'`);
 });
 
-validPass.addEventListener("input", function (event) {
-  // if (/\d [A-Z]*[a-zA-Z0-9_]/) {
-  strP = validPass.value.toString()
+
+
+
+inputPass.addEventListener("input", function (event) {
+  strP = inputPass.value.toString()
+  checkInput()
   if (/[A-Z]/.test(strP) && /[0-9]/.test(strP)) {
-
-    console.log(`pass valid`);
   } else {
-    console.log(`pass invalid`);
-  }
+    btnSubmit.disabled = true
+  } // (/[A-Z]/.test(strP) && /[0-9]/.test(strP))
 
-
-  if (validPass.textLength > 0) {
-    validPass.classList.add('active')
+  if (inputPass.textLength > 0) {
+    inputPass.classList.add('active')
   } else {
-    validPass.classList.remove('active')
-  }
-})
+    inputPass.classList.remove('active')
+  } // (inputPass.textLength > 0)
+}) // inputPass.addEventListener
 
 
 
-// ========
+// =======================
 // function
 
+
+
 function checkInput() {
-  if ( 2 >= inputName.textLength && a == 0) {
+  if ( 2 <= inputName.textLength && a == 0 && inputPass.textLength >= 8) {
     // console.log(inputName.textLength);
-    btnSubmit.disabled = true
-  } else {
     btnSubmit.disabled = false
+  } else {
+    btnSubmit.disabled = true
   }
 } // checkInput()
 
