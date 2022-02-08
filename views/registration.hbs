@@ -13,26 +13,44 @@
 
 
       {{!-- registration --}}
-      <section class="df_ja err" id="validName">
+      {{!-- <section class="df_ja err" id="validName">
         <span class="df_ja"> <p> ! </p> </span>
-        <p>Error: character "<div id="symbolError"></div>" is invalid   </p>
-      </section>
+        <p>Error: character "<div id="symbolErrorName"></div>" is invalid   </p>
+      </section> --}}
+      {{!-- <section class="df_ja err" id="validPass">
+        <span class="df_ja"> <p> ! </p> </span>
+        <p>Error: character "<div id="symbolErrorPass"></div>" is invalid   </p>
+      </section> --}}
       <h3>Registration</h3>
       <form class="form_names df_ja df_coll" action="/registration" method="post">
         <form class="form_names" method="post">
-          <section id="sectionInputName" class="input mt_20">
-            <input id="inputName" name="userName" type="text" required autocomplete="off" value="" pattern="{{patternName}}" minlength="2" maxlength="16"/>
-            <label class="label__input" for="name" >
-              <span> Name </span>
-            </label>
+          <section class="section__name df_ja">
+            <section class="df_ja err" id="validName">
+              <span class="df_ja"> <p> ! </p> </span>
+              <span class="text__error"> <p>Error: character "</p><div id="symbolErrorName"></div><p>" is invalid   </p> </span>
+            </section>
+            <section id="sectionInputName" class="input mt_20">
+              <input id="inputName" name="userName" type="text" required autocomplete="off" value="" pattern="{{patternName}}" minlength="2" maxlength="16"/>
+              <label class="label__input" for="name" >
+                <span> Name </span>
+              </label>
+            </section>
           </section>
-          <section id="sectionInputPassword" class="input mt_20">
-            <input id="inputPassword" name="password" type="text" required autocomplete="off" value="" pattern="{{patternPassword}}" minlength="8" maxlength="128"/>
-            <label class="label__input" for="name" >
-              <span> password </span>
-            </label>
+
+          <section class="section__password df_ja">
+            <section class="df_ja err" id="validPass">
+              <span class="df_ja"> <p> ! </p> </span>
+              <span class="text__error"> <p>Error: character "</p><div id="symbolErrorPass"></div><p>" is invalid   </p> </span>
+            </section>
+            <section id="sectionInputPassword" class="input mt_50">
+              <input id="inputPassword" name="password" type="text" required autocomplete="off" value="" pattern="{{patternPassword}}" minlength="8" maxlength="128"/>
+              <label class="label__input" for="name" >
+                <span> password </span>
+              </label>
+            </section>
+            {{> icon__eye}}
           </section>
-          <section class="container__form__submit mt_20">
+          <section class="container__form__submit mt_50">
             <input id="submit" class="form__submit" type="submit" value="registering" disabled/>
           </section>
         </form>
