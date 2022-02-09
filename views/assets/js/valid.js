@@ -45,11 +45,11 @@ inputPass.addEventListener("input", function (event) {
   strP = inputPass.value.toString().split('')
   checkInput()
 
-  if ( !(/([A-Z])?([0-9])/.test(strP)) ) {
-    // btnSubmit.disabled = true
-    passBoolean = false
-  } else {
+  if ( (/(?=[0-9])/.test(strP)) && (/(?=[A-Z])/.test(strP)) ) {
+  // if ( !(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*/.test(strP)) ) {
     passBoolean = true
+  } else {
+    passBoolean = false
   } // (/[A-Z]/.test(strP) && /[0-9]/.test(strP))
 
   if ( !(/[A-Za-z0-9\-.\+.\_.\=.\&.\#.\$.]/.test( strP[strP.length-1] )) ) {

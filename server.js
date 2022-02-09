@@ -8,13 +8,14 @@ const express = require('express'),
   favicon = require('serve-favicon'),
   exphbs = require('express-handlebars'),
   bodyParser = require('body-parser'),
-  session = require('express-session'),
   routes = require('./lib/routing.js'),
   mongoose = require('mongoose'),
-  mongooseUrl = require('./lib/connectedMongoose.js')
-    // redisStorage = require('connect-redis')(session)
-    // redis = require('redis'),
-    // client = redis.createClient();
+  config = require('./lib/config.js')
+  // session = require('express-session'),
+  // MemoryStore = require('memorystore')(session)
+  // RedisStorage = require('connect-redis')(session),
+  // redis = require('redis'),
+  // client = redis.createClient();
 
 
 // setting
@@ -39,16 +40,30 @@ app.use(cookieParser('9918fdas726536718sda27'))
 // END setting
 // session
 
-app.use(
-  session({
-    resave: true,
-    secret: 'you secret key',
-    saveUninitialized: true,
-    // cookie: {
-    //   signed: 'strick'
-    // }
-  })
-)
+// const { createClient } = require("redis")
+// let redisClient = createClient({ legacyMode: true })
+// redisClient.connect().catch(console.error)
+
+
+
+// app.use(
+//   session({
+//     // genid: function(req) {
+//     //   return `kyqweqwe` // use UUIDs for session IDs
+//     // },
+//     resave: true,
+//     secret: '76siu28wu2',
+//     saveUninitialized: true,
+//     cookie: {
+//       maxAge: 1000 * 60 * 60 * 24,
+//       SameSite: 'strick',
+//     },
+//     name: 'key'
+//     // store: new RedisStorage({
+//     //   client: redisClient,
+//     // }),
+//   })
+// )
 
 
 // END session
@@ -60,7 +75,7 @@ app.use(routes)
 
 async function start(){
   try {
-    await mongoose.connect(mongooseUrl.url, {
+    await mongoose.connect(config.url, {
       useNewUrlParser: true
     })
     app.listen(app.get('port'), function(){
