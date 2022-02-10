@@ -347,12 +347,67 @@ header .btn__header {
   fill: #a804ca;
   filter: drop-shadow(0px 0px 20px #a804ca);
 }
-#eye:active {
+#eye.active {
   fill: #a804ca;
+}
+#eye span {
+  content: "";
+  display: block;
+  background: #fff;
+  width: 10px;
+  height: 10px;
+  border-radius: 1em;
 }
 
 .input input.active + #eye {
   display: flex;
+}
+
+#sectionInputCheckbox {
+  width: 100%;
+  position: relative;
+}
+#sectionInputCheckbox label {
+  transition: 0.3s;
+}
+#sectionInputCheckbox:hover label {
+  color: #a804ca;
+}
+
+.check_st {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+.check_st:checked + .check_new::after {
+  opacity: 1;
+}
+.check_st:checked + .check_new {
+  border: 1px solid #a804ca;
+}
+
+.check_new {
+  border: 1px solid #ddd;
+  display: block;
+  width: 25px;
+  height: 25px;
+  margin-right: 25px;
+  border-radius: 0.05em;
+  transition: 0.3s;
+}
+.check_new::after {
+  transition: 0.3s;
+  opacity: 0;
+  display: block;
+  content: "";
+  width: 5px;
+  height: 20px;
+  border-bottom: 3px solid #a804ca;
+  border-right: 3px solid #a804ca;
+  transform: rotate(35deg) translateX(6px) translateY(-5px);
 }
 
 .df {

@@ -38,35 +38,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser('9918fdas726536718sda27'))
 
 // END setting
-// session
 
-// const { createClient } = require("redis")
-// let redisClient = createClient({ legacyMode: true })
-// redisClient.connect().catch(console.error)
-
-
-
-// app.use(
-//   session({
-//     // genid: function(req) {
-//     //   return `kyqweqwe` // use UUIDs for session IDs
-//     // },
-//     resave: true,
-//     secret: '76siu28wu2',
-//     saveUninitialized: true,
-//     cookie: {
-//       maxAge: 1000 * 60 * 60 * 24,
-//       SameSite: 'strick',
-//     },
-//     name: 'key'
-//     // store: new RedisStorage({
-//     //   client: redisClient,
-//     // }),
-//   })
-// )
-
-
-// END session
 
 app.use(routes)
 

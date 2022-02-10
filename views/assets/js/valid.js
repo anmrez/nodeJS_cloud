@@ -101,7 +101,7 @@ function checkArrErr(arr, el, valid){
 
 function checkInput() {
   valid = passBoolean && nameBoolean
-  if (valid && 2 <= inputName.textLength && errorName == 0 && errorPass == 0 && inputPass.textLength >= 8 ) {
+  if (valid && 2 <= inputName.value.length && errorName == 0 && errorPass == 0 && inputPass.value.length >= 8 ) {
     // console.log(inputName.textLength);
     btnSubmit.disabled = false
   } else {
