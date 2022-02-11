@@ -1,7 +1,7 @@
 <section class="block">
   <section class="container">
     <section class="">
-      {{#if cookieName}}
+      {{#if userName}}
       {{> check}}
       {{else}}
       {{#if errors}}
@@ -51,7 +51,7 @@
             {{> icon__eye}}
           </section>
           <section id="sectionInputCheckbox" class="mt_30 df_a">
-              <input class="check_st" type="checkbox" id="rememberUser " name="rememberUser" value="coding">
+              <input class="check_st" type="checkbox" id="rememberUser " name="rememberUser" value="true">
               <label class="check_new"></label>
               <label for="rememberUser"><h6> Remember me</h6></label>
           </section>
@@ -60,10 +60,10 @@
           </section>
         </form>
       </form>
+      <script type="text/javascript" src="../views/assets/js/valid.js"> </script>
+      <script type="text/javascript" src="../views/assets/js/passVisible.js"> </script>
       {{/if}}
 
     </section>
   </section>
 </section>
-<script type="text/javascript" src="../views/assets/js/valid.js"> </script>
-<script type="text/javascript" src="../views/assets/js/passVisible.js"> </script>

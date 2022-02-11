@@ -8,9 +8,9 @@
         <p>Error: user not found </p>
       </section>
       {{/if}} {{!-- errors --}}
-      {{#if cookieName}}  {{!-- cookieName --}}
+      {{#if userName}}  {{!-- userName --}}
       {{> check}}
-      {{else}}  {{!-- else cookieName --}}
+      {{else}}  {{!-- else userName --}}
       <section class="df_ja err" id="validName">
         <span class="df_ja"> <p> ! </p> </span>
         <p>Error: invalid character entered  </p>
@@ -36,7 +36,7 @@
       not <a href="/registration"> registered?</a>
     </section>
     {{/if}} {{!-- errors --}}
-    {{/if}} {{!-- cookieName --}}
+    {{/if}} {{!-- userName --}}
 
 
 
