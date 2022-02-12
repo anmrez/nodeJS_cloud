@@ -3,7 +3,9 @@
     <header class="">
       <nav class="header__left">
         <a href="/" class="btn__header">Home</a>
-        <a href="/get-cookie" class="btn__header">Get cookie</a>
+        {{#if role}}
+        <a href="/admin-page" class="btn__header">Admin Page</a>
+        {{/if}}
       </nav>
       <nav class="header__right">
         <ul>
