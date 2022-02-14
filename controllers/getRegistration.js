@@ -15,7 +15,7 @@ module.exports = function (req, res) {
       patternName: pattern.name,
       patternPassword: pattern.pass,
     })
-  } finally {
-
   }
-}
+
+  
+} // module

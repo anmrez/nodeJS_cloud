@@ -1,3 +1,6 @@
+<head>
+  <link rel="stylesheet" href="/views/assets/style/login.css">
+</head>
 <section class="block">
   <section class="container">
     <section class="">
@@ -16,36 +19,8 @@
       <h3>Registration</h3>
       <form class="form_names df_ja df_coll" action="/registration" method="post">
         <form class="form_names" method="post">
-          <section class="section__name df_ja">
-            <section class="df_ja err" id="validName">
-              <span class="df_ja"> <p> ! </p> </span>
-              <span class="text__error"> <p>Error: character "</p><div id="symbolErrorName"></div><p>" is invalid   </p> </span>
-            </section>
-
-
-            <section id="sectionInputName" class="input mt_20">
-              <input id="inputName" name="userName" type="text" required autocomplete="off" value="" pattern="{{patternName}}" minlength="2" maxlength="16"/>
-              <label class="label__input" for="name" >
-                <span> Name </span>
-              </label>
-            </section>
-          </section>
-
-
-          <section class="section__password df_ja">
-            <section class="df_ja err" id="validPass">
-              <span class="df_ja"> <p> ! </p> </span>
-              <span class="text__error"> <p>Error: character "</p><div id="symbolErrorPass"></div><p>" is invalid   </p> </span>
-            </section>
-            <section id="sectionInputPassword" class="input mt_50">
-              <input id="inputPassword" name="password" type="password" required autocomplete="off" value="" pattern="{{patternPassword}}" minlength="8" maxlength="128"/>
-              <label class="label__input" for="name" >
-                <span> password </span>
-              </label>
-            </section>
-            {{> icon__eye}}
-          </section>
-
+          {{>input__login}}
+          {{>input__password}}
 
           <section id="sectionInputCheckbox" class="mt_30 df_a">
               <input class="check_st" type="checkbox" id="rememberUser " name="rememberUser" value="true">

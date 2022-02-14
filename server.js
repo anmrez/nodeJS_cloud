@@ -42,6 +42,11 @@ app.use(routes)
 
 
 
+// security
+// app.use(express.urlencoded({ limit: "1kb", extended: true }));
+// app.use(express.json({ limit: "1kb" }));
+// app.use(express.multipart({ limit:"1mb" }));
+
 
 async function start(){
   try {

@@ -1,3 +1,6 @@
+<head>
+  <link rel="stylesheet" href="/views/assets/style/login.css">
+</head>
 <section class="block">
 
   <section class="container">
@@ -6,29 +9,31 @@
       <section class="df_ja err">
         <span class="df_ja"> <p> ! </p> </span>
         <p>Error: user not found </p>
+        <p>{{textError}}</p>
       </section>
       {{/if}} {{!-- errors --}}
       {{#if userName}}  {{!-- userName --}}
       {{> check}}
       {{else}}  {{!-- else userName --}}
-      <section class="df_ja err" id="validName">
-        <span class="df_ja"> <p> ! </p> </span>
-        <p>Error: invalid character entered  </p>
-      </section>
+
       <h3>Login</h3>
-      <form class="form_names" method="post">
-        <section class="input">
-          <input id="inputName" name="userName" type="text" required autocomplete="off" value="" pattern="[_A-Za-z0-9]{2,16}" minlength="2" maxlength="16" autofocus/>
-          <label class="label__input" for="name" >
-            <span>
-              Name
-            </span>
-          </label>
+      <form class="form_names df_ja df_coll" action="/login" method="post">
+        {{>input__login}}
+        {{>input__password}}
+
+        <section id="sectionInputCheckbox" class="mt_30 df_a">
+          <input class="check_st" type="checkbox" id="rememberUser " name="rememberUser" value="true">
+          <label class="check_new"></label>
+          <label for="rememberUser"><h6> Remember me</h6></label>
         </section>
-        <section class="container__form__submit">
-          <input class="form__submit" type="submit" value="login"/>
+
+
+        <section class="container__form__submit mt_50">
+          <input id="submit" class="form__submit" type="submit" value="Login" disabled/>
         </section>
       </form>
+
+
     </section>
 
     {{#if errors}}  {{!-- errors --}}
@@ -36,6 +41,8 @@
       not <a href="/registration"> registered?</a>
     </section>
     {{/if}} {{!-- errors --}}
+    <script type="text/javascript" src="../views/assets/js/passVisible.js"> </script>
+    <script type="text/javascript" src="../views/assets/js/valid.js"> </script>
     {{/if}} {{!-- userName --}}
 
 
@@ -43,4 +50,3 @@
 
   </section>  {{!-- container --}}
 </section>  {{!-- block --}}
-<script type="text/javascript" src="../views/assets/js/valid.js"> </script>

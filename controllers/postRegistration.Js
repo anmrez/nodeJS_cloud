@@ -3,7 +3,8 @@ const pattern = require('../lib/patternServer.js'),
   User = require('../models/users'),
   bcrypt = require('bcryptjs'),
   generateToken = require('../lib/generateJWT.js'),
-  serverValidation = require('../lib/validRegistration.js')
+  serverValidation = require('../lib/validRegistration.js'),
+  {salt} = require('../lib/config.js')
 
 
 module.exports = async function (req, res) {
@@ -19,9 +20,7 @@ module.exports = async function (req, res) {
     } else {
 
       //haching password
-      let salt = bcrypt.genSaltSync(10);
       let hash = bcrypt.hashSync(req.body.password, salt);
-      salt = bcrypt.genSaltSync(2);
 
       // console.log(`pass: ${hash}`);
       const register = new User({
@@ -35,9 +34,9 @@ module.exports = async function (req, res) {
 
       const token = generateToken(register._id, register.name, register.role)
       if (req.body.rememberUser) {
-        sendCookie(req, res, 'tokenkey', token, 24 * 30)
+        sendCookie(req, res, 'tokenkey', token, true)
       } else {
-        sendCookie(req, res, 'tokenkey', token, 0)
+        sendCookie(req, res, 'tokenkey', token, false)
       }
 
 
