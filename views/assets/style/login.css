@@ -51,6 +51,10 @@
   content: "For example:";
 }
 
+#sectionInputMail label::before {
+  content: "For example: example@gmail.ru";
+}
+
 #sectionInputName label::before {
   content: "For example: Alex";
 }
@@ -119,6 +123,7 @@
   margin-left: 10px;
 }
 
+#validMail,
 #validName,
 #validPass {
   display: none;
@@ -129,6 +134,7 @@
   left: -25px;
   bottom: -12.5px;
 }
+#validMail span,
 #validName span,
 #validPass span {
   width: 20px;
@@ -138,10 +144,12 @@
   margin-right: 10px;
   align-items: center;
 }
+#validMail:hover .text__error,
 #validName:hover .text__error,
 #validPass:hover .text__error {
   opacity: 1;
 }
+#validMail .text__error,
 #validName .text__error,
 #validPass .text__error {
   z-index: 2;

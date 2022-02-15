@@ -1,12 +1,24 @@
-const inputName = document.getElementById('inputName')
-const inputPass = document.getElementById('inputPassword')
-const validName = document.getElementById('validName')
-const validPass = document.getElementById('validPass')
-const errorNameElement = document.getElementById('symbolErrorName')
-const errorPassElement = document.getElementById('symbolErrorPass')
+const inputMail = document.getElementById('inputMail'),
+  inputName = document.getElementById('inputName'),
+  inputPass = document.getElementById('inputPassword')
+
+
+const validMail = document.getElementById('validMail'),
+  validName = document.getElementById('validName'),
+  validPass = document.getElementById('validPass')
+
+
+const errorMailElement = document.getElementById('symbolErrorMail'),
+  errorNameElement = document.getElementById('symbolErrorName'),
+  errorPassElement = document.getElementById('symbolErrorPass')
+
+
 const btnSubmit = document.getElementById('submit')
 let str = ``,
-  strP = ``
+  strP = ``,
+  strM = ``
+
+let errorMail = []
 let errorName = []
 let errorPass = []
 let nameBoolean, passBoolean

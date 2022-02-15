@@ -3,19 +3,23 @@ const pattern = require('../lib/patternServer.js'),
 
 
 module.exports = function (req, res) {
+  console.log(`______`);
+  console.log(`get registration:`);
   try {
     res.render('registration',{
       userName: jwt.verify(req.cookies.tokenkey, secret).name,
-      patternName: pattern.name,
-      patternPassword: pattern.pass,
+      // patternEmail: pattern.email,
+      // patternName: pattern.name,
+      // patternPassword: pattern.pass,
     })
   } catch (e) {
     res.render('registration',{
       errors: req.query.error,
+      patternEmail: pattern.email,
       patternName: pattern.name,
       patternPassword: pattern.pass,
     })
   }
 
-  
+
 } // module

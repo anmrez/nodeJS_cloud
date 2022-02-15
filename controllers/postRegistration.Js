@@ -9,10 +9,9 @@ const pattern = require('../lib/patternServer.js'),
 
 module.exports = async function (req, res) {
   // serverValidation(req, res)
-
+  console.log(`______`);
+  console.log(`post registration:`);
   if (serverValidation(req, res)) { // validation check
-    // console.log(`${validName} | ${validNameLength16} | ${validNameLength2}`);
-    // console.log(`${validPass} | ${validPassLenght128} | ${validPassLenght8}`);
     const checkUser = await User.find({ name: req.body.userName })
 
     if (checkUser != 0) {
@@ -22,13 +21,13 @@ module.exports = async function (req, res) {
       //haching password
       let hash = bcrypt.hashSync(req.body.password, salt);
 
-      // console.log(`pass: ${hash}`);
       const register = new User({
+        email: req.body.email,
         name: req.body.userName,
         password: hash,
         role: `USER`
       }) // register
-      // console.log(register._id);
+      // console.log(register);
       await register.save()
 
 
@@ -46,8 +45,6 @@ module.exports = async function (req, res) {
     } // if (checkUser != 0)
 
   } else {
-    // console.log(`${validName} | ${validNameLength16} | ${validNameLength2}`);
-    // console.log(`${validPass} | ${validPassLenght128} | ${validPassLenght8}`);
     res.status(412);
     res.render('error', {
       layout: 'error',
