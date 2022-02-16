@@ -79,7 +79,7 @@
 .input input:focus + .label__input span,
 .input input:valid + .label__input span,
 .input input.active + .label__input span
-  transform: translateY(-150%)
+  transform: translateY(-110%)
   font-size: 20px !important
 
 
@@ -126,48 +126,78 @@
   margin: 20px 0
   position: absolute
   left: -25px
-  bottom: -12.5px
+  bottom: -15px
   span
     width: 20px
     height: 20px
     background: $red
     border-radius: 20px
-    margin-right: 10px
     align-items: center
   &:hover
     .text__error
       opacity: 1
   .text__error
+    background: none
     z-index: 2
     transition: 0.3s
     opacity: 0
     display: flex
-    position: absolute
-    min-width: 300px
+    // min-width: 300px
+    height: 25px
     bottom: -25px
     position: absolute
     top: 35px
     text-align: center
     justify-content: center
+    left: 35%
+    // width: 400px
+    white-space: nowrap
+    box-sizing: content-box
+    &::after
+      content: ""
+      display: block
+      background: $red
+      width: 15px
+      height: 15px
+      position: absolute
+      transform: rotateZ(23deg) translateX(3px)
+      top: -3px
+      left: 0
+      z-index: -1
+    .text__error__div
+      white-space: nowrap
+      display: flex
+      background: $red
+      position: absolute
+      left: 0
+      border-radius: 1em
+      padding: 0 20px
 
+.section__email,
 .section__password,
 .section__name
   position: relative
 
 #eye
-  // display: none
   width: 50px
   height: 50px
   position: absolute
   bottom: -5px
   right: 0
   transition: 0.3s
+  #eye_2, #eye_1
+    transform-origin: center
+    transition: 0.3s
   &:hover
     cursor: pointer
     fill: $color_2
     filter: drop-shadow(0px 0px 20px $color_2)
   &.active
     fill: $color_2
+    #eye_2
+      transform: scale(50%)
+    #eye_1
+      transform: scaleY(75%)
   span
     content: ""
     display: block

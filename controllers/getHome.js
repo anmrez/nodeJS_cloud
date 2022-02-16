@@ -2,6 +2,8 @@ jwt = require('jsonwebtoken'),
 {secret} = require('../lib/config.js')
 
 module.exports = function (req, res) {
+  console.log(`_____`);
+  console.log(`get home:`);
   // console.log(`get:`);
   // console.log(req.body);
   try {

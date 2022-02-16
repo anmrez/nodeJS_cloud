@@ -21,10 +21,42 @@ let str = ``,
 let errorMail = []
 let errorName = []
 let errorPass = []
-let nameBoolean, passBoolean
+let nameBoolean, passBoolean, emailBoolean
 
 
 checkInput()
+
+try {
+  inputMail.addEventListener("input", function (event) {
+    showError(inputMail)
+    strM = inputMail.value.toString().split('')
+    if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]/.test(inputMail.value.toString())) {
+      emailBoolean = false
+      console.log(`emailBoolean = false | validMail: flex`);
+      if (!errorMail.includes(strM[strM.length-1])) {
+        errorMail[errorMail.length] = strM[strM.length-1]
+        emailBoolean = false
+        checkInput()
+      }
+      forA(errorMail, strM) // delete element in "a"
+      validMail.style.display = 'flex'
+      checkInput()
+    } else {
+      emailBoolean = true
+      console.log(`emailBoolean = true | validMail: none`);
+      forA(errorMail, strM)
+      validMail.style.display = 'none'
+      checkInput()
+    } // if
+
+    // checkArrErr(errorMail, errorMailElement, validMail) // Отображение неверных символов пользователю пользователю
+    // showError(inputMail) // отображение ошибки пользователю
+  })
+} catch {
+
+}
+
+
 inputName.addEventListener("input", function (event) {
   str = inputName.value.toString().split('')
   if (!/[a-zA-Z0-9_]/.test(str[str.length-1])) {
