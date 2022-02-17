@@ -15,11 +15,14 @@ module.exports = function (req, res) {
     }
     res.render('home', {
       userName: jwt.verify(req.cookies.tokenkey, secret).name,
-      role: role
+      role: role,
+      home: true
     }) // render 'home'
   } catch (e) {
     res.clearCookie("tokenkey");
     // console.log(e);
-    res.render('home') // render 'home'
+    res.render('home', {
+      home: true
+    }) // render 'home'
   }
 }

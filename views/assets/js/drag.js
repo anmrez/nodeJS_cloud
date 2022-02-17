@@ -1,49 +1,68 @@
-let formData = new FormData()
+let formData = new FormData();
 const dropzone = document.getElementById('dropzone')
-console.log(dropzone);
-dropzone.addEventListener('dragenter', function() {
-  // dropzone.class = "hover"
+
+
+window.addEventListener('dragenter', function() {
+  console.log(`drag`);
   dropzone.classList.add("hover")
-  console.log(`dropzone add 'hover'`);
-});
-
-['drop', 'dragleave'].forEach((item) => {
-  dropzone.addEventListener(item, function() {
-    // dropzone.className = "";
-    dropzone.classList.remove("hover")
-    console.log(`dropzone remove 'hover'`);
-  });
-});
-
-['drop', 'dragleave'].forEach((item) => {
-  dropzone.addEventListener(item, function(e) {
-    console.log(`item:`);
-    console.log(e);
-    e.preventDefault()
-    e.stopPropagation()
-
-    let files = e.dataTransfer.files
-
-    files = [...files]
-
-    files.forEach((file) => {
-      formData.append('file', file)
-
-      let preview = document.createElement('li')
-      file_list.appendChild(preview)
-
-      makePreview(file).then(image => {
-        let img = document.createElement('img');
-        img.src = image;
-        preview.appendChild(img);
-      }); // makePreview(file)
-
-      submitBtn.className = "";
+})
 
 
-    }); // files.forEach
-  }, false); // dropzone.addE
-}); // forEach
+dropzone.addEventListener('dragleave', function(e) {
+  console.log(`drag out`);
+  dropzone.classList.remove("hover")
+  handler(e)
+}, false)
+
+dropzone.addEventListener('drop', function(e) {
+  console.log(`drag out`);
+  dropzone.classList.remove("hover")
+  handler(e)
+}, false)
+
+
+
+window.addEventListener("dragover",function(e){
+  e = e || event;
+  e.preventDefault();
+},false);
+window.addEventListener("drop",function(e){
+  e = e || event;
+  e.preventDefault();
+},false);
+
+
+function handler(e) {
+  console.log(e);
+  e.preventDefault()
+  e.stopPropagation()
+
+  // тут у нас лежат перетащенные файлы
+  let files = e.dataTransfer.files;
+  let types = e.dataTransfer.types
+  // но это не мессив, поэтому делаем массивом
+  files = [...files];
+  types = [...types];
+
+  files.forEach(file => {
+    // переадаём файл форме
+    formData.append('file', file);
+
+    // начинаем делать предпросмотр
+    // именно тут, просто создаём html-элементы и кидаем их настраницу
+    let preview = document.createElement('li');
+    file_list.appendChild(preview);
+
+    // в идеале нужно проверить является ли файл картинкой
+    makePreview(file).then(image => {
+      let img = document.createElement('img');
+      img.src = image;
+      preview.appendChild(img);
+    });
+  }); // files.forEach
+  console.log(files);
+} // handler(e)
+
 
 
 
@@ -57,10 +76,9 @@ function makePreview(file){
     fr.onloadend = () => resolve(fr.result)
   });
 }
-
 // отправка всего на сервер
 submitBtn.onclick = function() {
-  let url = null; // URL куда отправляем файлы
+  let url = "/"; // URL куда отправляем файлы
   fetch(url, {
     method: 'POST',
     body: formData

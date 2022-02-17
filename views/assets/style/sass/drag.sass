@@ -1,10 +1,43 @@
 @import "variable"
 
 #dropzone
-  margin-top: 50px
-  border: 1px solid $color_2
-  width: 100vh
-  height: 60vh
+  width: 100%
+  height: 100vh
+  position: absolute
+  pointer-events: none
+  .drop
+    display: none
+    pointer-events: none
 
 #dropzone.hover
-  border: 2px solid #09820d
+  pointer-events: all
+  z-index: 999
+  &::before
+    content: ''
+    display: block
+    position: absolute
+    width: 100%
+    height: 100%
+    background: #2424245e
+  .drop
+    // border: 3px solid #09820d
+    width: 100%
+    height: 100vh
+    display: flex
+    pointer-events: none
+    &::before
+      content: ''
+      border: 10px dashed #fff
+      width: 95%
+      height: 93%
+      text-align: center
+    &::after
+      font-size: 55px
+      content: 'Upload file'
+      position: absolute
+
+#file_list
+  margin-top: 20px
+  li
+    img
+      width: 100px
