@@ -3,6 +3,7 @@
 module.exports = async function (req, res) {
   console.log(`______`);
   console.log(`post home:`);
-  console.log(req.body);
+  console.log(`files:`);
+  console.log(req.body.files);
   res.redirect('/')
 }

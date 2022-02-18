@@ -14,8 +14,12 @@
     </section>
     <section class="block">
       <section class="container">
-          <ul id="file_list"></ul>
-          <button id="submitBtn" class="hidden">Отправить</button>
+          {{!-- <button id="submitBtn" class="hidden">Отправить</button> --}}
+          <form class="" action="/" method="post">
+            {{!-- <ul id="file_list"></ul> --}}
+            <input id="input_files" type="file" name="files" value="" multiple>
+            <input type="submit" name="submit" value="submit">
+          </form>
       </section>
     </section>
 
