@@ -10,7 +10,8 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   routes = require('./lib/routing.js'),
   mongoose = require('mongoose'),
-  config = require('./lib/config.js')
+  config = require('./lib/config.js'),
+  fileUpload = require('express-fileupload');
   // RedisStorage = require('connect-redis')(session),
   // redis = require('redis'),
   // client = redis.createClient();
@@ -35,6 +36,7 @@ app.use(favicon(path.join(__dirname,'views','assets','favicon.ico')));
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser('9918fdas726536718sda27'))
 
+app.use(fileUpload({}));
 // END setting
 
 

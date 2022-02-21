@@ -11,15 +11,15 @@ module.exports = async function (req, res) {
   console.log(`______`);
   console.log(`postLogin:`);
   console.log(req.body);
+  // если форма прошла проверку
   if (serverValidation(req, res)) {
 
+    // проверка существования пользователя в БД
     const checkUser = await User.find({ name: req.body.userName })
-    // console.log(`user:`);
-    // console.log(checkUser[0]);
-    // console.log(`______`);
+    // если пользователь найден
     if (checkUser.length > 0) {
 
-
+      // проверка паролей на совпадение
       if (!bcrypt.compareSync(req.body.password, checkUser[0].password)) {
         // `пароли не совпадают`
         res.redirect("/login/?error=2")
@@ -30,13 +30,13 @@ module.exports = async function (req, res) {
         res.redirect('/')
       } // if (!bcrypt.compareSync
 
-
+    // если пользователь не найден
     } else {
       res.redirect("/login/?error=1")
       console.log(`пользователь не найден`);
     } // if (checkUser.length > 0)
 
-
+    // если форма не прошла проверку
   } else {
     res.status(500);
     res.render('error', {

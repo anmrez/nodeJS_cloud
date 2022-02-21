@@ -14,11 +14,34 @@
     </section>
     <section class="block">
       <section class="container">
+        <section class="files">
+          <ul>
+            {{#each userFiles}}
+            <li>
+              {{this}}
+              {{this.files}}
+              {{!-- {{@userFiles.id}} --}}
+
+
+              {{!-- <span>{{}}</span>
+              <div class="file__control">
+                <a href="{{}}">download</a>
+                <a href="{{}}">delete</a>
+              </div> --}}
+            </li>
+            {{/each}}
+          </ul>
+
+        </section>
+      </section>
+    </section>
+    <section class="block">
+      <section class="container">
           {{!-- <button id="submitBtn" class="hidden">Отправить</button> --}}
-          <form class="" action="/" method="post">
+          <form id="formFiles" class="" action="/upload" method="post" enctype="multipart/form-data">
             {{!-- <ul id="file_list"></ul> --}}
-            <input id="input_files" type="file" name="files" value="" multiple>
-            <input type="submit" name="submit" value="submit">
+            <input id="input_files" type="file" name="uploadFiles" value="" multiple>
+            <input type="submit" value="submit">
           </form>
       </section>
     </section>
