@@ -4,12 +4,8 @@ const jwt = require('jsonwebtoken'),
   path = require('path'),
   appDir = path.dirname(require.main.filename)
 
-  let userFiles = {
-    files: [
-      `idididid`
-    ],
-    // id: ``
-  }
+  let userFiles = {}
+  let linksFiles = []
 
 
 module.exports = function (req, res) {
@@ -32,18 +28,14 @@ module.exports = function (req, res) {
     pathFiles = path.join(appDir, 'userStorage', userID)
       console.log(userFiles);
       try {
-        // filesArray = fs.readdirSync(pathFiles, 'utf8')
-        // for (var i = 0; i < filesArray.length; i++) {
-        //   userFiles.files[i] = {
-        //     name: filesArray[i]
-        //   }
-        // }
         userFiles = fs.readdirSync(pathFiles, 'utf8')
         // userFiles.id = jwt.verify(req.cookies.tokenkey, secret).id
+        for (var i = 0; i < userFiles.length; i++) {
+          linksFiles[i] = userID + "/" + userFiles[i]
+        }
       } catch (e) {
         console.log(e);
       }
-
 
 
     console.log(userFiles);
@@ -52,11 +44,13 @@ module.exports = function (req, res) {
       // userId: jwt.verify(req.cookies.tokenkey, secret).id,
       role: role,
       home: true,
-      userFiles: userFiles
+      userFiles: userFiles,
+      linksFiles: linksFiles,
+      userID: userID
     }) // render 'home'
   } catch (e) {
     console.log(e);
-    res.clearCookie("tokenkey");
+    // res.clearCookie("tokenkey");
 
     res.redirect('/login')
   }

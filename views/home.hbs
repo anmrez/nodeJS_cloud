@@ -15,21 +15,34 @@
     <section class="block">
       <section class="container">
         <section class="files">
-          <ul>
+          <ul id="files">
+
             {{#each userFiles}}
             <li>
-              {{this}}
-              {{this.files}}
-              {{!-- {{@userFiles.id}} --}}
-
-
-              {{!-- <span>{{}}</span>
+              <span>{{this}}</span>
               <div class="file__control">
-                <a href="{{}}">download</a>
-                <a href="{{}}">delete</a>
-              </div> --}}
+                <a href="{{linksFiles}}">download</a>
+                <a href="{{this}}">delete</a>
+              </div>
             </li>
             {{/each}}
+
+            {{#each linksFiles}}
+            <a href="{{this}}">download</a>
+            {{/each}}
+
+
+
+
+            {{!-- {{#each userFiles}}
+            <li>
+              <span>{{this}}</span>
+              <div class="file__control">
+                <a href="{{this}}">download</a>
+                <a href="{{this}}">delete</a>
+              </div>
+            </li>
+            {{/each}} --}}
           </ul>
 
         </section>
@@ -45,7 +58,6 @@
           </form>
       </section>
     </section>
-
     <script type="text/javascript" src="../views/assets/js/drag.js"> </script>
   </body>
 </html>
