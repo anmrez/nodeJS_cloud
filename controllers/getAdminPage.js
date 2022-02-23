@@ -14,14 +14,14 @@ module.exports = async function (req, res) {
     } else {
       role = false
     }
-    res.render('admin__page', {
+    res.render('admin', {
       userName: jwt.verify(req.cookies.tokenkey, secret).name,
       role: role,
       users
     }) // render 'home'
   } catch (e) {
     // console.log(e);
-    res.render('admin__page', {
+    res.render('admin', {
       users
     }) // render 'home'
   }

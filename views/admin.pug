@@ -1,0 +1,21 @@
+extends layout/layout.pug
+
+block content
+  section(class="block")
+    section(class="container")
+      section
+        div
+          if users.length
+            ul
+              p Пользователи из БД
+              each val in users
+                li
+                  a(class='df_a mt_10 just_bet')
+                    span= val.name
+                    form(method="post" action="/deleteUser")
+                      div(class="btn btn__delete df_ja")
+                        input(class="input__delete" type="submit" name='delete' value= val.name)
+                        span 
+              //- END each
+          else
+            p Пользователей нет в БД

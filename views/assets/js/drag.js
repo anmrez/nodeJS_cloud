@@ -2,6 +2,7 @@ const formFiles = document.getElementById('formFiles')
 const inputFile = document.getElementById('input_files')
 let formData = new FormData(formFiles)
 const dropzone = document.getElementById('dropzone')
+const buttonForm = document.getElementById('buttonForm')
 let files = []
 
 window.addEventListener('dragenter', function() {
@@ -60,7 +61,7 @@ async function handler(e) {
   inputFile.files = e.dataTransfer.files
   console.log(`input:`);
   console.log(inputFile.files);
-
+  buttonForm.click()
 
   // отправка формы
   // for(let [name, value] of formData) {

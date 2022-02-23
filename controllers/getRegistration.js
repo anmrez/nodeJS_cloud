@@ -1,5 +1,7 @@
 const pattern = require('../lib/patternServer.js'),
-  valid = require('../lib/validRegistration.js')
+  valid = require('../lib/validRegistration.js'),
+  jwt = require('jsonwebtoken'),
+  {secret} = require('../lib/config.js')
 
 
 module.exports = function (req, res) {
@@ -10,6 +12,7 @@ module.exports = function (req, res) {
       userName: jwt.verify(req.cookies.tokenkey, secret).name,
     })
   } catch (e) {
+    // console.log(e);
     res.render('registration',{
       errors: req.query.error,
       patternEmail: pattern.email,

@@ -1,0 +1,41 @@
+section(class="container theme__dark")
+  header
+    nav(class="header__left")
+      a(href="/" class="btn__header") Home
+      if role
+        a(href="/admin-page" class="btn__header") Admin Page
+    
+    nav(class="header__right")
+      ul
+        li(class="li_user__name")
+          if userName
+            ul(class="user__name__menu theme__dark")
+              a(href="#" class="user__name" id="UserName") #{userName}
+              //- li#0
+              li
+                a(href="#" class="df_ja") setting 1
+              //- li#1
+              li(onclick="changeOfSubject()")
+                a(class="df_ja")
+                  div(class="check__box" id="checkBoxTheme")
+                    span
+                  h6 Theme
+              //- li#2
+              li
+                form(class="" action="/unlogin" method="post")
+                  input(class="user__name__content" id="exitUserName" type="submit" name="logout" value="logout")
+            // end "ul" 
+          else if userName == undefined
+            ul(class="user__name__menu theme__dark")
+              a(href="/login" class="btn__header") Login
+              //- li#0
+              li
+                a(href="/registration" class="df_ja")
+                  h6 registration
+              //- li#1
+              li(onclick="changeOfSubject()")
+                a(class="df_ja")
+                  div(class="check__box" id="checkBoxTheme")
+                    span
+                  h6 Theme
+            

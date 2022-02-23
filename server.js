@@ -6,32 +6,20 @@ const express = require('express'),
   fs = require('fs'),
   path = require('path'),
   favicon = require('serve-favicon'),
-  exphbs = require('express-handlebars'),
+  // exphbs = require('express-handlebars'),
   bodyParser = require('body-parser'),
   routes = require('./lib/routing.js'),
   mongoose = require('mongoose'),
   config = require('./lib/config.js'),
   fileUpload = require('express-fileupload');
-  // RedisStorage = require('connect-redis')(session),
-  // redis = require('redis'),
-  // client = redis.createClient();
+
 
 
 // setting
   // handlebars
 
-  const hbs = exphbs.create({
-    defaultLayout:'main',
-    extname: 'hbs',
 
-    helpers: {
-      files: function(array, id){
-
-      }
-    } // helprers
-  }) // hbs
-  app.engine('hbs', hbs.engine);
-  app.set('view engine', 'hbs');
+  app.set('view engine', 'pug');
   app.set('view cache', false); // Кэширование handlebars (вкл. при хостинге!)
 
   // END handlebars

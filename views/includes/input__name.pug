@@ -1,0 +1,23 @@
+section(class="section__name df_ja")
+  section(class="df_ja err" id="validName")
+    span(class="df_ja")
+      p !
+    span(class="text__error")
+      div(class="text__error__div")
+        p Error: character "
+        div(id="symbolErrorName")
+        p " is invalid
+  //- END validation error
+  
+  section(id="sectionInputName" class="input mt_50")
+    input(id="inputName" 
+    name="userName" 
+    type="text" 
+    required 
+    autocomplete="off" 
+    value="" 
+    pattern= patternName
+    minlength="2" 
+    maxlength="16")
+    label(class="label__input" for="name")
+      span Name

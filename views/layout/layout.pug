@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title Localhost
+    link(rel="stylesheet" href="/views/assets/style/main.css")
+  body(class="theme__dark")
+    if home
+      div(id="dropzone")
+        section(class="drop df_ja")
+    include ../includes/navigation.pug
+    block content
+    
+    
+    script(type="text/javascript" src="../views/assets/js/theme.js")

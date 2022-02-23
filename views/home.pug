@@ -1,0 +1,28 @@
+extends layout/layout.pug
+
+block content
+
+  section(class="block")
+    section(class="container")
+      h1 Homer page
+
+
+  section(class="block")
+    section(class="container")
+      section(class="files")
+        ul(id="files")
+          each file in userFiles
+            li
+              span= file
+              div(class="file__control")
+                a(href= userID + '/' + file) download
+          //- END each
+  
+  
+  section(class="block" id="formDrag")
+    section(class="container")
+      form(id="formFiles" class="" action="/upload" method="post" enctype="multipart/form-data")
+        input(id="input_files" type="file" name="uploadFiles" value="" multiple)
+        input(type="submit" value="submit" id="buttonForm")
+          
+  script(type="text/javascript" src="../views/assets/js/drag.js")

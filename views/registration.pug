@@ -1,0 +1,26 @@
+extends layout/layout__login.pug
+
+block content
+  section(class="block")
+    section(class="container")
+      section
+        if userName
+          section(class="df_ja df_coll")
+            h3 You are already logged in
+            a(href="/") Home
+        else
+          if errors
+            section(class="df_ja err")
+              span(class="df_ja")
+                p !
+              p Error: user already registered
+          //- END if errors
+          h3 Registration
+          form(class="form_names df_ja df_coll" action="/registration" method="post")
+            include includes/input__mail.pug
+            include includes/input__name.pug
+            include includes/input__pass.pug
+            include includes/check__remem.pug
+            
+            section(class="container__form__submit mt_50")
+              input(id="submit" class="form__submit" type="submit" value="registering" disabled)

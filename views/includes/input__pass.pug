@@ -1,0 +1,26 @@
+section(class="section__password df_ja")
+  //- error message
+  section(class="df_ja err" id="validPass")
+    span(class="df_ja")
+      p !
+    span(class="text__error")
+      div(class="text__error__div")
+        p Error: character "
+        div(id="symbolErrorPass")
+        p " is invalid
+  //- END error message
+  //- input
+  section(id="sectionInputPassword" class="input mt_50")
+    input(id="inputPassword" 
+    name="password" 
+    type="password" 
+    required 
+    autocomplete="off" 
+    value="" 
+    pattern= patternPassword 
+    minlength="8" 
+    maxlength="128")
+    label(class="label__input" for="name")
+      span password
+  //- END input
+  include icons/eye.html

@@ -55,9 +55,11 @@ li {
   justify-content: center;
 }
 
-.users__db {
-  margin-top: 30px;
-  border-top: 2px solid #a804ca;
+.input__delete {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  opacity: 0;
 }
 
 header {
@@ -221,6 +223,13 @@ header .btn__header {
   width: 100px;
 }
 
+#formDrag {
+  opacity: 0;
+  position: absolute;
+  z-index: -10;
+  pointer-events: none;
+}
+
 .df {
   display: flex;
 }
@@ -243,6 +252,10 @@ header .btn__header {
 
 .df_coll {
   flex-direction: column;
+}
+
+.just_bet {
+  justify-content: space-between;
 }
 
 .mt_10 {
@@ -283,6 +296,45 @@ h4 {
 
 h5 {
   font-size: 39.6666666667px;
+}
+
+.btn:text {
+  opacity: 0;
+}
+
+.btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #cc0000;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn span {
+  display: block;
+  width: 2px;
+  height: 20px;
+  background: #cc0000;
+  transform: rotate(45deg);
+  transition: 0.3s;
+  position: absolute;
+}
+.btn span::after {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 20px;
+  background: #cc0000;
+  transform: rotate(-90deg);
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #cc0000;
+}
+.btn:hover span {
+  background: #ddd;
+}
+.btn:hover span::after {
+  background: #ddd;
 }
 
 /*# sourceMappingURL=main.css.map */

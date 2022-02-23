@@ -9,13 +9,14 @@ const getHome = require('../controllers/getHome.js'),
   getRegistration = require('../controllers/getRegistration.js'),
   postRegistration = require('../controllers/postRegistration.js'),
   // adminPage
-  getAdminPage = require('../controllers/getAdminPage.js')
-
+  getAdminPage = require('../controllers/getAdminPage.js'),
+  // user
+  postDeleteUser = require('../controllers/postDeleteUser.js')
 
 
 
 exports.postUpload = postUpload
-
+exports.postDeleteUser = postDeleteUser
 
 exports.getHome = getHome
 exports.postHome = postHome
