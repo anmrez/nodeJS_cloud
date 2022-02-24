@@ -1,4 +1,6 @@
-const User = require('../models/users')
+const User = require('../models/users'),
+  jwt = require('jsonwebtoken'),
+  {secret} = require('../lib/config.js')
 
 module.exports = async function (req, res) {
   const users = await User.find({}).lean()
@@ -21,9 +23,11 @@ module.exports = async function (req, res) {
     }) // render 'home'
   } catch (e) {
     // console.log(e);
-    res.render('admin', {
-      users
-    }) // render 'home'
-  }
+    // res.render('admin', {
+    //   users
+    // }) // render 'home'
+    res.redirect('/')
 
-}
+  } // try/catch
+
+} // module

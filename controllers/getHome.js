@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken'),
   {secret} = require('../lib/config.js'),
   fs = require('fs'),
   path = require('path'),
-  appDir = path.dirname(require.main.filename)
+  {appDir} = require('../lib/config.js')
 
   let userFiles = {}
   let linksFiles = []
@@ -11,37 +11,36 @@ const jwt = require('jsonwebtoken'),
 module.exports = function (req, res) {
   console.log(`_____`);
   console.log(`get home:`);
-  // console.log(`get:`);
-  // console.log(req.body);
   try {
     // проверка роли Админа
     if ( `ADMIN` == jwt.verify(req.cookies.tokenkey, secret).role) {
       role = true
+      console.log(`role: ${role}`);
     } else {
       role = false
+      console.log(`role: ${role}`);
     }
 
 
 
-
+    // get user ID
     userID = jwt.verify(req.cookies.tokenkey, secret).id
+    // find path in user folder
     pathFiles = path.join(appDir, 'userStorage', userID)
-      console.log(userFiles);
+
       try {
+        // write user files
         userFiles = fs.readdirSync(pathFiles, 'utf8')
-        // userFiles.id = jwt.verify(req.cookies.tokenkey, secret).id
-        for (var i = 0; i < userFiles.length; i++) {
-          linksFiles[i] = userID + "/" + userFiles[i]
-        }
+        console.log(userFiles);
       } catch (e) {
-        console.log(e);
+        // console.log(e);
+        // create folder if it doesn't exist
+        fs.mkdirSync(path.join(appDir, 'userStorage', userID), { recursive: true, force: true })
       }
 
 
-    console.log(userFiles);
     res.render('home', {
       userName: jwt.verify(req.cookies.tokenkey, secret).name,
-      // userId: jwt.verify(req.cookies.tokenkey, secret).id,
       role: role,
       home: true,
       userFiles: userFiles,
@@ -49,9 +48,10 @@ module.exports = function (req, res) {
       userID: userID
     }) // render 'home'
   } catch (e) {
-    console.log(e);
-    // res.clearCookie("tokenkey");
+    // console.log(e);
+    console.log(`user undefiend in DB`);
+    res.clearCookie("tokenkey");
 
     res.redirect('/login')
-  }
-}
+  } // try/catch
+} // module

@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken'),
-  {secret} = require('../lib/config.js')
-const { Readable } = require('stream');
-const fs = require('fs')
-const path = require('path');
-const appDir = path.dirname(require.main.filename)
+  {secret} = require('../lib/config.js'),
+  {Readable} = require('stream'),
+  fs = require('fs'),
+  path = require('path'),
+  {appDir} = require('../lib/config.js')
 let pathFiles, userID
 
 
@@ -44,12 +44,12 @@ module.exports = async function (req, res) {
     console.log(`error:`);
     console.log(e);
     console.log(req.files);
-    res.status(500);
-    res.render('error', {
-      layout: 'error',
-      codeError: 500,
-      textError: `ошибка с загрузкой файлов`
-    });
-
+    // res.status(500);
+    // res.render('error', {
+    //   layout: 'error',
+    //   codeError: 500,
+    //   textError: `ошибка с загрузкой файлов`
+    // });
+    res.redirect('/')
   } // try/catch
 } // module

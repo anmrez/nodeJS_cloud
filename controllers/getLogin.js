@@ -10,10 +10,6 @@ module.exports = async function (req, res) {
   try {
     res.render('login',{
       userName: jwt.verify(req.cookies.tokenkey, secret).name,
-      // users,
-      // errors: req.query.error,
-      // patternName: pattern.name,
-      // patternPassword: pattern.pass,
     })
   } catch (e) {
     res.render('login',{

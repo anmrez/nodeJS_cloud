@@ -25,10 +25,15 @@ module.exports = async function (req, res) {
         res.redirect("/login/?error=2")
       } else {
         // `пароли совпадают`
-        const token = generateToken(checkUser[0]._id, checkUser[0].name, checkUser[0].role)
-        sendCookie(req, res, 'tokenkey', token, 0)
-        res.redirect('/')
-      } // if (!bcrypt.compareSync
+          const token = generateToken(checkUser[0]._id, checkUser[0].name, checkUser[0].role)
+        // создание куки с токеном (длительность зависит от чекбокса)
+          if (req.body.rememberUser) {
+            sendCookie(req, res, 'tokenkey', token, true)
+          } else {
+            sendCookie(req, res, 'tokenkey', token, false)
+          }
+          res.redirect('/')
+      } // if "!bcrypt.compareSync"
 
     // если пользователь не найден
     } else {
@@ -42,7 +47,7 @@ module.exports = async function (req, res) {
     res.render('error', {
         layout: 'error',
         codeError: 500,
-        textError: `ошибка на сервере`
+        textError: `Форма не прошла проверку(возможно вы ввели недопустимый символ)`
       });
   } // if (serverValidation(req, res))
 } // module

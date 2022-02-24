@@ -14,7 +14,7 @@ block content
                     span= val.name
                     form(method="post" action="/deleteUser")
                       div(class="btn btn__delete df_ja")
-                        input(class="input__delete" type="submit" name='delete' value= val.name)
+                        input(class="input__delete" type="submit" name='delete' value= val._id)
                         span 
               //- END each
           else

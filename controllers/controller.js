@@ -1,5 +1,5 @@
 const getHome = require('../controllers/getHome.js'),
-  postHome = require('../controllers/postHome.js'),
+  getDownload = require('../controllers/getDownload.js'),
   postUpload = require('../controllers/postUpload.js'),
   unlogin = require('../controllers/unlogin.js'),
   // login
@@ -17,9 +17,9 @@ const getHome = require('../controllers/getHome.js'),
 
 exports.postUpload = postUpload
 exports.postDeleteUser = postDeleteUser
-
 exports.getHome = getHome
-exports.postHome = postHome
+
+exports.getDownload = getDownload
 // unlogin
 exports.unlogin = unlogin
 // login

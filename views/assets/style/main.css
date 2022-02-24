@@ -62,6 +62,22 @@ li {
   opacity: 0;
 }
 
+.view__files {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 900px;
+  padding: 5px 10px;
+  border-bottom: 1px solid #dddddd22;
+}
+.view__files span {
+  cursor: default;
+}
+.view__files:hover {
+  background: #dddddd22;
+  border-radius: 0.2em;
+}
+
 header {
   border-bottom: 2px solid #a804ca;
   display: flex;
@@ -214,13 +230,6 @@ header .btn__header {
   font-size: 55px;
   content: "Upload file";
   position: absolute;
-}
-
-#file_list {
-  margin-top: 20px;
-}
-#file_list li img {
-  width: 100px;
 }
 
 #formDrag {

@@ -10,12 +10,13 @@ block content
   section(class="block")
     section(class="container")
       section(class="files")
-        ul(id="files")
+        ul(id="files" class="mt_30")
           each file in userFiles
-            li
+            li(class="view__files")
               span= file
               div(class="file__control")
-                a(href= userID + '/' + file) download
+                //- a(href= userID + '/' + file) download
+                a(href= 'download' + '?file=' + file) download
           //- END each
   
   
