@@ -78,6 +78,26 @@ li {
   border-radius: 0.2em;
 }
 
+.file__control {
+  width: 15%;
+  justify-content: space-between !important;
+}
+
+.bincan__icon,
+.download__icon {
+  width: 50px;
+  stroke: #dddddd22;
+  transition: 0.3s;
+}
+
+.bincan__icon:hover {
+  stroke: #cc0000;
+}
+
+.download__icon:hover {
+  stroke: #FFF;
+}
+
 header {
   border-bottom: 2px solid #a804ca;
   display: flex;

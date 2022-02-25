@@ -1,7 +1,9 @@
 const getHome = require('../controllers/getHome.js'),
+  unlogin = require('../controllers/unlogin.js'),
+  // files
   getDownload = require('../controllers/getDownload.js'),
   postUpload = require('../controllers/postUpload.js'),
-  unlogin = require('../controllers/unlogin.js'),
+  getDeleteFile = require('../controllers/getDeleteFile.js'),
   // login
   getLogin = require('../controllers/getLogin.js'),
   postLogin = require('../controllers/postLogin.js'),
@@ -10,23 +12,26 @@ const getHome = require('../controllers/getHome.js'),
   postRegistration = require('../controllers/postRegistration.js'),
   // adminPage
   getAdminPage = require('../controllers/getAdminPage.js'),
-  // user
   postDeleteUser = require('../controllers/postDeleteUser.js')
 
 
 
-exports.postUpload = postUpload
-exports.postDeleteUser = postDeleteUser
 exports.getHome = getHome
 
+// files
+exports.postUpload = postUpload
 exports.getDownload = getDownload
-// unlogin
-exports.unlogin = unlogin
+exports.getDeleteFile = getDeleteFile
+
 // login
 exports.getLogin = getLogin
 exports.postLogin = postLogin
+exports.unlogin = unlogin
+
 // registration
 exports.getRegistration = getRegistration
 exports.postRegistration = postRegistration
-// adminPage
+
+// admin
 exports.getAdminPage = getAdminPage
+exports.postDeleteUser = postDeleteUser
