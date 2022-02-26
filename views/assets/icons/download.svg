@@ -3,8 +3,9 @@
 <svg version="1.2" baseProfile="tiny" class="download__icon"
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
 	 xml:space="preserve">
-<circle fill="none"  stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" cx="256" cy="256" r="187"/>
-<polyline fill="none"  stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" points="197,305
-	255.5,363.5 313.5,305.5 "/>
-<line fill="none"  stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" x1="255" y1="363" x2="255" y2="142"/>
+<path fill="none"  stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" d="M429,274.87v102.7
+	c0,7.97-6.46,14.43-14.43,14.43H98.43C90.46,392,84,385.54,84,377.57v-102.7"/>
+<polyline fill="none"  stroke-width="12" stroke-linecap="square" stroke-miterlimit="10" points="294,274.87
+	256.5,312.37 219,274.87 "/>
+<line fill="none"  stroke-width="12" stroke-linecap="round" stroke-miterlimit="10" x1="256.5" y1="312.37" x2="256.5" y2="140.48"/>
 </svg>

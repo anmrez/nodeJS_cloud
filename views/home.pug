@@ -17,7 +17,11 @@ block content
               div(class="file__control df_ja")
                 a(href= 'download' + '?file=' + file class="df_ja") 
                   include assets/icons/download.svg
-                a(href= 'delete-file' + '?file=' + file class="df_ja") 
+                a(class="df_ja shareButton") S
+                  span(class="link__copied") Link copied
+                input(class="share__link" value='download' + '?file='+ file + '?id=' + userID READONLY)
+                  //- include assets/icons/share.svg
+                a(href= 'delete-file' + '?file=' + file class="df_ja ") 
                   include assets/icons/bincan.svg
           //- END each
   
@@ -29,3 +33,5 @@ block content
         input(type="submit" value="submit" id="buttonForm")
           
   script(type="text/javascript" src="../views/assets/js/drag.js")
+  script(type="text/javascript" src="../views/assets/js/share.js")
+  script(type="text/javascript" src="../views/assets/js/animation.js")

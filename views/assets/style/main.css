@@ -94,8 +94,89 @@ li {
   stroke: #cc0000;
 }
 
+.bincan__lid {
+  animation-direction: normal;
+  animation-duration: 0.3s;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  transform-origin: bottom right;
+}
+
 .download__icon:hover {
   stroke: #FFF;
+}
+
+@keyframes bincanLid {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  100% {
+    transform: rotate(5deg) translateY(-20px);
+  }
+}
+@keyframes bincanLidClose {
+  0% {
+    transform: rotate(5deg) translateY(-20px);
+  }
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+}
+@keyframes linkCopied {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.shareButton {
+  cursor: pointer;
+  position: relative;
+}
+
+.link__copied {
+  font-size: 14px;
+  position: absolute;
+  top: -25px;
+  border: 2px solid #dddddd22;
+  background: #1e571966;
+  white-space: nowrap;
+  color: #ddd !important;
+  padding: 3px;
+  pointer-events: none;
+  border-radius: 0.2em;
+  opacity: 0;
+  animation-duration: 2s;
+}
+
+.share__link {
+  display: none;
+  background: none;
+  border: 1px solid #dddddd22;
+  color: #ddddddaa;
+  position: absolute;
+  max-width: 300px;
+  overflow: auto;
+  transform: translateX(-300px);
+  font-size: 14px;
+}
+.share__link:focus {
+  border: 1px solid #a804ca;
+}
+
+.active {
+  display: block !important;
 }
 
 header {
