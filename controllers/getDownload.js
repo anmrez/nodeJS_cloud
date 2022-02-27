@@ -1,13 +1,11 @@
 const jwt = require('jsonwebtoken'),
-  {secret} = require('../lib/config.js'),
-  {appDir} = require('../lib/config.js'),
+  {secret, appDir, loggingConsole} = require('../lib/config.js'),
+  consoleLog = require('../lib/loggingConsole.js'),
   path = require('path');
 
-
-
 module.exports = async function (req, res) {
-  console.log(`______`);
-  console.log(`download:`);
+  consoleLog(req, res, loggingConsole)
+
   try { // try #1
     try { // try #2
 

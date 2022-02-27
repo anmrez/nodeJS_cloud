@@ -1,15 +1,16 @@
 const jwt = require('jsonwebtoken'),
-  {secret} = require('../lib/config.js'),
   {Readable} = require('stream'),
   fs = require('fs'),
   path = require('path'),
-  {appDir} = require('../lib/config.js')
+  {secret, appDir, loggingConsole} = require('../lib/config.js'),
+  consoleLog = require('../lib/loggingConsole.js')
+
 let pathFiles, userID
 
 
 module.exports = async function (req, res) {
-  console.log(`______`);
-  console.log(`post upload:`);
+  consoleLog(req, res, loggingConsole)
+
   userID = jwt.verify(req.cookies.tokenkey, secret).id
 
 

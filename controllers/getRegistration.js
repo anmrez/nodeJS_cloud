@@ -1,12 +1,13 @@
 const pattern = require('../lib/patternServer.js'),
   valid = require('../lib/validRegistration.js'),
   jwt = require('jsonwebtoken'),
-  {secret} = require('../lib/config.js')
+  {secret, loggingConsole} = require('../lib/config.js'),
+  consoleLog = require('../lib/loggingConsole.js')
 
 
 module.exports = function (req, res) {
-  console.log(`______`);
-  console.log(`get registration:`);
+  consoleLog(req, res, loggingConsole)
+
   try {
     res.render('registration',{
       userName: jwt.verify(req.cookies.tokenkey, secret).name,

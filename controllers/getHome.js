@@ -1,24 +1,25 @@
 const jwt = require('jsonwebtoken'),
-  {secret} = require('../lib/config.js'),
+  {secret, appDir, loggingConsole} = require('../lib/config.js'),
   fs = require('fs'),
   path = require('path'),
-  {appDir} = require('../lib/config.js')
+  consoleLog = require('../lib/loggingConsole.js')
+
 
   let userFiles = {}
   let linksFiles = []
 
 
 module.exports = function (req, res) {
-  console.log(`_____`);
-  console.log(`get home:`);
+  consoleLog(req, res, loggingConsole)
+
   try {
     // проверка роли Админа
     if ( `ADMIN` == jwt.verify(req.cookies.tokenkey, secret).role) {
       role = true
-      console.log(`role: ${role}`);
+      // console.log(`role: ${role}`);
     } else {
       role = false
-      console.log(`role: ${role}`);
+      // console.log(`role: ${role}`);
     }
 
 
@@ -31,7 +32,7 @@ module.exports = function (req, res) {
       try {
         // write user files
         userFiles = fs.readdirSync(pathFiles, 'utf8')
-        console.log(userFiles);
+        // console.log(userFiles);
       } catch (e) {
         // console.log(e);
         // create folder if it doesn't exist
@@ -48,10 +49,14 @@ module.exports = function (req, res) {
       userID: userID
     }) // render 'home'
   } catch (e) {
-    // console.log(e);
-    console.log(`user undefiend in DB`);
-    res.clearCookie("tokenkey");
 
+    if (loggingConsole) {
+      console.log(`user undefiend in DB`);
+      console.log(`redirect in "login"`);
+    }
+    // delete cookie
+    res.clearCookie("tokenkey");
     res.redirect('/login')
+
   } // try/catch
 } // module

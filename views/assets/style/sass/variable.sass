@@ -2,15 +2,52 @@ $color_2: #a804ca
 $color_Text_Opacity: #ddddddaa
 $transition_Btn: 0.3s
 $red: #cc0000
-$green_Opacity: #1e571966
+$green_Opacity: #1e5719aa
 $fontSize: 34px
 
-// dark
-$color_BG_Dark: #222
-$color_Text: #ddd
-$background_in_hover: #dddddd22
 
-// light
-$color_BG_Light: #f4f4f4
-$color_Text_Light: #222
-$background_in_hover_Light: #ddddddaa
+// purple
+$color_purple: #a804ca
+$color_purple_light: #a804ca
+
+// blue
+$color_blue: #3694ff
+$color_blue_light: #0077ff
+
+
+
+// ================
+// === / Dark / ===
+// ================
+
+
+html[data-theme="dark+blue"]
+  --background: #222222
+  --color: #ddd
+  --color2: #3694ff
+  --background_in_hover: #dddddd22
+
+html[data-theme="dark+purple"]
+  --background: #222222
+  --color: #ddd
+  --color2: #a804ca
+  --background_in_hover: #dddddd22
+
+
+
+// =================
+// === / Light / ===
+// =================
+
+
+html[data-theme="light+blue"]
+  --background: #ebebeb
+  --color: #222
+  --color2: #0077ff
+  --background_in_hover: #8888
+
+html[data-theme="light+purple"]
+  --background: #ebebeb
+  --color: #222
+  --color2: #a804ca
+  --background_in_hover: #8888

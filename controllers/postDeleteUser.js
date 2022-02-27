@@ -1,14 +1,14 @@
 const User = require('../models/users'),
   fs = require('fs'),
-  {appDir} = require('../lib/config.js'),
+  {secret, appDir, loggingConsole} = require('../lib/config.js'),
+  consoleLog = require('../lib/loggingConsole.js'),
   path = require('path'),
-  jwt = require('jsonwebtoken'),
-  {secret} = require('../lib/config.js')
+  jwt = require('jsonwebtoken')
+
 
 module.exports = async function (req, res) {
-  console.log(`______`);
-  console.log(`post delete user:`);
-  console.log(req.body);
+  consoleLog(req, res, loggingConsole)
+
 
   try {
     // get user ID

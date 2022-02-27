@@ -16,7 +16,7 @@
   padding-top: 30px
   border: none
   background: #292d4800
-  color: $color_Text
+  color: var(--color)
   font-size: 20px !important
   outline: none
 
@@ -28,7 +28,7 @@
   height: 100%
   pointer-events: none
   width: 100%
-  border-bottom: 1px solid $color_Text
+  border-bottom: 1px solid var(--color)
   &:after
     content: ""
     position: absolute
@@ -36,7 +36,7 @@
     bottom: -1px
     width: 100%
     height: 50%
-    border-bottom: 2px solid $color_2
+    border-bottom: 2px solid var(--color2)
     transform: translateX(-100%)
     transition: all 0.4s ease
   &:before
@@ -47,7 +47,7 @@
     height: 100%
     transition: all 0.4s ease
     opacity: 0
-    color: $color_Text_Opacity
+    color: var(--color)_Opacity
     content: "For example:"
 
 #sectionInputMail
@@ -73,7 +73,7 @@
   position: absolute
   bottom: 0
   transition: all 0.3s ease
-  color: $color_Text
+  color: var(--color)
 
 
 .input input:focus + .label__input span,
@@ -97,15 +97,15 @@
 .form__submit
   font-size: 20px
   height: 40px
-  color: $color_Text
-  background: $color_BG_Dark
-  border: 1px solid $color_2
+  color: var(--color)
+  background: var(--background)
+  border: 1px solid var(--color2)
   padding: 10px 20px 35px 20px
   cursor: pointer
   transition: 0.3s
   margin-left: 20px
   &:hover
-    background: $color_2
+    background: var(--color2)
   &:disabled
     border: 1px solid #2c2c2c
     background: #2c2c2c
@@ -115,7 +115,7 @@
   margin-top: 50px
   a
     margin-left: 10px
-    // color: $color_2
+    // color: var(--color2)
 
 #validMail,
 #validName,
@@ -185,15 +185,16 @@
   bottom: -5px
   right: 0
   transition: 0.3s
+  fill: var(--color)
   #eye_2, #eye_1
     transform-origin: center
     transition: 0.3s
   &:hover
     cursor: pointer
-    fill: $color_2
-    filter: drop-shadow(0px 0px 20px $color_2)
+    fill: var(--color2)
+    filter: drop-shadow(0px 0px 20px var(--color2))
   &.active
-    fill: $color_2
+    fill: var(--color2)
     #eye_2
       transform: scale(50%)
     #eye_1
@@ -217,7 +218,7 @@
     transition: 0.3s
   &:hover
     label
-      color: $color_2
+      color: var(--color2)
 
 
 .check_st
@@ -230,10 +231,10 @@
   &:checked + .check_new::after
     opacity: 1
   &:checked + .check_new
-    border: 1px solid $color_2
+    border: 1px solid var(--color2)
 
 .check_new
-  border: 1px solid $color_Text
+  border: 1px solid var(--color)
   display: block
   width: 25px
   height: 25px
@@ -247,6 +248,6 @@
     content: ""
     width: 5px
     height: 20px
-    border-bottom: 3px solid $color_2
-    border-right: 3px solid $color_2
+    border-bottom: 3px solid var(--color2)
+    border-right: 3px solid var(--color2)
     transform: rotate(35deg) translateX(6px) translateY(-5px)

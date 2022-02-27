@@ -1,14 +1,12 @@
 const User = require('../models/users'),
   jwt = require('jsonwebtoken'),
-  {secret} = require('../lib/config.js')
+  {secret, loggingConsole} = require('../lib/config.js'),
+  consoleLog = require('../lib/loggingConsole.js')
 
 module.exports = async function (req, res) {
-  const users = await User.find({}).lean()
-  // res.render('admin__page',{
-  //   userName: req.cookies.token,
-  //   users
-  // })
+  consoleLog(req, res, loggingConsole)
 
+  const users = await User.find({}).lean()
   try {
     // console.log(jwt.verify(req.cookies.tokenkey, secret));
     if ( `ADMIN` == jwt.verify(req.cookies.tokenkey, secret).role) {

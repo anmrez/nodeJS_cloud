@@ -1,30 +1,40 @@
-.theme__dark {
-  background: #222;
-  color: #ddd;
-  fill: #ddd;
-  stroke: #ddd;
-  transition: 0.3s;
-}
-.theme__dark a {
-  color: #ddd;
+html[data-theme="dark+blue"] {
+  --background: #222222;
+  --color: #ddd;
+  --color2: #3694ff;
+  --background_in_hover: #dddddd22;
 }
 
-.theme__light {
-  background: #f4f4f4 !important;
-  color: #222 !important;
-  fill: #222 !important;
-  stroke: #222 !important;
-  transition: 0.3s;
-}
-.theme__light a {
-  color: #222;
+html[data-theme="dark+purple"] {
+  --background: #222222;
+  --color: #ddd;
+  --color2: #a804ca;
+  --background_in_hover: #dddddd22;
 }
 
-a {
-  transition: 0.3s;
+html[data-theme="light+blue"] {
+  --background: #ebebeb;
+  --color: #222;
+  --color2: #0077ff;
+  --background_in_hover: #8888;
 }
-a:hover {
-  color: #a804ca;
+
+html[data-theme="light+purple"] {
+  --background: #ebebeb;
+  --color: #222;
+  --color2: #a804ca;
+  --background_in_hover: #8888;
+}
+
+html {
+  background: var(--background);
+  color: var(--color);
+}
+html a {
+  color: var(--color);
+}
+html a:hover {
+  color: var(--color2);
 }
 
 body {
@@ -68,25 +78,26 @@ li {
   align-items: center;
   width: 900px;
   padding: 5px 10px;
-  border-bottom: 1px solid #dddddd22;
+  border-bottom: 1px solid var(--background_in_hover);
+  border-radius: 0.4em;
 }
 .view__files span {
   cursor: default;
 }
 .view__files:hover {
-  background: #dddddd22;
-  border-radius: 0.2em;
+  background: var(--background_in_hover);
+  border-radius: 0.4em;
 }
 
 .file__control {
-  width: 15%;
+  width: 20%;
   justify-content: space-between !important;
 }
 
 .bincan__icon,
 .download__icon {
   width: 50px;
-  stroke: #dddddd22;
+  stroke: var(--color);
   transition: 0.3s;
 }
 
@@ -104,7 +115,7 @@ li {
 }
 
 .download__icon:hover {
-  stroke: #FFF;
+  stroke: var(--color2);
 }
 
 @keyframes bincanLid {
@@ -127,10 +138,10 @@ li {
   0% {
     opacity: 0;
   }
-  25% {
+  15% {
     opacity: 1;
   }
-  50% {
+  60% {
     opacity: 1;
   }
   70% {
@@ -149,10 +160,10 @@ li {
   font-size: 14px;
   position: absolute;
   top: -25px;
-  border: 2px solid #dddddd22;
-  background: #1e571966;
+  border: 2px solid var(--background_in_hover);
+  background: #1e5719aa;
   white-space: nowrap;
-  color: #ddd !important;
+  color: var(--color);
   padding: 3px;
   pointer-events: none;
   border-radius: 0.2em;
@@ -163,7 +174,7 @@ li {
 .share__link {
   display: none;
   background: none;
-  border: 1px solid #dddddd22;
+  border: 1px solid var(--background_in_hover);
   color: #ddddddaa;
   position: absolute;
   max-width: 300px;
@@ -172,7 +183,7 @@ li {
   font-size: 14px;
 }
 .share__link:focus {
-  border: 1px solid #a804ca;
+  border: 1px solid var(--color2);
 }
 
 .active {
@@ -180,7 +191,7 @@ li {
 }
 
 header {
-  border-bottom: 2px solid #a804ca;
+  border-bottom: 2px solid var(--color2);
   display: flex;
   justify-content: space-between;
   padding: 40px 20px 20px;
@@ -222,7 +233,7 @@ header .btn__header {
   display: none;
   margin: 5px 0;
   font-size: 20px;
-  border: 2px solid #a804ca;
+  border: 2px solid var(--color2);
 }
 .user__name__menu li a {
   width: 100%;
@@ -258,24 +269,24 @@ header .btn__header {
   transition: 0.3s;
 }
 .icon__basket:hover {
-  fill: #a804ca;
-  stroke: #a804ca;
+  fill: var(--color2);
+  stroke: var(--color2);
 }
 
 .check__box {
-  background: #f4f4f4;
+  background: var(--background);
   width: 40px;
   height: 20px;
   border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #a804ca;
+  border: 1px solid var(--color2);
   margin-right: 20px;
 }
 .check__box span {
   display: block;
-  background: #a804ca;
+  background: var(--color2);
   border-radius: 50px;
   width: 14px;
   height: 14px;
@@ -285,10 +296,38 @@ header .btn__header {
 }
 
 .check__box.active {
-  background: #222;
+  background: var(--background);
 }
 .check__box.active span {
   left: 8px !important;
+}
+
+html[data-theme="dark+blue"] {
+  --background: #222222;
+  --color: #ddd;
+  --color2: #3694ff;
+  --background_in_hover: #dddddd22;
+}
+
+html[data-theme="dark+purple"] {
+  --background: #222222;
+  --color: #ddd;
+  --color2: #a804ca;
+  --background_in_hover: #dddddd22;
+}
+
+html[data-theme="light+blue"] {
+  --background: #ebebeb;
+  --color: #222;
+  --color2: #0077ff;
+  --background_in_hover: #8888;
+}
+
+html[data-theme="light+purple"] {
+  --background: #ebebeb;
+  --color: #222;
+  --color2: #a804ca;
+  --background_in_hover: #8888;
 }
 
 #dropzone {
@@ -441,10 +480,10 @@ h5 {
   background: #cc0000;
 }
 .btn:hover span {
-  background: #ddd;
+  background: var(--color);
 }
 .btn:hover span::after {
-  background: #ddd;
+  background: var(--color);
 }
 
 /*# sourceMappingURL=main.css.map */

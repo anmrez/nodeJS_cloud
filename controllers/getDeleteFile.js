@@ -1,14 +1,15 @@
 const jwt = require('jsonwebtoken'),
-  {secret} = require('../lib/config.js'),
-  {appDir} = require('../lib/config.js'),
+  {secret, appDir, loggingConsole} = require('../lib/config.js'),
+  consoleLog = require('../lib/loggingConsole.js'),
   path = require('path'),
   fs = require('fs')
 
 
 
 module.exports = async function (req, res) {
-  console.log(`______`);
-  console.log(`delete file:`);
+  consoleLog(req, res, loggingConsole)
+
+
   try {
     // get user ID
     userID = jwt.verify(req.cookies.tokenkey, secret).id

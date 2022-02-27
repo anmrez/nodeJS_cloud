@@ -1,10 +1,12 @@
 const User = require('../models/users.js'),
   pattern = require('../lib/patternServer.js'),
-  bcrypt = require('bcryptjs')
+  bcrypt = require('bcryptjs'),
+  {loggingConsole} = require('../lib/config.js'),
+  consoleLog = require('../lib/loggingConsole.js')
 
 module.exports = async function (req, res) {
-  console.log(`______`);
-  console.log(`get login:`);
+  consoleLog(req, res, loggingConsole)
+
   const users = await User.find({}).lean()
   // console.log(req.query.error);
   try {

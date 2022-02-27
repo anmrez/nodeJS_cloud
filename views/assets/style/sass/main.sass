@@ -1,52 +1,12 @@
-// main
-// $color_2: #4D3CA6
-// $color_2: #786fa6
-// $color_2: #574b90
-// $color_2: #7f1296 !!
-// $color_2: #a804ca
-// $color_Text_Opacity: #ddddddaa
-// $transition_Btn: 0.3s
-// $red: #cc0000
-// $fontSize: 34px
-//
-// // dark
-// $color_BG_Dark: #222
-// $color_Text: #ddd
-//
-// // light
-// $color_BG_Light: #f4f4f4
-// $color_Text_Light: #222
 @import "variable"
 
-
-// dark
-.theme__dark
-  background: $color_BG_Dark
-  color: $color_Text
-  fill: $color_Text
-  stroke: $color_Text
-  transition: $transition_Btn
+html
+  background: var(--background)
+  color: var(--color)
   a
-    color: $color_Text
-
-
-
-// light
-.theme__light
-  background: $color_BG_Light !important
-  color: $color_Text_Light  !important
-  fill: $color_Text_Light !important
-  stroke: $color_Text_Light !important
-  transition: $transition_Btn
-  a
-    color: $color_Text_Light
-
-a
-  transition: $transition_Btn
-  &:hover
-    color: $color_2
-
-
+    color: var(--color)
+    &:hover
+      color: var(--color2)
 
 
 @import "body"

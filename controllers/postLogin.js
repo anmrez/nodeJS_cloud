@@ -4,13 +4,14 @@ const User = require('../models/users'),
   jwt = require('jsonwebtoken'),
   bcrypt = require('bcryptjs'),
   serverValidation = require('../lib/validRegistration.js'),
-  {salt} = require('../lib/config.js')
+  // {salt} = require('../lib/config.js')
+  {salt, loggingConsole} = require('../lib/config.js'),
+  consoleLog = require('../lib/loggingConsole.js')
 
 
 module.exports = async function (req, res) {
-  console.log(`______`);
-  console.log(`postLogin:`);
-  console.log(req.body);
+  consoleLog(req, res, loggingConsole)
+
   // если форма прошла проверку
   if (serverValidation(req, res)) {
 

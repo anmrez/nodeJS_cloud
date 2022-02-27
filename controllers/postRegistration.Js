@@ -4,15 +4,16 @@ const pattern = require('../lib/patternServer.js'),
   bcrypt = require('bcryptjs'),
   generateToken = require('../lib/generateJWT.js'),
   serverValidation = require('../lib/validRegistration.js'),
-  {salt} = require('../lib/config.js'),
+  // {salt} = require('../lib/config.js'),
+  {salt, loggingConsole} = require('../lib/config.js'),
+  consoleLog = require('../lib/loggingConsole.js'),
   fs = require('fs'),
   path = require('path')
 
 
 module.exports = async function (req, res) {
-  // serverValidation(req, res)
-  console.log(`______`);
-  console.log(`post registration:`);
+  consoleLog(req, res, loggingConsole)
+
   // проверка валидации форм
   if (serverValidation(req, res)) { // validation check
     try {
