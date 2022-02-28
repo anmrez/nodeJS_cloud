@@ -1,8 +1,8 @@
-const User = require('../models/users.js'),
-  pattern = require('../lib/patternServer.js'),
+const User = require('../../models/users.js'),
+  pattern = require('../../lib/patternServer.js'),
   bcrypt = require('bcryptjs'),
-  {loggingConsole} = require('../lib/config.js'),
-  consoleLog = require('../lib/loggingConsole.js')
+  {loggingConsole} = require('../../lib/config.js'),
+  consoleLog = require('../../lib/loggingConsole.js')
 
 module.exports = async function (req, res) {
   consoleLog(req, res, loggingConsole)

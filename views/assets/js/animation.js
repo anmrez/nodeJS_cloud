@@ -6,13 +6,13 @@ const bincanLid = document.querySelectorAll('.bincan__lid')
 bincanLid.forEach((item, i) => {
 
   bincanIcon[i].addEventListener('mouseover', function(){
-    console.log(`mouseover`);
+    // console.log(`mouseover`);
     item.style.animationName = 'bincanLid'
   })
 
 
   bincanIcon[i].addEventListener('mouseout', function(){
-    console.log(`mouseout`);
+    // console.log(`mouseout`);
     item.style.animationName = 'bincanLidClose'
   })
 

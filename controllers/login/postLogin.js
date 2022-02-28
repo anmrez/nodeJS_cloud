@@ -1,12 +1,11 @@
-const User = require('../models/users'),
-  sendCookie = require('../lib/sendCookie.js'),
-  generateToken = require('../lib/generateJWT.js'),
+const User = require('../../models/users'),
+  sendCookie = require('../../lib/sendCookie.js'),
+  generateToken = require('../../lib/generateJWT.js'),
   jwt = require('jsonwebtoken'),
   bcrypt = require('bcryptjs'),
-  serverValidation = require('../lib/validRegistration.js'),
-  // {salt} = require('../lib/config.js')
-  {salt, loggingConsole} = require('../lib/config.js'),
-  consoleLog = require('../lib/loggingConsole.js')
+  serverValidation = require('../../lib/validRegistration.js'),
+  {salt, loggingConsole} = require('../../lib/config.js'),
+  consoleLog = require('../../lib/loggingConsole.js')
 
 
 module.exports = async function (req, res) {

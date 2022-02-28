@@ -1,9 +1,11 @@
 section(class="container theme__dark")
   header
     nav(class="header__left")
-      a(href="/" class="btn__header") Home
+      a(href="/" class="btn__header") 
+        h1 Home
       if role
-        a(href="/admin-page" class="btn__header") Admin Page
+        a(href="/admin-page" class="btn__header") 
+          h1 Admin Page
     
     nav(class="header__right")
       ul
@@ -13,9 +15,9 @@ section(class="container theme__dark")
               a(href="#" class="user__name" id="UserName") #{userName}
               //- li#0
               li
-                a(href="#" class="df_ja") setting 1
+                a(href="/settings" class="df_ja") Settings
               //- li#1
-              li(onclick="changeOfSubject()")
+              //- li(onclick="changeOfSubject()")
                 a(class="df_ja")
                   div(class="check__box" id="checkBoxTheme")
                     span
@@ -33,7 +35,7 @@ section(class="container theme__dark")
                 a(href="/registration" class="df_ja")
                   h6 registration
               //- li#1
-              li(onclick="changeOfSubject()")
+              //- li(onclick="changeOfSubject()")
                 a(class="df_ja")
                   div(class="check__box" id="checkBoxTheme")
                     span

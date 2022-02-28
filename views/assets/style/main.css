@@ -39,6 +39,7 @@ html a:hover {
 
 body {
   font-family: sans-serif;
+  font-family: Montserrat;
   font-size: 34px;
   position: relative;
 }
@@ -72,7 +73,8 @@ li {
   opacity: 0;
 }
 
-.view__files {
+.view__files,
+.view__settings {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,10 +83,12 @@ li {
   border-bottom: 1px solid var(--background_in_hover);
   border-radius: 0.4em;
 }
-.view__files span {
+.view__files span,
+.view__settings span {
   cursor: default;
 }
-.view__files:hover {
+.view__files:hover,
+.view__settings:hover {
   background: var(--background_in_hover);
   border-radius: 0.4em;
 }
@@ -186,10 +190,6 @@ li {
   border: 1px solid var(--color2);
 }
 
-.active {
-  display: block !important;
-}
-
 header {
   border-bottom: 2px solid var(--color2);
   display: flex;
@@ -201,6 +201,10 @@ header {
 header .btn__header {
   margin-right: 15px;
   transition: 0.3s;
+}
+
+.header__left {
+  display: flex;
 }
 
 .header__right {
@@ -226,6 +230,7 @@ header .btn__header {
   text-align: center;
   min-width: 140px;
   max-width: 160px;
+  font-size: 34px;
 }
 .user__name__menu li {
   height: 40px;
@@ -271,35 +276,6 @@ header .btn__header {
 .icon__basket:hover {
   fill: var(--color2);
   stroke: var(--color2);
-}
-
-.check__box {
-  background: var(--background);
-  width: 40px;
-  height: 20px;
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid var(--color2);
-  margin-right: 20px;
-}
-.check__box span {
-  display: block;
-  background: var(--color2);
-  border-radius: 50px;
-  width: 14px;
-  height: 14px;
-  position: relative;
-  transition: 0.3s;
-  left: -8px;
-}
-
-.check__box.active {
-  background: var(--background);
-}
-.check__box.active span {
-  left: 8px !important;
 }
 
 html[data-theme="dark+blue"] {
@@ -428,23 +404,34 @@ html[data-theme="light+purple"] {
 }
 
 h1 {
-  font-size: 68px;
+  font-size: 34px;
+  font-weight: 600;
 }
 
 h2 {
-  font-size: 45.3333333333px;
+  font-size: 32.380952381px;
+  font-weight: 600;
 }
 
 h3 {
-  font-size: 42.5px;
+  font-size: 29.5652173913px;
+  font-weight: 600;
 }
 
 h4 {
-  font-size: 40.8px;
+  font-size: 26.1538461538px;
+  font-weight: 500;
 }
 
 h5 {
-  font-size: 39.6666666667px;
+  font-size: 23.4482758621px;
+  font-weight: 500;
+}
+
+p,
+li {
+  font-size: 20.6060606061px;
+  font-weight: 300;
 }
 
 .btn:text {
@@ -484,6 +471,71 @@ h5 {
 }
 .btn:hover span::after {
   background: var(--color);
+}
+
+.settings__list {
+  cursor: default;
+}
+.settings__list a,
+.settings__list span,
+.settings__list .checkbox__theme {
+  cursor: pointer !important;
+}
+
+.check__box {
+  background: var(--background);
+  width: 40px;
+  height: 20px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color2);
+  margin: 0 20px;
+}
+.check__box span {
+  display: block;
+  background: var(--color2);
+  border-radius: 50px;
+  width: 14px;
+  height: 14px;
+  position: relative;
+  transition: 0.3s;
+  left: -8px;
+}
+
+.check__box.active {
+  background: var(--background);
+}
+.check__box.active span {
+  left: 8px !important;
+}
+
+.shade__color__block {
+  margin-right: 50px;
+  width: 70px;
+  justify-content: space-between;
+}
+.shade__color__block a {
+  padding: 5px 10px;
+}
+.shade__color__block a .shade__color {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--background_in_hover);
+  border-radius: 1em;
+}
+.shade__color__block a .shade__color.active {
+  padding: 5px;
+  border: 2px solid #fffa;
+}
+
+#shade1 {
+  background: #a804ca;
+}
+
+#shade2 {
+  background: #3694ff;
 }
 
 /*# sourceMappingURL=main.css.map */

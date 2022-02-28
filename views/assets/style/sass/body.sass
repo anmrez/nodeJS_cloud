@@ -1,5 +1,6 @@
 body
   font-family: sans-serif
+  font-family: Montserrat
   font-size: $fontSize
   position: relative
 
@@ -13,6 +14,7 @@ body
 li
   list-style-type: disc
   // color: $color_2
+
 
 .container
   max-width: 1200px
@@ -30,7 +32,8 @@ li
   cursor: pointer
   opacity: 0
 
-.view__files
+.view__files,
+.view__settings
   display: flex
   justify-content: space-between
   align-items: center
@@ -135,5 +138,5 @@ li
   &:focus
     border: 1px solid var(--color2)
 
-.active
-  display: block !important
+    // .active
+    //   display: block !important

@@ -12,6 +12,9 @@ header
     margin-right: 15px
     transition: $transition_Btn
 
+.header__left
+  display: flex
+
 .header__right
   display: flex
   max-height: 40px
@@ -33,6 +36,7 @@ header
   text-align: center
   min-width: 140px
   max-width: 160px
+  font-size: $fontSize
   li
     height: 40px
     position: relative
@@ -73,31 +77,3 @@ header
   &:hover
     fill: var(--color2)
     stroke: var(--color2)
-
-
-
-// Чек бокс
-.check__box
-  background: var(--background)
-  width: 40px
-  height: 20px
-  border-radius: 15px
-  display: flex
-  justify-content: center
-  align-items: center
-  // cursor: pointer
-  border: 1px solid var(--color2)
-  margin-right: 20px
-  span
-    display: block
-    background: var(--color2)
-    border-radius: 50px
-    width: 14px
-    height: 14px
-    position: relative
-    transition: 0.3s
-    left: -8px
-.check__box.active
-  background: var(--background)
-  span
-    left: 8px !important

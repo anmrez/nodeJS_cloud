@@ -1,13 +1,15 @@
-const pattern = require('../lib/patternServer.js'),
-  sendCookie = require('../lib/sendCookie.js'),
-  User = require('../models/users'),
+const pattern = require('../../lib/patternServer.js'),
+  sendCookie = require('../../lib/sendCookie.js'),
+  User = require('../../models/users'),
+
   bcrypt = require('bcryptjs'),
-  generateToken = require('../lib/generateJWT.js'),
-  serverValidation = require('../lib/validRegistration.js'),
-  // {salt} = require('../lib/config.js'),
-  {salt, loggingConsole} = require('../lib/config.js'),
-  consoleLog = require('../lib/loggingConsole.js'),
+  generateToken = require('../../lib/generateJWT.js'),
+  serverValidation = require('../../lib/validRegistration.js'),
+
+  {salt, loggingConsole} = require('../../lib/config.js'),
+  consoleLog = require('../../lib/loggingConsole.js'),
   fs = require('fs'),
+
   path = require('path')
 
 

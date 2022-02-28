@@ -1,8 +1,10 @@
-const pattern = require('../lib/patternServer.js'),
-  valid = require('../lib/validRegistration.js'),
+const path = require('path')
+  pattern = require('../../lib/patternServer.js'),
+  valid = require('../../lib/validRegistration.js'),
+  
   jwt = require('jsonwebtoken'),
-  {secret, loggingConsole} = require('../lib/config.js'),
-  consoleLog = require('../lib/loggingConsole.js')
+  {secret, loggingConsole} = require('../../lib/config.js'),
+  consoleLog = require('../../lib/loggingConsole.js')
 
 
 module.exports = function (req, res) {

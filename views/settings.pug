@@ -1,0 +1,35 @@
+extends layout/layout.pug
+
+block content
+  
+  section(class="block")
+    section(class="container")
+      h1 Settings
+
+  section(class="block")
+    section(class="container")
+      ul(class="settings__list")
+        h3(class="mt_50") Theme
+        li(class="view__settings mt_10") site main theme 
+          div(class="df_ja checkbox__theme" id="checkBoxThemeZoneClicked")
+            p dark
+            a(class="df_ja")
+              div(class="check__box" id="checkBoxTheme")
+                span
+            p light
+        //- 
+        //- h4(class="mt_50") Shade
+        li(class="view__settings mt_10") shade color
+          div(class="df_ja shade__color__block")
+            a(href="#" class="shade__zone")
+              span(class="df_ja shade__color" id="shade1")
+            a(href="#" class="shade__zone")
+              span(class="df_ja shade__color" id="shade2")
+        
+        h5(class="mt_50") Delete account
+        li(class="view__settings mt_10")
+          div(class="df_ja")
+            a(href="#") delete account
+
+
+  script(type="text/javascript" src="../views/assets/js/settings.js")

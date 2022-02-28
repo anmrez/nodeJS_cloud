@@ -1,21 +1,31 @@
-const getHome = require('../controllers/getHome.js'),
-  unlogin = require('../controllers/unlogin.js'),
+ const path = require('path')
+
+const getHome = require(path.join('..', 'controllers', 'getHome.js')),
+
   // files
-  getDownload = require('../controllers/getDownload.js'),
-  postUpload = require('../controllers/postUpload.js'),
-  getDeleteFile = require('../controllers/getDeleteFile.js'),
+  postUpload = require(path.join('..', 'controllers', 'files', 'postUpload.js')),
+  getDownload = require(path.join('..', 'controllers', 'files', 'getDownload.js')),
+  getDeleteFile = require(path.join('..', 'controllers', 'files', 'getDeleteFile.js')),
+
   // login
-  getLogin = require('../controllers/getLogin.js'),
-  postLogin = require('../controllers/postLogin.js'),
+  getLogin = require(path.join('..', 'controllers', 'login', 'getLogin.js')),
+  postLogin = require(path.join('..', 'controllers', 'login', 'postLogin.js')),
+  unlogin = require(path.join('..', 'controllers', 'login', 'unlogin.js')),
+
   // registration
-  getRegistration = require('../controllers/getRegistration.js'),
-  postRegistration = require('../controllers/postRegistration.js'),
+  getRegistration = require(path.join('..', 'controllers', 'registration', 'getRegistration.js')),
+  postRegistration = require(path.join('..', 'controllers', 'registration', 'postRegistration.js')),
+
   // adminPage
-  getAdminPage = require('../controllers/getAdminPage.js'),
-  postDeleteUser = require('../controllers/postDeleteUser.js')
+  getAdminPage = require(path.join('..', 'controllers', 'getAdminPage.js')),
+  postDeleteUser = require(path.join('..', 'controllers', 'postDeleteUser.js'))
+
+  // settings
+  getSettings = require(path.join('..', 'controllers', 'settings', 'getSettings.js'))
 
 
 
+// home
 exports.getHome = getHome
 
 // files
@@ -35,3 +45,6 @@ exports.postRegistration = postRegistration
 // admin
 exports.getAdminPage = getAdminPage
 exports.postDeleteUser = postDeleteUser
+
+// settings
+exports.getSettings = getSettings

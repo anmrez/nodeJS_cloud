@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken'),
-  {secret, appDir, loggingConsole} = require('../lib/config.js'),
-  consoleLog = require('../lib/loggingConsole.js'),
+  {secret, appDir, loggingConsole} = require('../../lib/config.js'),
+  consoleLog = require('../../lib/loggingConsole.js'),
   path = require('path'),
   fs = require('fs')
 

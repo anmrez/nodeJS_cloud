@@ -2,8 +2,8 @@ const jwt = require('jsonwebtoken'),
   {Readable} = require('stream'),
   fs = require('fs'),
   path = require('path'),
-  {secret, appDir, loggingConsole} = require('../lib/config.js'),
-  consoleLog = require('../lib/loggingConsole.js')
+  {secret, appDir, loggingConsole} = require('../../lib/config.js'),
+  consoleLog = require('../../lib/loggingConsole.js')
 
 let pathFiles, userID
 
