@@ -4,22 +4,27 @@ block content
   section(class="block")
     section(class="container")
       section
+        if userName
+          section(class="df_ja df_coll")
+            h3 You are already logged in
+            a(href="/") Home
+        else
         //- error
-        if errors
-          section(class="df_ja err")
-            span(class="df_ja")
-              p !
-            p Error: user not found
-            p #{textError}
-        //- END errors
+          if errors
+            section(class="df_ja err")
+              span(class="df_ja")
+                p !
+              p Error: user not found
+              p #{textError}
+          //- END errors
         h3 Login
-        //- form
-        form(class="form_names df_ja df_coll" action="/login" method="post")
-        
-          include includes/input__name.pug
-          include includes/input__pass.pug
-          include includes/check__remem.pug
+          //- form
+          form(class="form_names df_ja df_coll" action="/login" method="post")
           
-          section(class="container__form__submit mt_50")
-            input(id="submit" class="form__submit" type="submit" value="Login" disabled)
-        //- END form
+            include includes/input__name.pug
+            include includes/input__pass.pug
+            include includes/check__remem.pug
+            
+            section(class="container__form__submit mt_50")
+              input(id="submit" class="form__submit" type="submit" value="Login" disabled)
+          //- END form

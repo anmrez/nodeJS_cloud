@@ -1,0 +1,91 @@
+//- OLD PASSWORD
+section(class="section__password df_ja")
+  //- error message
+  section(class="df_ja err validsPass")
+    span(class="df_ja")
+      p !
+    span(class="text__error")
+      div(class="text__error__div")
+        p Error: character "
+        div(class="symbolsErrorPass")
+        p " is invalid
+  //- END error message
+  //- input
+  section(id="sectionInputOldPassword" class="input mt_50")
+    input(class="inputsPassword" 
+    name="password" 
+    type="password" 
+    required 
+    autocomplete="off" 
+    value="" 
+    pattern= patternPassword 
+    minlength="8" 
+    maxlength="128")
+    label(class="label__input" for="name")
+      span old password
+  //- END input
+  include ../assets/icons/eye.svg
+  
+//- END OLD PASSWORD
+//- NEW PASSWORD #1
+section(class="section__password df_ja")
+  //- error message
+  section(class="df_ja err validsPass")
+    span(class="df_ja")
+      p !
+    span(class="text__error")
+      div(class="text__error__div")
+        p Error: character "
+        div(class="symbolsErrorPass")
+        p " is invalid
+  //- END error message
+  //- input
+  section(id="sectionInputOldPassword" class="input mt_50")
+    input(class="inputsPassword" 
+    name="password" 
+    type="password" 
+    required 
+    autocomplete="off" 
+    value="" 
+    pattern= patternPassword 
+    minlength="8" 
+    maxlength="128")
+    label(class="label__input" for="name")
+      span new password
+  //- END input
+  include ../assets/icons/eye.svg
+
+
+//- NEW PASSWORD #1
+//- NEW PASSWORD #2
+section(class="section__password df_ja")
+  //- error message
+  section(class="df_ja err validsPass")
+    span(class="df_ja")
+      p !
+    span(class="text__error")
+      div(class="text__error__div")
+        p Error: character "
+        div(class="symbolsErrorPass")
+        p " is invalid
+      div(class="text__error__div" id="matchPass")
+        p new passwords do not match 
+  //- END error message
+  //- input
+  section(id="sectionInputOldPassword" class="input mt_50")
+    input(class="inputsPassword" 
+    name="password" 
+    type="password" 
+    required 
+    autocomplete="off" 
+    value="" 
+    pattern= patternPassword 
+    minlength="8" 
+    maxlength="128")
+    label(class="label__input" for="name")
+      span confirm new password
+  //- END input
+  include ../assets/icons/eye.svg
+
+
+//- NEW PASSWORD #2

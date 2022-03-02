@@ -1,0 +1,53 @@
+.validsPass
+  display: none
+  cursor: default
+  font-size: 20px
+  margin: 20px 0
+  position: absolute
+  left: -25px
+  bottom: -15px
+  span
+    width: 20px
+    height: 20px
+    background: $red
+    border-radius: 20px
+    align-items: center
+  &:hover
+    .text__error
+      opacity: 1
+  .text__error
+    background: none
+    z-index: 2
+    transition: 0.3s
+    opacity: 0
+    display: flex
+    // min-width: 300px
+    height: 25px
+    bottom: -25px
+    position: absolute
+    top: 35px
+    text-align: center
+    justify-content: center
+    left: 35%
+    // width: 400px
+    white-space: nowrap
+    box-sizing: content-box
+    &::after
+      content: ""
+      display: block
+      background: $red
+      width: 15px
+      height: 15px
+      position: absolute
+      transform: rotateZ(23deg) translateX(3px)
+      top: -3px
+      left: 0
+      z-index: -1
+    .text__error__div
+      white-space: nowrap
+      display: flex
+      background: $red
+      position: absolute
+      left: 0
+      border-radius: 1em
+      padding: 0 20px

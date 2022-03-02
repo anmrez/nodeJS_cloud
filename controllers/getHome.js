@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken'),
   fs = require('fs'),
   path = require('path'),
   consoleLog = require('../lib/loggingConsole.js')
-
+  validRole = require('../lib/validRole.js')
 
   let userFiles = {}
   let linksFiles = []
@@ -12,16 +12,10 @@ const jwt = require('jsonwebtoken'),
 module.exports = function (req, res) {
   consoleLog(req, res, loggingConsole)
 
+  // try/catch #1
   try {
-    // проверка роли Админа
-    if ( `ADMIN` == jwt.verify(req.cookies.tokenkey, secret).role) {
-      role = true
-      // console.log(`role: ${role}`);
-    } else {
-      role = false
-      // console.log(`role: ${role}`);
-    }
-
+    // valid role in "ADMIN" (admin == true)
+    role = validRole(req, jwt.verify(req.cookies.tokenkey, secret).role)
 
 
     // get user ID
@@ -29,6 +23,8 @@ module.exports = function (req, res) {
     // find path in user folder
     pathFiles = path.join(appDir, 'userStorage', userID)
 
+
+      // try/catch #2
       try {
         // write user files
         userFiles = fs.readdirSync(pathFiles, 'utf8')
@@ -37,7 +33,8 @@ module.exports = function (req, res) {
         // console.log(e);
         // create folder if it doesn't exist
         fs.mkdirSync(path.join(appDir, 'userStorage', userID), { recursive: true, force: true })
-      }
+      } // try/catch #2
+
 
 
     res.render('home', {
@@ -48,9 +45,11 @@ module.exports = function (req, res) {
       linksFiles: linksFiles,
       userID: userID
     }) // render 'home'
+
   } catch (e) {
 
     if (loggingConsole) {
+      // console.log(e);
       console.log(`user undefiend in DB`);
       console.log(`redirect in "login"`);
     }
@@ -58,5 +57,5 @@ module.exports = function (req, res) {
     res.clearCookie("tokenkey");
     res.redirect('/login')
 
-  } // try/catch
+  } // try/catch #1
 } // module

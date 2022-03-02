@@ -1,4 +1,12 @@
-@import "variable"
+// @import "variable"
+#matchPass
+ display: none
+
+#formPassword
+  width: 100%
+  max-width: 600px
+  margin-left: 50%
+  transform: translateX(-50%)
 
 .input
   text-transform: capitalize
@@ -7,7 +15,7 @@
   flex-direction: column
   align-items: start
   overflow: hidden
-  width: 400px
+  width: 100%
   // margin-bottom: 25px
 
 .input input
@@ -48,20 +56,8 @@
     transition: all 0.4s ease
     opacity: 0
     color: var(--color)
-    content: "example:"
+    content: ""
 
-#sectionInputMail
-  label
-    &::before
-      content: "example: example@gmail.ru"
-#sectionInputName
-  label
-    &::before
-      content: "example: Alex"
-#sectionInputPassword
-  label
-    &::before
-      content: "example: Adam0_&_Eva1"
 
 
 .input input:focus + .label__input::after,
@@ -100,10 +96,12 @@
   color: var(--color)
   background: var(--background)
   border: 1px solid var(--color2)
-  padding: 10px 20px 35px 20px
+  padding: 10px 40px 35px 40px
   cursor: pointer
   transition: 0.3s
-  margin-left: 20px
+  margin-left: 50%
+  margin-top: 60px
+  transform: translateX(-50%)
   &:hover
     background: var(--color2)
   &:disabled
@@ -209,16 +207,6 @@
 
 .input input.active + #eye
   display: flex
-
-
-#sectionInputCheckbox
-  width: 100%
-  position: relative
-  label
-    transition: 0.3s
-  &:hover
-    label
-      color: var(--color2)
 
 
 .check_st

@@ -6,9 +6,17 @@ const path = require('path'),
 module.exports = function (req, res) {
   consoleLog(req, res, loggingConsole)
 
-  res.render('settings', {
-    userName: jwt.verify(req.cookies.tokenkey, secret).name,
-    role: jwt.verify(req.cookies.tokenkey, secret).role,
-  })
+  try {
+    res.render('settings', {
+      userName: jwt.verify(req.cookies.tokenkey, secret).name,
+      role: jwt.verify(req.cookies.tokenkey, secret).role,
+    })
+  } catch (e) {
+    if (loggingConsole) {
+      console.log(e);
+
+    }
+    res.redirect('/')
+  }
 
 } // module

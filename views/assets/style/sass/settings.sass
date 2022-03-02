@@ -1,6 +1,9 @@
+@import "variable"
+
+#checkBoxThemeZoneClicked
+  user-select: none
 
 .settings__list
-  cursor: default
   a,
   span,
   .checkbox__theme
@@ -41,19 +44,67 @@
   a
     padding: 5px 10px
     .shade__color
-      // display: block
       width: 20px
       height: 20px
       border: 1px solid var(--background_in_hover)
       border-radius: 1em
+      position: relative
       &.active
         padding: 5px
         border: 2px solid #fffa
-        // border-radius: 1em
-
+        &::after
+          content: ""
+          display: block
+          position: absolute
+          top: -15px
+          border: 7px solid transparent
+          border-top: 7px solid var(--color)
 
 #shade1
   background: $color_purple
 
 #shade2
   background: $color_blue
+
+
+
+
+// password
+
+#settingPass
+  position: relative
+  overflow: hidden
+  cursor: pointer
+  // transition: 0.5s
+  #triangle
+    border: 7px solid transparent
+    border-top: 7px solid var(--color)
+    position: relative
+    bottom: -5px
+    transition: 0.3s
+    transform-origin: center 3px
+    transform: rotateX(0deg)
+  form
+    position: absolute
+    left: 50%
+    top: 100px
+    transform: translateX(-50%)
+  &.active
+    // padding-bottom: 500px
+    #triangle
+      transform: rotateX(180deg)
+
+
+#passForm
+  height: 0
+  overflow: hidden
+  transition: 0.5s
+  pointer-events: none
+  opacity: 0
+  &.active
+    pointer-events: all
+    height: 500px
+    opacity: 1
+
+@import "settings/input"
+@import "settings/errors"
