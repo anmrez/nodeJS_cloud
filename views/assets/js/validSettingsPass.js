@@ -7,12 +7,13 @@ let errorPass = []
 let passBoolean = []
 const btnSubmit = document.getElementById('submit')
 for (var i = 0; i < inputsPassword.length; i++) {
-  strP[i] = ``
+  strP[i] = inputsPassword[i].defaultValue.split('')
   errorPass[i] = []
-  passBoolean[i] = [false]
+  passBoolean[i] = false
 }
 
-checkInput()
+
+// checkInput()
 
 inputsPassword.forEach((item, i) => {
   item.addEventListener("input", function (event) {
@@ -50,6 +51,7 @@ inputsPassword.forEach((item, i) => {
       // проверка двух новых паролей
       if (inputsPassword[1].value == inputsPassword[2].value) {
         // если равны
+        passBoolean[1] = true
         passBoolean[2] = true
         if (errorPass[2] == 0) {
           matchPass.style.display = 'none'
@@ -58,6 +60,7 @@ inputsPassword.forEach((item, i) => {
         checkInput()
       } else {
         // не если равны
+        passBoolean[1] = false
         passBoolean[2] = false
         if (errorPass[2] == 0) {
           validsPass[2].style.display = 'block'
@@ -73,6 +76,7 @@ inputsPassword.forEach((item, i) => {
     }) // inputPass.addEventListener
 
 }); // forEach
+
 
 
 

@@ -12,15 +12,26 @@ section(class="section__password df_ja")
   //- END error message
   //- input
   section(id="sectionInputOldPassword" class="input mt_50")
-    input(class="inputsPassword" 
-    name="password" 
-    type="password" 
-    required 
-    autocomplete="off" 
-    value="" 
-    pattern= patternPassword 
-    minlength="8" 
-    maxlength="128")
+    if oldPass 
+      input(class="inputsPassword" 
+      name="oldPassword" 
+      type="password" 
+      required 
+      autocomplete="off" 
+      value=oldPass
+      pattern=patternPassword 
+      minlength="8" 
+      maxlength="128")
+    else
+      input(class="inputsPassword" 
+      name="oldPassword" 
+      type="password" 
+      required 
+      autocomplete="off" 
+      value="" 
+      pattern= patternPassword 
+      minlength="8" 
+      maxlength="128")
     label(class="label__input" for="name")
       span old password
   //- END input
@@ -41,15 +52,26 @@ section(class="section__password df_ja")
   //- END error message
   //- input
   section(id="sectionInputOldPassword" class="input mt_50")
-    input(class="inputsPassword" 
-    name="password" 
-    type="password" 
-    required 
-    autocomplete="off" 
-    value="" 
-    pattern= patternPassword 
-    minlength="8" 
-    maxlength="128")
+    if newPass
+      input(class="inputsPassword" 
+      name="newPassword" 
+      type="password" 
+      required 
+      autocomplete="off" 
+      value=newPass
+      pattern= patternPassword 
+      minlength="8" 
+      maxlength="128")
+    else
+      input(class="inputsPassword" 
+      name="newPassword" 
+      type="password" 
+      required 
+      autocomplete="off" 
+      value="" 
+      pattern= patternPassword 
+      minlength="8" 
+      maxlength="128")
     label(class="label__input" for="name")
       span new password
   //- END input
@@ -73,15 +95,26 @@ section(class="section__password df_ja")
   //- END error message
   //- input
   section(id="sectionInputOldPassword" class="input mt_50")
-    input(class="inputsPassword" 
-    name="password" 
-    type="password" 
-    required 
-    autocomplete="off" 
-    value="" 
-    pattern= patternPassword 
-    minlength="8" 
-    maxlength="128")
+    if confNewPass
+      input(class="inputsPassword" 
+      name="confNewPassword" 
+      type="password" 
+      required 
+      autocomplete="off" 
+      value=confNewPass
+      pattern= patternPassword 
+      minlength="8" 
+      maxlength="128")
+    else
+      input(class="inputsPassword" 
+      name="confNewPassword" 
+      type="password" 
+      required 
+      autocomplete="off" 
+      value="" 
+      pattern= patternPassword 
+      minlength="8" 
+      maxlength="128")
     label(class="label__input" for="name")
       span confirm new password
   //- END input

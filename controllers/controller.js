@@ -22,7 +22,7 @@ const getHome = require(path.join('..', 'controllers', 'getHome.js')),
 
   // settings
   getSettings = require(path.join('..', 'controllers', 'settings', 'getSettings.js'))
-
+  postSettings = require(path.join('..', 'controllers', 'settings', 'postSettings.js'))
 
 
 // home
@@ -48,3 +48,4 @@ exports.postDeleteUser = postDeleteUser
 
 // settings
 exports.getSettings = getSettings
+exports.postSettings = postSettings

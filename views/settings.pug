@@ -34,9 +34,16 @@ block content
         li(class="view__settings mt_10" id="settingPass")
           div(class="df_ja")
             p(href="#") change password
+            if error == 0
+              p(class="success__pass") succes
+            else if error == 1
+              p(class="err__pass") invalid old password
+            else if error == 2
+              p(class="err__pass") invalid new password
+              
           span(id="triangle")
         section(id="passForm")
-          form(id="formPassword" action="/settings" method="post") 
+          form(id="formPassword" action="/settings" method="post") #{unlock}
             include includes/inputs__chanche__pass.pug
             input(id="submit" class="form__submit" type="submit" value="change password" disabled)
           

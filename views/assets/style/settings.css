@@ -472,4 +472,21 @@ html[data-theme="light+purple"] {
   padding: 0 20px;
 }
 
+.err__pass,
+.success__pass {
+  margin-left: 20px;
+  border-radius: 0.5em;
+  font-size: 18px;
+  padding: 5px 10px;
+  font-weight: 400;
+}
+
+.success__pass {
+  background: #1e5719aa;
+}
+
+.err__pass {
+  background: #cc0000;
+}
+
 /*# sourceMappingURL=settings.css.map */
