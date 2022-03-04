@@ -1,3 +1,4 @@
+@import "eye"
 // @import "variable"
 #matchPass
  display: none
@@ -176,34 +177,34 @@
 .section__name
   position: relative
 
-#eye
-  width: 50px
-  height: 50px
-  position: absolute
-  bottom: -5px
-  right: 0
-  transition: 0.3s
-  fill: var(--color)
-  #eye_2, #eye_1
-    transform-origin: center
-    transition: 0.3s
-  &:hover
-    cursor: pointer
-    fill: var(--color2)
-    filter: drop-shadow(0px 0px 20px var(--color2))
-  &.active
-    fill: var(--color2)
-    #eye_2
-      transform: scale(50%)
-    #eye_1
-      transform: scaleY(75%)
-  span
-    content: ""
-    display: block
-    background: #fff
-    width: 10px
-    height: 10px
-    border-radius: 1em
+// #eye
+//   width: 50px
+//   height: 50px
+//   position: absolute
+//   bottom: -5px
+//   right: 0
+//   transition: 0.3s
+//   fill: var(--color)
+//   #eye_2, #eye_1
+//     transform-origin: center
+//     transition: 0.3s
+//   &:hover
+//     cursor: pointer
+//     fill: var(--color2)
+//     filter: drop-shadow(0px 0px 20px var(--color2))
+//   &.active
+//     fill: var(--color2)
+//     #eye_2
+//       transform: scale(50%)
+//     #eye_1
+//       transform: scaleY(75%)
+//   span
+//     content: ""
+//     display: block
+//     background: #fff
+//     width: 10px
+//     height: 10px
+//     border-radius: 1em
 
 .input input.active + #eye
   display: flex

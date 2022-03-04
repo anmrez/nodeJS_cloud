@@ -82,7 +82,7 @@ html[data-theme="light+purple"] {
 }
 .shade__color__block a .shade__color.active {
   padding: 5px;
-  border: 2px solid #fffa;
+  border: 2px solid var(--color);
 }
 .shade__color__block a .shade__color.active::after {
   content: "";
@@ -136,6 +136,42 @@ html[data-theme="light+purple"] {
   pointer-events: all;
   height: 500px;
   opacity: 1;
+}
+
+#eye {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: -5px;
+  right: 0;
+  transition: 0.3s;
+  stroke: var(--color);
+  fill: var(--color);
+  cursor: pointer;
+}
+#eye.active {
+  stroke: var(--color2);
+  fill: var(--color2);
+}
+#eye.active .eyeEl2 {
+  transform: rotateX(180deg);
+}
+#eye.active .eyeEl1 {
+  opacity: 1;
+}
+#eye:hover {
+  stroke: var(--color2);
+  filter: drop-shadow(0px 0px 10px var(--color2));
+}
+
+.eyeEl1 {
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.eyeEl2 {
+  transform-origin: center 244px;
+  transition: 0.5s;
 }
 
 #matchPass {
@@ -337,42 +373,6 @@ html[data-theme="light+purple"] {
 .section__password,
 .section__name {
   position: relative;
-}
-
-#eye {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  bottom: -5px;
-  right: 0;
-  transition: 0.3s;
-  fill: var(--color);
-}
-#eye #eye_2, #eye #eye_1 {
-  transform-origin: center;
-  transition: 0.3s;
-}
-#eye:hover {
-  cursor: pointer;
-  fill: var(--color2);
-  filter: drop-shadow(0px 0px 20px var(--color2));
-}
-#eye.active {
-  fill: var(--color2);
-}
-#eye.active #eye_2 {
-  transform: scale(50%);
-}
-#eye.active #eye_1 {
-  transform: scaleY(75%);
-}
-#eye span {
-  content: "";
-  display: block;
-  background: #fff;
-  width: 10px;
-  height: 10px;
-  border-radius: 1em;
 }
 
 .input input.active + #eye {

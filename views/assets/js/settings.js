@@ -3,8 +3,10 @@
 const checkBoxZone = document.querySelector('#checkBoxThemeZoneClicked')
 const checkBoxTheme = document.querySelector('#checkBoxTheme')
 let dataTheme = document.documentElement.dataset.theme
-let theme = dataTheme.split('+')
-
+// let theme = dataTheme.split('+')
+let theme = document.cookie
+theme = theme.split("=")[1]
+theme = theme.split("+")
 
 // Смена основной темы
 // смена активности чекбокса взависимости от темы
@@ -41,6 +43,12 @@ const shade = [shade1, shade2]
 
 
 // сделать кнопку активной в соответвии с темой
+if (theme[1] == 'purple') {
+  shade1.classList.add('active')
+}else {
+  shade2.classList.add('active')
+}
+
 if (theme[1] == 'purple') {
   shade1.classList.add('active')
 }else {
@@ -88,6 +96,7 @@ function shadeCheck (i){
 // смета темы
 function newTheme (theme){
   document.documentElement.dataset.theme = `${theme[0]}+${theme[1]}`
+  document.cookie = `theme=${theme[0]}+${theme[1]}`
 }
 
 
