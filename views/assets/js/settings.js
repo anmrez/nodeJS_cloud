@@ -1,4 +1,4 @@
-
+// theme: 2 - 102 / profile: 102 - xxx
 // SETTINGS THEME
 const checkBoxZone = document.querySelector('#checkBoxThemeZoneClicked')
 const checkBoxTheme = document.querySelector('#checkBoxTheme')
@@ -83,12 +83,11 @@ function shadeCheck (i){
   } else {
     theme[1] = 'blue'
   } // if/else
-  console.log(`вызов функции`);
 
   // меняем тему
   newTheme(theme)
 
-} // shadeCheck
+} // shadeCheck ()
 
 
 
@@ -104,21 +103,27 @@ function newTheme (theme){
 // SETTINGS PROFILE
 
 const settingPass = document.querySelector('#settingPass')
+const settingName = document.querySelector('#settingName')
+const settingArr = [settingPass, settingName]
 const passForm = document.querySelector('#passForm')
-
-settingPass.addEventListener('click', function(){
-  settingPass.classList.toggle('active')
-  passForm.classList.toggle('active')
-
-  if (passForm.classList.length == 1) {
-    setTimeout(passFormVisible, 500)
-  } else {
-    passForm.style.overflow = "hidden"
-  } // if/else
+const nameForm = document.querySelector('#nameForm')
+const formArr = [passForm, nameForm]
 
 
-})
+settingArr.forEach((item, i) => {
+  item.addEventListener('click', function(){
+    item.classList.toggle('active')
+    formArr[i].classList.toggle('active')
 
-function passFormVisible(){
-  passForm.style.overflow = "visible"
+    if (formArr[i].classList.length == 1) {
+      setTimeout(passFormVisible, 500, formArr[i])
+    } else {
+      formArr[i].style.overflow = "hidden"
+    } // if/else
+  }) // addEvent
+}); // forEach
+
+
+function passFormVisible(item){
+  item.style.overflow = "visible"
 } // passFormVisible()

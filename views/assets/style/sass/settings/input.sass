@@ -1,9 +1,10 @@
-@import "eye"
+@import "../partials/eye"
 // @import "variable"
 #matchPass
  display: none
 
-#formPassword
+#formPassword,
+#formUsername
   width: 100%
   max-width: 600px
   margin-left: 50%
@@ -58,6 +59,15 @@
     opacity: 0
     color: var(--color)
     content: ""
+  span
+    position: absolute
+    bottom: 0
+    transition: all 0.3s ease
+    color: var(--color)
+    font-weight: 200
+    font-size: 28px
+    font-style: italic
+    text-transform: lowercase
 
 
 
@@ -65,12 +75,6 @@
 .input input:valid + .label__input::after,
 .input input.active + .label__input::after
   transform: translateX(0%)
-
-.label__input span
-  position: absolute
-  bottom: 0
-  transition: all 0.3s ease
-  color: var(--color)
 
 
 .input input:focus + .label__input span,
@@ -83,26 +87,16 @@
 .input input:focus + .label__input::before
   opacity: 1
 
-.form_names
-  display: flex
-
-.container__form__submit
-  display: flex
-  align-items: center
-
 
 .form__submit
   font-size: 20px
-  height: 40px
   color: var(--color)
   background: var(--background)
   border: 1px solid var(--color2)
-  padding: 10px 40px 35px 40px
+  padding: 10px 30px
   cursor: pointer
   transition: 0.3s
-  margin-left: 50%
   margin-top: 60px
-  transform: translateX(-50%)
   &:hover
     background: var(--color2)
   &:disabled
@@ -110,133 +104,11 @@
     background: #2c2c2c
     cursor: auto
 
-.register
-  margin-top: 50px
-  a
-    margin-left: 10px
-    // color: var(--color2)
 
-#validMail,
-#validName,
-#validPass
-  display: none
-  cursor: default
-  font-size: 20px
-  margin: 20px 0
-  position: absolute
-  left: -25px
-  bottom: -15px
-  span
-    width: 20px
-    height: 20px
-    background: $red
-    border-radius: 20px
-    align-items: center
-  &:hover
-    .text__error
-      opacity: 1
-  .text__error
-    background: none
-    z-index: 2
-    transition: 0.3s
-    opacity: 0
-    display: flex
-    // min-width: 300px
-    height: 25px
-    bottom: -25px
-    position: absolute
-    top: 35px
-    text-align: center
-    justify-content: center
-    left: 35%
-    // width: 400px
-    white-space: nowrap
-    box-sizing: content-box
-    &::after
-      content: ""
-      display: block
-      background: $red
-      width: 15px
-      height: 15px
-      position: absolute
-      transform: rotateZ(23deg) translateX(3px)
-      top: -3px
-      left: 0
-      z-index: -1
-    .text__error__div
-      white-space: nowrap
-      display: flex
-      background: $red
-      position: absolute
-      left: 0
-      border-radius: 1em
-      padding: 0 20px
-
-.section__email,
 .section__password,
 .section__name
   position: relative
 
-// #eye
-//   width: 50px
-//   height: 50px
-//   position: absolute
-//   bottom: -5px
-//   right: 0
-//   transition: 0.3s
-//   fill: var(--color)
-//   #eye_2, #eye_1
-//     transform-origin: center
-//     transition: 0.3s
-//   &:hover
-//     cursor: pointer
-//     fill: var(--color2)
-//     filter: drop-shadow(0px 0px 20px var(--color2))
-//   &.active
-//     fill: var(--color2)
-//     #eye_2
-//       transform: scale(50%)
-//     #eye_1
-//       transform: scaleY(75%)
-//   span
-//     content: ""
-//     display: block
-//     background: #fff
-//     width: 10px
-//     height: 10px
-//     border-radius: 1em
 
-.input input.active + #eye
-  display: flex
-
-
-.check_st
-  width: 100%
-  height: 100%
-  position: absolute
-  opacity: 0
-  z-index: 2
-  cursor: pointer
-  &:checked + .check_new::after
-    opacity: 1
-  &:checked + .check_new
-    border: 1px solid var(--color2)
-
-.check_new
-  border: 1px solid var(--color)
-  display: block
-  width: 25px
-  height: 25px
-  margin-right: 25px
-  border-radius: 0.05em
-  transition: 0.3s
-  &::after
-    transition: 0.3s
-    opacity: 0
-    display: block
-    content: ""
-    width: 5px
-    height: 20px
-    border-bottom: 3px solid var(--color2)
-    border-right: 3px solid var(--color2)
-    transform: rotate(35deg) translateX(6px) translateY(-5px)
+// .input input.active + #eye
+//   display: flex

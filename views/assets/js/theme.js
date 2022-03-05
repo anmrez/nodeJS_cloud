@@ -1,4 +1,3 @@
-console.log(document.cookie);
 cookie = document.cookie
 if (cookie == "") {
   document.documentElement.dataset.theme = `theme=dark+$purple`

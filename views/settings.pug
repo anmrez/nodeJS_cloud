@@ -31,7 +31,10 @@ block content
             a(href="#" class="shade__zone")
               span(class="df_ja shade__color" id="shade2")
         
+        
+        
         h3(class="mt_50") Profile
+        //- change password
         li(class="view__settings mt_10" id="settingPass")
           div(class="df_ja")
             p(href="#") change password
@@ -44,15 +47,38 @@ block content
               
           span(id="triangle")
         section(id="passForm")
-          form(id="formPassword" action="/settings" method="post") #{unlock}
+          form(id="formPassword" action="/settings" method="post")
             include includes/inputs__chanche__pass.pug
-            input(id="submit" class="form__submit" type="submit" value="change password" disabled)
+            div(class="df_ja")
+              input(id="submit" class="form__submit" type="submit" value="change password" disabled)
           
+          
+        //- change username
+        li(class="view__settings mt_10" id="settingName")
+          div(class="df_ja")
+            p(href="#") change username
+            if error == 0
+              p(class="success__pass") succes
+            else if error == 1
+              p(class="err__pass") invalid old password
+            else if error == 2
+              p(class="err__pass") invalid new password
+          span(id="triangle")
+        section(id="nameForm")
+          form(id="formUsername" action="/settings" method="post")
+            include includes/input__name.pug
+            div(class="df_ja")
+              input(id="submitName" class="form__submit" type="submit" value="change username" disabled)
+          
+          
+        //- delete account
         li(class="view__settings mt_10")
           div(class="df_ja")
             a(href="#") delete account
 
 
+  script(type="text/javascript" src="../views/assets/js/functionValid.js")
   script(type="text/javascript" src="../views/assets/js/settings.js")
   script(type="text/javascript" src="../views/assets/js/passVisibleSettings.js")
   script(type="text/javascript" src="../views/assets/js/validSettingsPass.js")
+  script(type="text/javascript" src="../views/assets/js/validationName.js")

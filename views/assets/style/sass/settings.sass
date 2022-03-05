@@ -71,7 +71,8 @@
 
 // password
 
-#settingPass
+#settingPass,
+#settingName
   position: relative
   overflow: hidden
   cursor: pointer
@@ -95,7 +96,8 @@
       transform: rotateX(180deg)
 
 
-#passForm
+#passForm,
+#nameForm
   height: 0
   overflow: hidden
   transition: 0.5s
@@ -105,6 +107,10 @@
     pointer-events: all
     height: 500px
     opacity: 1
+
+#nameForm
+  &.active
+    height: 250px
 
 @import "settings/input"
 @import "settings/errors"
