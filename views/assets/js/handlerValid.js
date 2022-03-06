@@ -1,13 +1,14 @@
 let arrErr = []
 
 const validation = {
+  // создает собсвенный массив ошибок в массиве
   createArrErr: function(index){
     index = arrErr.length
     arrErr[index] = []
     return index
   },
+  // записывает все ошибки всозданный массив ошибок
   writeErr: function(string, pattern, index){
-
     // преобразовать строку в массив
     let stringArray = string.split('')
 
@@ -39,25 +40,23 @@ const validation = {
         arrErr[index].splice(i, 1)
       } //if
     } // for
-
-
-    // if (arrErr[index].includes) {
-    //
-    // }
-
   },
+  // возвращяет массив ошибок
   readErr: function(index){
     return arrErr[index]
   },
+  // разблокирует кнопку отправки
   unlockBtn: function(arrBool, button) {
-    let arrBoolTrue = []
-    for (var i = 0; i < arrBool.length; i++) {
-      arrBoolTrue[i] = true
+    let result = arrBool.every(function(element, index){
+      return element == true
+    })
+
+    if (result == true) {
+      button.disabled = false
+    } else {
+      button.disabled = true
     }
-    if (arrBoolTrue == arrBool) {
-
-    }
-  }
 
 
+  } // unlockBtn
 } // validation

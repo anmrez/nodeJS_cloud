@@ -50,19 +50,19 @@ block content
           form(id="formPassword" action="/settings" method="post")
             include includes/inputs__chanche__pass.pug
             div(class="df_ja")
-              input(id="submit" class="form__submit" type="submit" value="change password" disabled)
+              input(id="submitPass" class="form__submit" type="submit" value="change password" disabled)
           
           
         //- change username
         li(class="view__settings mt_10" id="settingName")
           div(class="df_ja")
             p(href="#") change username
-            if error == 0
-              p(class="success__pass") succes
-            else if error == 1
-              p(class="err__pass") invalid old password
-            else if error == 2
-              p(class="err__pass") invalid new password
+            //- if error == 0
+            //-   p(class="success__pass") succes
+            //- else if error == 1
+            //-   p(class="err__pass") invalid old password
+            //- else if error == 2
+            //-   p(class="err__pass") invalid new password
           span(id="triangle")
         section(id="nameForm")
           form(id="formUsername" action="/settings" method="post")
@@ -77,8 +77,9 @@ block content
             a(href="#") delete account
 
 
-  script(type="text/javascript" src="../views/assets/js/functionValid.js")
-  script(type="text/javascript" src="../views/assets/js/settings.js")
-  script(type="text/javascript" src="../views/assets/js/passVisibleSettings.js")
-  script(type="text/javascript" src="../views/assets/js/validSettingsPass.js")
+  script(type="text/javascript" src="../views/assets/js/handlerValid.js")
   script(type="text/javascript" src="../views/assets/js/validationName.js")
+  script(type="text/javascript" src="../views/assets/js/validationPass.js")
+  
+  script(type="text/javascript" src="../views/assets/js/settings.js")
+  //- script(type="text/javascript" src="../views/assets/js/passVisibleSettings.js")

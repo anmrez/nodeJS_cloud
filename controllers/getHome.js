@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken'),
   {secret, appDir, loggingConsole} = require('../lib/config.js'),
   fs = require('fs'),
   path = require('path'),
-  consoleLog = require('../lib/loggingConsole.js')
+  consoleLog = require('../lib/loggingConsole.js'),
   validRole = require('../lib/validRole.js')
 
   let userFiles = {}
@@ -11,12 +11,12 @@ const jwt = require('jsonwebtoken'),
 
 module.exports = function (req, res) {
   consoleLog(req, res, loggingConsole)
-
+  console.log(req.cookies);
   // try/catch #1
   try {
     // valid role in "ADMIN" (admin == true)
+    console.log(req.cookies.tokenkey);
     role = validRole(req, jwt.verify(req.cookies.tokenkey, secret).role)
-
 
     // get user ID
     userID = jwt.verify(req.cookies.tokenkey, secret).id
@@ -49,7 +49,7 @@ module.exports = function (req, res) {
   } catch (e) {
 
     if (loggingConsole) {
-      // console.log(e);
+      console.log(e);
       console.log(`user undefiend in DB`);
       console.log(`redirect in "login"`);
     }
