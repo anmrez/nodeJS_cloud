@@ -19,12 +19,12 @@ block content
           //- END errors
         h3 Login
           //- form
-          form(class="form_names df_ja df_coll" action="/login" method="post")
+          form(id="formLogin" class="df_ja df_coll" action="/login" method="post")
           
             include includes/input__name.pug
             include includes/input__pass.pug
             include includes/check__remem.pug
             
             section(class="container__form__submit mt_50")
-              input(id="submit" class="form__submit" type="submit" value="Login" disabled)
+              input(id="submit" class="form__submit submitName submitPass" type="submit" value="Login" disabled)
           //- END form

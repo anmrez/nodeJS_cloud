@@ -50,7 +50,7 @@ block content
           form(id="formPassword" action="/settings" method="post")
             include includes/inputs__chanche__pass.pug
             div(class="df_ja")
-              input(id="submitPass" class="form__submit" type="submit" value="change password" disabled)
+              input(id="submitPass" class="form__submit submitPass" type="submit" value="change password" disabled)
           
           
         //- change username
@@ -68,7 +68,7 @@ block content
           form(id="formUsername" action="/settings" method="post")
             include includes/input__name.pug
             div(class="df_ja")
-              input(id="submitName" class="form__submit" type="submit" value="change username" disabled)
+              input(id="submitName" class="form__submit submitName" type="submit" value="change username" disabled)
           
           
         //- delete account
@@ -82,4 +82,4 @@ block content
   script(type="text/javascript" src="../views/assets/js/validationPass.js")
   
   script(type="text/javascript" src="../views/assets/js/settings.js")
-  //- script(type="text/javascript" src="../views/assets/js/passVisibleSettings.js")
+  script(type="text/javascript" src="../views/assets/js/visibilityPass.js")

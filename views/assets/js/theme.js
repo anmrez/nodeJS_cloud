@@ -1,10 +1,4 @@
 cookie = document.cookie
-if (cookie == "") {
-  document.documentElement.dataset.theme = `theme=dark+$purple`
-  document.cookie = "theme=dark+purple; max-age=" + 1000*60*60*24*10
-  window.location.reload()
-}
-document.documentElement.dataset.theme = cookie.split('=')[cookie.split('=').length-1]
 
 
 let themeArr = [
@@ -19,15 +13,49 @@ let allTheme = [
   `theme=${themeArr[0][1]}+${themeArr[1][1]}`,
 ]
 
+// счетчик
 let themeCheck = 0
-// если соответсвующей темы не найдено тогда пересоздать куки с темой
-// и перезагрузить страницу
-for (var i = 0; i < allTheme.length; i++) {
-  if (document.cookie == allTheme[i]){
-    themeCheck++
-  }
-}
-if (themeCheck != 0) {
+
+
+
+// если есть кука темы
+if ( document.cookie.includes('theme') ) {
+
+  // разбиваем все куки в массив
+  let array = document.cookie.split('; ')
+
+  // проходимся по массиву
+  for (var i = 0; i < array.length; i++) {
+
+    // находим куку темы
+    if (array[i].includes('theme')) {
+
+      // проверка куки на валидность
+      for (var j = 0; j < allTheme.length; j++) {
+        // ессли есть хоть 1 совпадение то прибавить +1 в счетчик
+        if (array[i] == allTheme[j]) {
+          themeCheck++
+        }
+      } // for
+
+
+      // если не найдено ни одно совпадение то создаем куку
+      if (themeCheck == 0) {
+        document.cookie = "theme=dark+purple; max-age=" + 1000*60*60*24*10
+        window.location.reload()
+      }
+
+    } // if
+  } // for
+
+// иначе создаем куки и перезагружаем страницу
+} else {
   document.cookie = "theme=dark+purple; max-age=" + 1000*60*60*24*10
   window.location.reload()
 }
+
+
+
+
+// меняем тему в соответсвии с кукой
+document.documentElement.dataset.theme = cookie.split('=')[cookie.split('=').length-1]

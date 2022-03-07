@@ -181,10 +181,6 @@ html[data-theme="light+purple"] {
   transition: 0.5s;
 }
 
-#matchPass {
-  display: none;
-}
-
 #formPassword,
 #formUsername {
   width: 100%;
@@ -204,7 +200,7 @@ html[data-theme="light+purple"] {
 }
 
 .input input {
-  width: 100%;
+  width: 90%;
   height: 100%;
   padding-top: 30px;
   border: none;

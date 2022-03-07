@@ -11,11 +11,10 @@ const jwt = require('jsonwebtoken'),
 
 module.exports = function (req, res) {
   consoleLog(req, res, loggingConsole)
-  console.log(req.cookies);
+
   // try/catch #1
   try {
     // valid role in "ADMIN" (admin == true)
-    console.log(req.cookies.tokenkey);
     role = validRole(req, jwt.verify(req.cookies.tokenkey, secret).role)
 
     // get user ID

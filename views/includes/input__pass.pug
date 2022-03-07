@@ -1,17 +1,17 @@
 section(class="section__password df_ja")
   //- error message
-  section(class="df_ja err" id="validPass")
+  section(class="df_ja err validsPass")
     span(class="df_ja")
       p !
     span(class="text__error")
-      div(class="text__error__div")
-        p Error: character "
-        div(id="symbolErrorPass")
-        p " is invalid
+      div(class="text__error__div symbolsErrorPass")
+        //- p Error: character "
+        //- div(id="symbolErrorPass")
+        //- p " is invalid
   //- END error message
   //- input
   section(id="sectionInputPassword" class="input mt_50")
-    input(id="inputPassword" 
+    input(class="inputsPassword" 
     name="password" 
     type="password" 
     required 

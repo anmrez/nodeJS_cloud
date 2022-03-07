@@ -1,8 +1,8 @@
 // validName
 const inputName = document.getElementById('inputName'), // инпут с именем
   validName = document.getElementById('validName'), // уведомление об инвалидности
-  outErrName = document.getElementById('symbolErrorName') // отображение инвалидных символов
-const btnChangeName = document.getElementById('submitName') // кнопка отправки формы
+  outErrName = document.querySelector('.symbolErrorName') // отображение инвалидных символов
+const btnChangeName = document.querySelector('.submitName') // кнопка отправки формы
 
 let stringName = ``
 let nameBoolean = [false]
@@ -33,23 +33,38 @@ inputName.addEventListener("input", function (event) {
   validation.unlockBtn(nameBoolean, btnChangeName)
 
 
-  // если нет инвалидных символов то убрать уведомление с ошибками и разблокировать кнопку
-  // иначе показать
+  // if#1: если нет инвалидных символов то убрать уведомление с ошибками и разблокировать кнопку
   if (validation.readErr(username).length == 0) {
     validName.style.display = "none"
-    if (str.length >= 4) {
+
+    // if#2:
+    if (stringName.length >= 4) {
       nameBoolean = [true]
+      validName.style.display = "none"
+
     } else {
       nameBoolean = [false]
-    }
-    validation.unlockBtn(nameBoolean, btnChangeName) // send arr boolean, button
+
+      // if#3:
+      if (stringName.length == 0) {
+        validName.style.display = "none"
+      } else {
+        validName.style.display = "flex"
+        outErrName.innerHTML = `invalid: minimum 4 character`
+      } // END if#3
+
+
+    } // END if#2
+    
+    validation.unlockBtn(nameBoolean, btnChangeName)
+
+  // if#1: иначе заблокировать кнопку и показать уведомление
   } else {
     validName.style.display = "flex"
     nameBoolean = [false]
-    validation.unlockBtn(nameBoolean, btnChangeName) // send arr boolean, button
+    validation.unlockBtn(nameBoolean, btnChangeName)
 
     // отображение пользователи инвалидных символов
-    outErrName.innerHTML = `${validation.readErr(username)}`
-  }
-
+    outErrName.innerHTML = `invalid: character '${validation.readErr(username)}'`
+  } // END if#1
 }); // END addEvent (input)

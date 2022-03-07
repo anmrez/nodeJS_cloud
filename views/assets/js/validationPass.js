@@ -1,7 +1,7 @@
 const inputsPassword = document.querySelectorAll('.inputsPassword')  // инпут с паролями
 const validsPass = document.querySelectorAll('.validsPass') // уведомление об инвалидности
 const outErrPass = document.querySelectorAll('.symbolsErrorPass') // отображение инвалидных символов
-const btnChangePass = document.getElementById('submitPass') // кнопка отправки
+const btnChangePass = document.querySelector('.submitPass') // кнопка отправки
 
 let stringPass = []
 let passBoolean = []
@@ -63,18 +63,24 @@ inputsPassword.forEach((item, i) => {
             validsPass[i].style.display = "none"
             passBoolean[i] = true
 
-            // if#5: если новые пароли совпадают
-            if (inputsPassword[1].value == inputsPassword[2].value) {
-              validsPass[2].style.display = "none"
-              passBoolean[2] = true
+
+              try {
+                // if#5: если новые пароли совпадают
+                if (inputsPassword[1].value == inputsPassword[2].value) {
+                  validsPass[2].style.display = "none"
+                  passBoolean[2] = true
 
 
-              // if#5: иначе сообщить о не совпадении
-            } else {
-              validsPass[2].style.display = "flex"
-              passBoolean[2] = false
-              outErrPass[2].innerHTML = `passwords not match`
-            } // END if#5
+                  // if#5: иначе сообщить о не совпадении
+                } else {
+                  validsPass[2].style.display = "flex"
+                  passBoolean[2] = false
+                  outErrPass[2].innerHTML = `passwords not match`
+                } // END if#5
+
+              } catch (e) {
+                // console.log(e);
+              }
 
 
           // if#4: иначе сообщить об ее отсутсвии

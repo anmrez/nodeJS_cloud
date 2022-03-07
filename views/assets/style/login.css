@@ -26,6 +26,110 @@ html[data-theme="light+purple"] {
   --background_in_hover: #8888;
 }
 
+.validsPass,
+#validName {
+  display: none;
+  cursor: default;
+  font-size: 20px;
+  margin: 20px 0;
+  position: absolute;
+  left: -25px;
+  bottom: -15px;
+}
+.validsPass span,
+#validName span {
+  width: 20px;
+  height: 20px;
+  background: #cc0000;
+  border-radius: 20px;
+  align-items: center;
+}
+.validsPass:hover .text__error,
+#validName:hover .text__error {
+  opacity: 1;
+}
+.validsPass .text__error,
+#validName .text__error {
+  background: none;
+  z-index: 2;
+  transition: 0.3s;
+  opacity: 0;
+  display: flex;
+  height: 25px;
+  bottom: -25px;
+  position: absolute;
+  top: 35px;
+  text-align: center;
+  justify-content: center;
+  left: 35%;
+  white-space: nowrap;
+  box-sizing: content-box;
+}
+.validsPass .text__error::after,
+#validName .text__error::after {
+  content: "";
+  display: block;
+  background: #cc0000;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  transform: rotateZ(23deg) translateX(3px);
+  top: -3px;
+  left: 0;
+  z-index: -1;
+}
+.validsPass .text__error .text__error__div,
+#validName .text__error .text__error__div {
+  white-space: nowrap;
+  display: flex;
+  background: #cc0000;
+  position: absolute;
+  left: 0;
+  border-radius: 1em;
+  padding: 0 20px;
+}
+
+#eye {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: -5px;
+  right: 0;
+  transition: 0.3s;
+  stroke: var(--color);
+  fill: var(--color);
+  cursor: pointer;
+}
+#eye.active .eyeEl2 {
+  transform: rotateX(180deg);
+}
+#eye.active .eyeEl1 {
+  opacity: 1;
+}
+#eye:hover {
+  stroke: var(--color2);
+  fill: var(--color2);
+  filter: drop-shadow(0px 0px 10px var(--color2));
+}
+
+.eyeEl1 {
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.eyeEl2 {
+  transform-origin: center 244px;
+  transition: 0.5s;
+}
+
+#formPassword,
+#formUsername {
+  width: 100%;
+  max-width: 600px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
 .input {
   text-transform: capitalize;
   display: flex;
@@ -33,11 +137,11 @@ html[data-theme="light+purple"] {
   flex-direction: column;
   align-items: start;
   overflow: hidden;
-  width: 400px;
+  width: 100%;
 }
 
 .input input {
-  width: 100%;
+  width: 90%;
   height: 100%;
   padding-top: 30px;
   border: none;
@@ -76,32 +180,23 @@ html[data-theme="light+purple"] {
   transition: all 0.4s ease;
   opacity: 0;
   color: var(--color);
-  content: "example:";
+  content: "";
 }
-
-#sectionInputMail label::before {
-  content: "example: example@gmail.ru";
-}
-
-#sectionInputName label::before {
-  content: "example: Alex";
-}
-
-#sectionInputPassword label::before {
-  content: "example: Adam0_&_Eva1";
+.label__input span {
+  position: absolute;
+  bottom: 0;
+  transition: all 0.3s ease;
+  color: var(--color);
+  font-weight: 200;
+  font-size: 28px;
+  font-style: italic;
+  text-transform: lowercase;
 }
 
 .input input:focus + .label__input::after,
 .input input:valid + .label__input::after,
 .input input.active + .label__input::after {
   transform: translateX(0%);
-}
-
-.label__input span {
-  position: absolute;
-  bottom: 0;
-  transition: all 0.3s ease;
-  color: var(--color);
 }
 
 .input input:focus + .label__input span,
@@ -115,25 +210,15 @@ html[data-theme="light+purple"] {
   opacity: 1;
 }
 
-.form_names {
-  display: flex;
-}
-
-.container__form__submit {
-  display: flex;
-  align-items: center;
-}
-
 .form__submit {
   font-size: 20px;
-  height: 40px;
   color: var(--color);
   background: var(--background);
   border: 1px solid var(--color2);
-  padding: 10px 20px 35px 20px;
+  padding: 10px 30px;
   cursor: pointer;
   transition: 0.3s;
-  margin-left: 20px;
+  margin-top: 60px;
 }
 .form__submit:hover {
   background: var(--color2);
@@ -144,86 +229,13 @@ html[data-theme="light+purple"] {
   cursor: auto;
 }
 
-.register {
-  margin-top: 50px;
-}
-.register a {
-  margin-left: 10px;
-}
-
-#validMail,
-#validName,
-#validPass {
-  display: none;
-  cursor: default;
-  font-size: 20px;
-  margin: 20px 0;
-  position: absolute;
-  left: -25px;
-  bottom: -15px;
-}
-#validMail span,
-#validName span,
-#validPass span {
-  width: 20px;
-  height: 20px;
-  background: #cc0000;
-  border-radius: 20px;
-  align-items: center;
-}
-#validMail:hover .text__error,
-#validName:hover .text__error,
-#validPass:hover .text__error {
-  opacity: 1;
-}
-#validMail .text__error,
-#validName .text__error,
-#validPass .text__error {
-  background: none;
-  z-index: 2;
-  transition: 0.3s;
-  opacity: 0;
-  display: flex;
-  height: 25px;
-  bottom: -25px;
-  position: absolute;
-  top: 35px;
-  text-align: center;
-  justify-content: center;
-  left: 35%;
-  white-space: nowrap;
-  box-sizing: content-box;
-}
-#validMail .text__error::after,
-#validName .text__error::after,
-#validPass .text__error::after {
-  content: "";
-  display: block;
-  background: #cc0000;
-  width: 15px;
-  height: 15px;
-  position: absolute;
-  transform: rotateZ(23deg) translateX(3px);
-  top: -3px;
-  left: 0;
-  z-index: -1;
-}
-#validMail .text__error .text__error__div,
-#validName .text__error .text__error__div,
-#validPass .text__error .text__error__div {
-  white-space: nowrap;
-  display: flex;
-  background: #cc0000;
-  position: absolute;
-  left: 0;
-  border-radius: 1em;
-  padding: 0 20px;
-}
-
-.section__email,
 .section__password,
 .section__name {
   position: relative;
+}
+
+.input {
+  width: 500px;
 }
 
 #eye {
