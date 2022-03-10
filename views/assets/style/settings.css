@@ -289,12 +289,14 @@ html[data-theme="light+purple"] {
 }
 
 .section__password,
-.section__name {
+.section__name,
+.section__email {
   position: relative;
 }
 
 .validsPass,
-#validName {
+#validName,
+#validEmail {
   display: none;
   cursor: default;
   font-size: 20px;
@@ -304,7 +306,8 @@ html[data-theme="light+purple"] {
   bottom: -15px;
 }
 .validsPass span,
-#validName span {
+#validName span,
+#validEmail span {
   width: 20px;
   height: 20px;
   background: #cc0000;
@@ -312,11 +315,13 @@ html[data-theme="light+purple"] {
   align-items: center;
 }
 .validsPass:hover .text__error,
-#validName:hover .text__error {
+#validName:hover .text__error,
+#validEmail:hover .text__error {
   opacity: 1;
 }
 .validsPass .text__error,
-#validName .text__error {
+#validName .text__error,
+#validEmail .text__error {
   background: none;
   z-index: 2;
   transition: 0.3s;
@@ -333,7 +338,8 @@ html[data-theme="light+purple"] {
   box-sizing: content-box;
 }
 .validsPass .text__error::after,
-#validName .text__error::after {
+#validName .text__error::after,
+#validEmail .text__error::after {
   content: "";
   display: block;
   background: #cc0000;
@@ -346,7 +352,8 @@ html[data-theme="light+purple"] {
   z-index: -1;
 }
 .validsPass .text__error .text__error__div,
-#validName .text__error .text__error__div {
+#validName .text__error .text__error__div,
+#validEmail .text__error .text__error__div {
   white-space: nowrap;
   display: flex;
   background: #cc0000;

@@ -2,8 +2,6 @@ header
   border-bottom: 2px solid var(--color2)
   display: flex
   justify-content: space-between
-  // width: 90%
-  // max-width: 1200px
   padding: 40px 20px 20px
   margin-bottom: 40px
   font-size: $fontSize
@@ -12,68 +10,87 @@ header
     margin-right: 15px
     transition: $transition_Btn
 
+// левая часть
+
 .header__left
   display: flex
 
+
+// правая часть
+
 .header__right
-  display: flex
+  // display: flex
   max-height: 40px
+  position: relative
+  min-width: 170px
   ul
     display: flex
     li
       list-style-type: none
 
 
-.li_user__name
-  position: relative
-  display: inline-block
-  max-height: 50px
 
-// Выпадающие меню пользователя
-.user__name__menu
-  display: inline-block !important
-  position: relative !important
+.dropDown__btn
+  width: 100%
   text-align: center
-  min-width: 140px
-  max-width: 160px
-  font-size: $fontSize
-  li
-    height: 40px
-    position: relative
-    display: none
-    margin: 5px 0
-    font-size: 20px
-    border: 2px solid var(--color2)
-    a
-      width: 100%
-      height: 100%
-      cursor: pointer
-  &:hover
-    li
-      display: flex
-      justify-content: center
-      align-items: center
+  position: relative
+  cursor: pointer
+  &::before
+    display: block
+    content: ""
+    width: 0
+    height: 0
+    position: absolute
+    right: -5px
+    top: 50%
+    border: 6px solid transparent
+    border-top: 6px solid var(--color)
+    transition: 0.3s
+    transform: rotateX(0deg)
+    transform-origin: center 3px
+    margin-right: -10px
+  &:hover + .dropDown__menu
+    transform: translateY(100%) rotateX(0deg)
+  // &:hover
+  //   &::before
+  //     transform: rotateX(180deg)
 
-#exitUserName
-  color: #cc0000
+
+.dropDown__menu
+  margin-top: 10px
+  position: absolute
+  bottom: 0
+  transform-origin: top center
+  transition: 0.2s
+  transform: translateY(100%) rotateX(90deg)
+  flex-direction: column
+  background: var(--background)
+  width: 100%
+  border-top: 1px solid var(--color2)
+  &:hover
+    transform: translateY(100%) rotateX(0deg)
+  li
+    margin-top: 5px
+    width: 100%
+    height: 40px
+    transition: 0.3s
+    a, form
+      height: 100%
+    &:hover
+      background: var(--background_in_hover)
+
+
+
+#logout
+  color: $red
   width: 100%
   height: 100%
   padding: 0
-  background: #00000000
+  background: var(--background)
   border: 0
   font-size: 30px
   cursor: pointer
+  transition: 0.3s
   &:hover
-    background: #cc0000
-    color: #fff
-
-// Иконка корзины
-.icon__basket
-  width: $fontSize + 10px
-  transform: translateY(-2.5px)
-  margin-right: 15px
-  cursor: pointer
-  transition: $transition_Btn
-  &:hover
-    fill: var(--color2)
-    stroke: var(--color2)
+    background: $red
+    color: var(--color)

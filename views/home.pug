@@ -16,7 +16,8 @@ block content
               div(class="file__control df_ja")
                 a(href= 'download' + '?file=' + file class="df_ja") 
                   include assets/icons/download.svg
-                a(class="df_ja shareButton") S
+                a(class="df_ja shareButton") 
+                  include assets/icons/share_v2.svg
                   span(class="link__copied") Link copied
                 input(class="share__link" value='download' + '?file='+ file + '?id=' + userID READONLY)
                   //- include assets/icons/share.svg

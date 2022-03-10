@@ -7,37 +7,33 @@ section(class="container theme__dark")
         a(href="/admin-page" class="btn__header") 
           h1 Admin Page
     
-    nav(class="header__right")
-      ul
-        li(class="li_user__name")
-          if userName
-            ul(class="user__name__menu theme__dark")
-              a(href="#" class="user__name" id="UserName") #{userName}
-              //- li#0
-              li
-                a(href="/settings" class="df_ja") Settings
-              //- li#1
-              //- li(onclick="changeOfSubject()")
-                a(class="df_ja")
-                  div(class="check__box" id="checkBoxTheme")
-                    span
-                  h6 Theme
-              //- li#2
-              li
-                form(class="" action="/unlogin" method="post")
-                  input(class="user__name__content" id="exitUserName" type="submit" name="logout" value="logout")
-            // end "ul" 
-          else if userName == undefined
-            ul(class="user__name__menu theme__dark")
-              a(href="/login" class="btn__header") Login
-              //- li#0
-              li
-                a(href="/registration" class="df_ja")
-                  h6 registration
-              //- li#1
-              //- li(onclick="changeOfSubject()")
-                a(class="df_ja")
-                  div(class="check__box" id="checkBoxTheme")
-                    span
-                  h6 Theme
+    nav(class="header__right df_ja")
+      if userName
+        a(href="#" class="dropDown__btn") #{userName}
+      else
+        a(href="/login" class="dropDown__btn") Login
+      ul(class="dropDown__menu df_ja")
+        if userName
+          li
+            a(href="/settings" class="df_ja") 
+              h5 Settings
+          li
+            form(class="" action="/unlogin" method="post")
+              input(class="user__name__content" id="logout" type="submit" name="logout" value="logout")
+
+        else
+          li
+            a(href="/registration" class="df_ja")
+              h5 registration
+
             
+
+
+
+                  //- ul(class="user__name__menu")
+                  //-   //- a(href="#" class="user__name" id="UserName") #{userName}
+                  //-   li
+                  //-   //- a(href="/settings" class="df_ja") Settings
+                  //-   li
+                  //-   //- form(class="" action="/unlogin" method="post")
+                  //-   //-   input(class="user__name__content" id="logout" type="submit" name="logout" value="logout")

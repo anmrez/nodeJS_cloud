@@ -3,6 +3,7 @@ const validsPass = document.querySelectorAll('.validsPass') // уведомле�
 const outErrPass = document.querySelectorAll('.symbolsErrorPass') // отображение инвалидных символов
 const btnChangePass = document.querySelector('.submitPass') // кнопка отправки
 
+
 let stringPass = []
 let passBoolean = []
 let changePass = []
@@ -18,13 +19,12 @@ for (var i = 0; i < inputsPassword.length; i++) {
   changePass[i] = validation.createArrErr(changePass[i])
 }
 
-// /[A-Za-z0-9\-.\+.\_.\=.\&.\#.\$.]/
-// /(?=[0-9])/.test(strP)) && (/(?=[A-Z])/
+
+
 
 
 // блокируем кнопку отправки
 validation.unlockBtn(passBoolean, btnChangePass)
-
 
 inputsPassword.forEach((item, i) => {
   item.addEventListener("input", function (event) {
@@ -35,8 +35,8 @@ inputsPassword.forEach((item, i) => {
     validation.writeErr(stringPass[i], /[A-Za-z0-9\-.\+.\_.\=.\&.\#.\$.\*.]/ , changePass[i])
 
     // обновить массив ошибок // принимает булеан массив и кнопку
-    validation.unlockBtn(passBoolean, btnChangePass)
-
+    // validation.unlockBtn(passBoolean, btnChangePass)
+    checkValid()
 
 
 
@@ -105,14 +105,15 @@ inputsPassword.forEach((item, i) => {
         validsPass[i].style.display = "flex"
         outErrPass[i].innerHTML = 'invalid: minimum 8 character'
       } // END if#2
-      validation.unlockBtn(passBoolean, btnChangePass)
-
+      // validation.unlockBtn(passBoolean, btnChangePass)
+      checkValid()
 
     // if#1: иначе показать уведомление с ошибками и заблокировать кнопку
     } else {
       validsPass[i].style.display = "flex"
       passBoolean[i] = false
-      validation.unlockBtn(passBoolean, btnChangePass)
+      // validation.unlockBtn(passBoolean, btnChangePass)
+      checkValid()
 
       // отображение пользователю инвалидных символов
       outErrPass[i].innerHTML = `invalid: character '${validation.readErr(changePass[i])}'`

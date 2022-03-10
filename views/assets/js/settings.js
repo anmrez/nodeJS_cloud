@@ -95,7 +95,7 @@ function shadeCheck (i){
 // смета темы
 function newTheme (theme){
   document.documentElement.dataset.theme = `${theme[0]}+${theme[1]}`
-  document.cookie = `theme=${theme[0]}+${theme[1]}`
+  document.cookie = `theme=${theme[0]}+${theme[1]}; max-age=` + 1000*60*60*24*365
 }
 
 

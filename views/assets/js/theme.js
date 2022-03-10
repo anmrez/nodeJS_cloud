@@ -41,7 +41,7 @@ if ( document.cookie.includes('theme') ) {
 
       // если не найдено ни одно совпадение то создаем куку
       if (themeCheck == 0) {
-        document.cookie = "theme=dark+purple; max-age=" + 1000*60*60*24*10
+        document.cookie = "theme=dark+purple; max-age=" + 1000*60*60*24*365
         window.location.reload()
       }
 
@@ -50,7 +50,7 @@ if ( document.cookie.includes('theme') ) {
 
 // иначе создаем куки и перезагружаем страницу
 } else {
-  document.cookie = "theme=dark+purple; max-age=" + 1000*60*60*24*10
+  document.cookie = "theme=dark+purple; max-age=" + 1000*60*60*24*365
   window.location.reload()
 }
 

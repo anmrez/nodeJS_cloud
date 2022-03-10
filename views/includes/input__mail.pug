@@ -1,12 +1,12 @@
 section(class="section__email df_ja")
-  section(class="df_ja err" id="validMail")
-    span(class="df_ja")
-      p !
+  section(class="df_ja err" id="validEmail")
+    span(class="df_ja") 
+      p ! 
     span(class="text__error")
-      div(class="text__error__div")
-        p email entered incorrectly
+      div(class="text__error__div symbolErrorEmail")
+        //- p email entered incorrectly
       
   section(id="sectionInputMail" class="input mt_20")
-    input(id="inputMail" name="email" type="email" required autocomplete="off" value="" pattern=patternEmail minlength="4" maxlength="32")
+    input(id="inputEmail" name="email" type="email" required autocomplete="off" value="" pattern=patternEmail minlength="4" maxlength="32")
     label(class="label__input" for="name")
       span email
