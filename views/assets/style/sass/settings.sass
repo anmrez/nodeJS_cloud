@@ -129,3 +129,57 @@
   background: $green_Opacity
 .err__pass
   background: $red
+
+
+
+// delete account
+
+.text__delAcc
+  color: $red
+  cursor: default
+  font-weight: 500
+
+#delAcc
+  &:hover
+    color: $red
+
+#btnDelAcc
+  margin-right: 50px
+  color: $red
+  border: none
+  font-family: Montserrat
+  font-size: 24px
+  &:hover
+    background: $red
+    color: var(--color)
+
+.btnDel
+  // background: var(--background)
+  background: var(--background_in_hover)
+  border-radius: 0.2em
+  padding: 5px 10px
+  font-size: 24px
+  transition: 0.2s
+  cursor: pointer
+  &:hover
+    background: $green_Opacity
+    color: var(--color)
+
+.delete__menu__inner
+  padding: 15px
+  border-radius: 0.2em
+  border: 2px solid $red
+  background: var(--background)
+  // background: var(--background_in_hover)
+
+.delete__menu
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translateX(-50%) translateY(50%)
+  opacity: 0
+  pointer-events: none
+  transition: 0.3s
+  &.active
+    opacity: 1
+    pointer-events: all

@@ -12,6 +12,10 @@ const jwt = require('jsonwebtoken'),
 module.exports = function (req, res) {
   consoleLog(req, res, loggingConsole)
 
+
+
+
+
   // try/catch #1
   try {
     // valid role in "ADMIN" (admin == true)
@@ -21,6 +25,14 @@ module.exports = function (req, res) {
     userID = jwt.verify(req.cookies.tokenkey, secret).id
     // find path in user folder
     pathFiles = path.join(appDir, 'userStorage', userID)
+
+
+    // параметры файлов
+    let stats = fs.statSync(path.join(appDir, 'userStorage', userID, 'text.txt'))
+    let fileSizeInBytes = stats.size;
+    // let fileIsFile = stats.isFile() // являеться ли это файлом
+    // let fileIsFoler = stats.isDirectory() // являеться ли это папкой
+    console.log(fileSizeInBytes + ' байт');
 
 
       // try/catch #2

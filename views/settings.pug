@@ -57,12 +57,10 @@ block content
         li(class="view__settings mt_10" id="settingName")
           div(class="df_ja")
             p(href="#") change username
-            //- if error == 0
-            //-   p(class="success__pass") succes
-            //- else if error == 1
-            //-   p(class="err__pass") invalid old password
-            //- else if error == 2
-            //-   p(class="err__pass") invalid new password
+            if error == 3
+              p(class="success__pass") succes
+            else if error == 4
+              p(class="err__pass") ussername is already taken
           span(id="triangle")
         section(id="nameForm")
           form(id="formUsername" action="/settings" method="post")
@@ -74,8 +72,18 @@ block content
         //- delete account
         li(class="view__settings mt_10")
           div(class="df_ja")
-            a(href="#") delete account
-
+            p(class="text__delAcc") delete account
+          a(id="delAcc") delete your account
+          
+          
+  section(class="block delete__menu")
+    section(class="container")
+      section(class="delete__menu__inner")
+        h5 Are you sure you want to do this?
+        div(class="df_ja mt_20")
+          form(method="POST" action="/deleteUser" class="df")
+            input( class="btnDel" id="btnDelAcc" type="submit" name="deleteAccount" value="yes")
+          a(class="btnDel" id="btnCancAcc") no
 
   script(type="text/javascript" src="../views/assets/js/handlerValid.js")
   script(type="text/javascript" src="../views/assets/js/validationName.js")

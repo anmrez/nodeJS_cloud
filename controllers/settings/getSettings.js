@@ -8,7 +8,7 @@ const path = require('path'),
 
 module.exports = function (req, res) {
   consoleLog(req, res, loggingConsole)
-
+  console.log(jwt.verify(req.cookies.tokenkey, secret).exp);
   try {
     role = validRole(req, jwt.verify(req.cookies.tokenkey, secret).role)
 

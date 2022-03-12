@@ -1,4 +1,4 @@
-// theme: 2 - 102 / profile: 102 - xxx
+// theme: 2 - 102 / profile: 102 - 133 / deleteAcc: 133 - xxx
 // SETTINGS THEME
 const checkBoxZone = document.querySelector('#checkBoxThemeZoneClicked')
 const checkBoxTheme = document.querySelector('#checkBoxTheme')
@@ -127,3 +127,21 @@ settingArr.forEach((item, i) => {
 function passFormVisible(item){
   item.style.overflow = "visible"
 } // passFormVisible()
+
+
+
+// END SETTINGS PROFILE
+// DELETE ACCOUNT
+
+
+
+const deleteMenu = document.querySelector('.delete__menu')
+const deleteButton = document.querySelector('#delAcc')
+const buttonCancel = document.querySelector('#btnCancAcc')
+
+deleteButton.addEventListener('click', function(){
+  deleteMenu.classList.toggle('active')
+})
+buttonCancel.addEventListener('click', function(){
+  deleteMenu.classList.toggle('active')
+})
