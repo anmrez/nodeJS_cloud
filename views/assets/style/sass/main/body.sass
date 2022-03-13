@@ -34,6 +34,7 @@ li
 
 .view__files,
 .view__settings
+  height: 61px
   display: flex
   justify-content: space-between
   align-items: center
@@ -41,11 +42,15 @@ li
   padding: 5px 10px
   border-bottom: 1px solid var(--background_in_hover)
   border-radius: 0.4em
+  position: relative
   span
     cursor: default
   &:hover
     background: var(--background_in_hover)
     border-radius: 0.4em
+  .file__size
+    position: absolute
+    right: 25%
 
 
 .file__control

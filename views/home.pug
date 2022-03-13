@@ -10,20 +10,34 @@ block content
     section(class="container")
       section(class="files")
         ul(id="files" class="mt_30")
-          each file in userFiles
-            li(class="view__files")
-              span= file
-              div(class="file__control df_ja")
-                a(href= 'download' + '?file=' + file class="df_ja") 
-                  include assets/icons/download.svg
-                a(class="df_ja shareButton") 
-                  include assets/icons/share_v2.svg
-                  span(class="link__copied") Link copied
-                input(class="share__link" value='download' + '?file='+ file + '?id=' + userID READONLY)
-                  //- include assets/icons/share.svg
-                a(href= 'delete-file' + '?file=' + file class="df_ja ") 
-                  include assets/icons/bincan.svg
+          each val in userFiles
+            if val.isFolder
+              li(class="view__files")
+                span= val.name
+          each val in userFiles
+            if val.isFolder == false
+              li(class="view__files")
+                span= val.name
+                span(class="file__size")= val.size
+                div(class="file__control df_ja")
+                  a(href= 'download' + '?file=' + file class="df_ja") 
+                    include assets/icons/download.svg
+                  a(class="df_ja shareButton") 
+                    include assets/icons/share_v2.svg
+                    span(class="link__copied") Link copied
+                  input(class="share__link" value='download' + '?file='+ file + '?id=' + userID READONLY)
+                    //- include assets/icons/share.svg
+                  a(href= 'delete-file' + '?file=' + file class="df_ja ") 
+                    include assets/icons/bincan.svg
           //- END each
+  
+  //- section(class="block")
+    section(class="container")
+      ul
+        each val in [{name: 'one1', size: '2 kb'}, {name: 'two2', size: '45 kb'}]
+          //- li= key + `: ` + val.name
+          li= val.name + `; size: ` + val.size
+  
   
   section(class="block" id="formDrag")
     section(class="container")
