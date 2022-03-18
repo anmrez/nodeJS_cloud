@@ -6,14 +6,11 @@ const jwt = require('jsonwebtoken'),
   validRole = require('../lib/validRole.js')
 
 let userFiles = []
+let presenceOfFiles
 
 
 module.exports = function (req, res) {
   consoleLog(req, res, loggingConsole)
-
-
-
-
 
   // try/catch #1
   try {
@@ -22,15 +19,17 @@ module.exports = function (req, res) {
 
     // get user ID
     userID = jwt.verify(req.cookies.tokenkey, secret).id
+    console.log(userID);
     // find path in user folder
     pathFiles = path.join(appDir, 'userStorage', userID)
-
+    console.log(pathFiles);
 
       // try/catch #2
       try {
         // read user files
         userFileName = fs.readdirSync(pathFiles, 'utf8')
-
+        console.log(`userFileName:`);
+        console.log(userFileName);
 
         // пройтись по массиву с названиями и узнать обьем каждого файла
         let folders = []
@@ -70,19 +69,34 @@ module.exports = function (req, res) {
           }
           // add units in size
           userFileSize[i] = userFileSize[i] + units
-
         } // END for
 
-        // обьединить все обьекты в массив
-        for (var i = 0; i < userFileName.length; i++) {
-          userFiles[i] = {
-            name: userFileName[i],
-            size: userFileSize[i],
-            isFolder: folders[i]
-          }
-        } // END for
 
+        // если в папке пользователя найдены файлы
+        if (  userFileName.length > 0 ) {
+          // обнуляем массив (при удалении файла последний дюпается)
+          userFiles = []
+          // обьединить все обьекты в массиву
+          for (var i = 0; i < userFileName.length; i++) {
+            userFiles[i] = {
+              name: userFileName[i],
+              size: userFileSize[i],
+              isFolder: folders[i]
+            }
+          } // END for
+
+          // есть наличие фалов
+          presenceOfFiles = true
+        } else {
+          // иначе обнуляем список файлов
+          userFiles = []
+          // нет наличия файлов
+          presenceOfFiles = false
+        } // END if
+
+        // содержимое файлов
         console.log(userFiles);
+
 
       // try/catch #2
       } catch (e) {
@@ -94,26 +108,36 @@ module.exports = function (req, res) {
       } // END try/catch #2
 
 
+      console.log(presenceOfFiles);
     res.render('home', {
       userName: jwt.verify(req.cookies.tokenkey, secret).name,
       role: role,
       home: true,
       userFiles: userFiles,
-      userID: userID
+      userID: userID,
+      presenceOfFiles: presenceOfFiles,
     }) // render 'home'
+
 
   // try/catch #1
   } catch (e) {
 
+
     if (loggingConsole) {
-      // console.log(e);
-      console.log(`user undefiend in DB`);
-      console.log(`redirect in "login"`);
+      console.log(e);
+      // console.log(`user undefiend in DB`);
+      // console.log(`redirect in "login"`);
 
       // определяем ошибку
       jwt.verify(req.cookies.tokenkey, secret, function(err, decoded) {
         if (err) {
           console.log(err.message);
+          if (err.message == 'err') {
+
+          }
+        } else {
+          console.log(`user undefiend in DB`);
+          console.log(`redirect in "login"`);
         }
       }); // jwt
 

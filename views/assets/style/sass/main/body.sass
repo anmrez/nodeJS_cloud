@@ -58,6 +58,44 @@ li
   justify-content: space-between !important
 
 
+.pasteFiles
+  justify-content: space-between
+
+#sortSize,
+#sortName
+  cursor: pointer
+  padding: 0 10px
+  position: relative
+  &:hover
+    color: var(--color2)
+  &::after,
+  &::before
+    border: 7px solid transparent
+    border-top: 7px solid var(--color)
+    content: ""
+    display: block
+    height: 5px
+    width: 0px
+    position: absolute
+    right: -6px
+    top: 20%
+    transform: translateY(12px)
+  &::before
+    transform: rotateZ(180deg) translateY(12px)
+
+
+#sortName,
+#sortSize
+  &.active__up
+    &::before
+      border-top: 7px solid var(--color2)
+  &.active__down
+    &::after
+      border-top: 7px solid var(--color2)
+
+
+
+
 // icons
 .bincan__icon,
 .download__icon,

@@ -9,15 +9,25 @@ module.exports = async function (req, res) {
   try { // try #1
     try { // try #2
 
+
       // get user id if token exists
       userID = jwt.verify(req.cookies.tokenkey, secret).id
       // find path in user file
       const file = path.join(appDir, 'userStorage', userID, req.query.file)
-      // download file
-      res.download(file); // send file
+
+      // if the user is in the system and downloads the file from the link
+      if (  file.split('?').length == 2 ) {
+        // download file
+        res.download(file.split('?')[0]); // send file
+      } else {
+        // download file
+        res.download(file); // send file
+      }
+
 
       // try #2
     } catch (e) {
+
 
       arr = req.query.file.split('?')
       req.query.id = arr[1].split('=')[1]
@@ -27,10 +37,13 @@ module.exports = async function (req, res) {
       // download file
       res.download(file); // send file
 
-    } // try/catch
+
+    } // END try/catch #2
+
 
     // try #1
   } catch (e) {
+    console.log(`err try#1`);
     console.log(e);
     res.status(404);
     res.render('error', {
@@ -38,6 +51,6 @@ module.exports = async function (req, res) {
       codeError: 404,
       textError: `файл не найден`
     });
-  } // try/catch
+  } // END try/catch #1
 
 } // module

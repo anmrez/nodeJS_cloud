@@ -105,6 +105,48 @@ li {
   justify-content: space-between !important;
 }
 
+.pasteFiles {
+  justify-content: space-between;
+}
+
+#sortSize,
+#sortName {
+  cursor: pointer;
+  padding: 0 10px;
+  position: relative;
+}
+#sortSize:hover,
+#sortName:hover {
+  color: var(--color2);
+}
+#sortSize::after, #sortSize::before,
+#sortName::after,
+#sortName::before {
+  border: 7px solid transparent;
+  border-top: 7px solid var(--color);
+  content: "";
+  display: block;
+  height: 5px;
+  width: 0px;
+  position: absolute;
+  right: -6px;
+  top: 20%;
+  transform: translateY(12px);
+}
+#sortSize::before,
+#sortName::before {
+  transform: rotateZ(180deg) translateY(12px);
+}
+
+#sortName.active__up::before,
+#sortSize.active__up::before {
+  border-top: 7px solid var(--color2);
+}
+#sortName.active__down::after,
+#sortSize.active__down::after {
+  border-top: 7px solid var(--color2);
+}
+
 .bincan__icon,
 .download__icon,
 .share__icon {

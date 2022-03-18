@@ -9,35 +9,36 @@ block content
   section(class="block")
     section(class="container")
       section(class="files")
-        ul(id="files" class="mt_30")
+        if presenceOfFiles
+          ul(id="files" class="header__files mt_30")
+            div(class="df pasteFiles")
+              h4 Files
+              p sort
+                span(id="sortName" class="active__up") name
+                span(id="sortSize" class="") size
           each val in userFiles
             if val.isFolder
               li(class="view__files")
-                span= val.name
+                span(class="file__name")= val.name
           each val in userFiles
             if val.isFolder == false
               li(class="view__files")
-                span= val.name
+                span(class="file__name")= val.name
                 span(class="file__size")= val.size
                 div(class="file__control df_ja")
-                  a(href= 'download' + '?file=' + file class="df_ja") 
+                  a(href= 'download' + '?file=' + val.name class="df_ja") 
                     include assets/icons/download.svg
                   a(class="df_ja shareButton") 
                     include assets/icons/share_v2.svg
                     span(class="link__copied") Link copied
-                  input(class="share__link" value='download' + '?file='+ file + '?id=' + userID READONLY)
+                  input(class="share__link" value='download' + '?file='+ val.name + '?id=' + userID READONLY)
                     //- include assets/icons/share.svg
-                  a(href= 'delete-file' + '?file=' + file class="df_ja ") 
+                  a(href= 'delete-file' + '?file=' + val.name class="df_ja ") 
                     include assets/icons/bincan.svg
           //- END each
-  
-  //- section(class="block")
-    section(class="container")
-      ul
-        each val in [{name: 'one1', size: '2 kb'}, {name: 'two2', size: '45 kb'}]
-          //- li= key + `: ` + val.name
-          li= val.name + `; size: ` + val.size
-  
+          //-  if presenceOfFiles
+        else 
+          p you don't have any files uploaded
   
   section(class="block" id="formDrag")
     section(class="container")
@@ -48,3 +49,4 @@ block content
   script(type="text/javascript" src="../views/assets/js/drag.js")
   script(type="text/javascript" src="../views/assets/js/share.js")
   script(type="text/javascript" src="../views/assets/js/animation.js")
+  script(type="text/javascript" src="../views/assets/js/sort.js")
