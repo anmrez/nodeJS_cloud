@@ -18,7 +18,7 @@ let themeCheck = 0
 
 
 
-// если есть кука темы
+// if#1: если есть кука темы
 if ( document.cookie.includes('theme') ) {
 
   // разбиваем все куки в массив
@@ -32,30 +32,34 @@ if ( document.cookie.includes('theme') ) {
 
       // проверка куки на валидность
       for (var j = 0; j < allTheme.length; j++) {
+
         // ессли есть хоть 1 совпадение то прибавить +1 в счетчик
-        if (array[i] == allTheme[j]) {
+        if (  array[i] == allTheme[j] ) {
+
+          // меняем тему в соответсвии с кукой
+          document.documentElement.dataset.theme = array[i].split('=')[1]
+
           themeCheck++
+
         }
+
       } // for
+
 
 
       // если не найдено ни одно совпадение то создаем куку
       if (themeCheck == 0) {
         document.cookie = "theme=dark+purple; max-age=" + 1000*60*60*24*365
+        document.documentElement.dataset.theme = 'dark+purple'
         window.location.reload()
       }
 
     } // if
   } // for
 
-// иначе создаем куки и перезагружаем страницу
+// if#1: иначе если куки с темой не найдено создаем куки и перезагружаем страницу
 } else {
   document.cookie = "theme=dark+purple; max-age=" + 1000*60*60*24*365
+  document.documentElement.dataset.theme = 'dark+purple'
   window.location.reload()
-}
-
-
-
-
-// меняем тему в соответсвии с кукой
-document.documentElement.dataset.theme = cookie.split('=')[cookie.split('=').length-1]
+} // END if#1

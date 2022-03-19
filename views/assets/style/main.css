@@ -13,14 +13,14 @@ html[data-theme="dark+purple"] {
 }
 
 html[data-theme="light+blue"] {
-  --background: #ebebeb;
+  --background: #f9f9f9;
   --color: #222;
   --color2: #0077ff;
   --background_in_hover: #8888;
 }
 
 html[data-theme="light+purple"] {
-  --background: #ebebeb;
+  --background: #f9f9f9;
   --color: #222;
   --color2: #a804ca;
   --background_in_hover: #8888;
@@ -354,14 +354,14 @@ html[data-theme="dark+purple"] {
 }
 
 html[data-theme="light+blue"] {
-  --background: #ebebeb;
+  --background: #f9f9f9;
   --color: #222;
   --color2: #0077ff;
   --background_in_hover: #8888;
 }
 
 html[data-theme="light+purple"] {
-  --background: #ebebeb;
+  --background: #f9f9f9;
   --color: #222;
   --color2: #a804ca;
   --background_in_hover: #8888;
@@ -444,6 +444,14 @@ html[data-theme="light+purple"] {
   justify-content: space-between;
 }
 
+.ml_10 {
+  margin-left: 10px;
+}
+
+.ml_20 {
+  margin-left: 20px;
+}
+
 .mt_10 {
   margin-top: 10px;
 }
@@ -516,38 +524,15 @@ li {
 }
 
 .btn {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #cc0000;
   cursor: pointer;
+  border: 1px solid var(--color2);
   transition: 0.3s;
-}
-.btn span {
-  display: block;
-  width: 2px;
-  height: 20px;
-  background: #cc0000;
-  transform: rotate(45deg);
-  transition: 0.3s;
-  position: absolute;
-}
-.btn span::after {
-  content: "";
-  display: block;
-  width: 2px;
-  height: 20px;
-  background: #cc0000;
-  transform: rotate(-90deg);
-  transition: 0.3s;
+  font-size: 14px;
+  padding: 5px 10px;
 }
 .btn:hover {
-  background: #cc0000;
-}
-.btn:hover span {
-  background: var(--color);
-}
-.btn:hover span::after {
-  background: var(--color);
+  background: var(--color2);
+  color: var(--background);
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -20,6 +20,13 @@
 .just_bet
   justify-content: space-between
 
+// margin left
+.ml_10
+  margin-left: 10px
+.ml_20
+  margin-left: 20px
+
+
 .mt_10
   margin-top: 10px
 .mt_20
@@ -70,32 +77,42 @@ li
   &:text
     opacity: 0
 
-
 .btn
-  width: 30px
-  height: 30px
-  border: 1px solid $red
   cursor: pointer
+  border: 1px solid var(--color2)
   transition: $transition_Btn
-  span
-    display: block
-    width: 2px
-    height: 20px
-    background: $red
-    transform: rotate(45deg)
-    transition: $transition_Btn
-    position: absolute
-    &::after
-      content: ''
-      display: block
-      width: 2px
-      height: 20px
-      background: $red
-      transform: rotate(-90deg)
-      transition: $transition_Btn
+  font-size: 14px
+  padding: 5px 10px
   &:hover
-    background: $red
-    span
-      background: var(--color)
-      &::after
-        background: var(--color)
+    background: var(--color2)
+    color: var(--background)
+
+
+// .btn
+//   // width: 30px
+//   // height: 30px
+//   border: 1px solid $red
+//   cursor: pointer
+//   transition: $transition_Btn
+//   span
+//     display: block
+//     width: 2px
+//     height: 20px
+//     background: $red
+//     transform: rotate(45deg)
+//     transition: $transition_Btn
+//     position: absolute
+//     &::after
+//       content: ''
+//       display: block
+//       width: 2px
+//       height: 20px
+//       background: $red
+//       transform: rotate(-90deg)
+//       transition: $transition_Btn
+//   &:hover
+//     background: $red
+//     span
+//       background: var(--color)
+//       &::after
+//         background: var(--color)

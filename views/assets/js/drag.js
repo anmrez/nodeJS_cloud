@@ -5,18 +5,20 @@ const dropzone = document.getElementById('dropzone')
 const buttonForm = document.getElementById('buttonForm')
 let files = []
 
+// добавить эвент на окно
 window.addEventListener('dragenter', function() {
   // console.log(`drag`);
   dropzone.classList.add("hover")
 })
 
-
+// добавить эвент на окно
 dropzone.addEventListener('dragleave', function(e) {
   // console.log(`drag out`);
   dropzone.classList.remove("hover")
   handler(e)
 }, false)
 
+// добавить эвент "выкидывание файла"
 dropzone.addEventListener('drop', function(e) {
   // console.log(`drag out`);
   dropzone.classList.remove("hover")
@@ -35,6 +37,7 @@ window.addEventListener("drop",function(e){
 },false);
 
 
+// обработчик
 async function handler(e) {
   // console.log(e);
   e.preventDefault()
@@ -61,7 +64,8 @@ async function handler(e) {
   inputFile.files = e.dataTransfer.files
   console.log(`input:`);
   console.log(inputFile.files);
-  buttonForm.click()
+  // // отправляем форму на сервер
+  // buttonForm.click()
 
   // отправка формы
   // for(let [name, value] of formData) {
@@ -78,3 +82,15 @@ async function handler(e) {
 
 
 } // handler(e)
+
+
+
+const btnUpload = document.getElementById('btnUpload')
+btnUpload.addEventListener('click', function(){
+  input_files.click()
+})
+
+inputFile.addEventListener('change', function(){
+  // отправляем форму на сервер
+  buttonForm.click()
+});

@@ -1,12 +1,9 @@
-// theme: 2 - 102 / profile: 102 - 133 / deleteAcc: 133 - xxx
+// theme: ~2 - 102 / profile: ~102 - 133 / deleteAcc: ~133 - xxx
 // SETTINGS THEME
 const checkBoxZone = document.querySelector('#checkBoxThemeZoneClicked')
 const checkBoxTheme = document.querySelector('#checkBoxTheme')
 let dataTheme = document.documentElement.dataset.theme
-// let theme = dataTheme.split('+')
-let theme = document.cookie
-theme = theme.split("=")[1]
-theme = theme.split("+")
+let theme = dataTheme.split('+')
 
 // Смена основной темы
 // смена активности чекбокса взависимости от темы

@@ -36,7 +36,17 @@ module.exports = async function (req, res) {
       const file = path.join(appDir, 'userStorage', req.query.id, req.query.file)
       // download file
       res.download(file); // send file
+      res.download(file, function(error){
+        if (error) {
+          res.status(404);
+          res.render('error', {
+            layout: 'error',
+            codeError: 404,
+            textError: `файл не найден`
+          });
+        }
 
+      })
 
     } // END try/catch #2
 

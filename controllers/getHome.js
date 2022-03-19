@@ -108,7 +108,6 @@ module.exports = function (req, res) {
       } // END try/catch #2
 
 
-      console.log(presenceOfFiles);
     res.render('home', {
       userName: jwt.verify(req.cookies.tokenkey, secret).name,
       role: role,
@@ -124,28 +123,38 @@ module.exports = function (req, res) {
 
 
     if (loggingConsole) {
-      console.log(e);
-      // console.log(`user undefiend in DB`);
-      // console.log(`redirect in "login"`);
+      // console.log(e);
 
       // определяем ошибку
       jwt.verify(req.cookies.tokenkey, secret, function(err, decoded) {
         if (err) {
-          console.log(err.message);
-          if (err.message == 'err') {
 
+          // если сессия устарела
+          // jwt expired
+          if (err.message == 'jwt expired') {
+            console.log(`jwt err:`);
+            console.log(err);
+
+            // delete cookie
+            res.clearCookie("tokenkey");
+            res.redirect('/login?session=expired')
+          } else {
+            console.log(`user undefiend in DB`);
+            console.log(`redirect in "login"`);
+
+            // delete cookie
+            res.clearCookie("tokenkey");
+            res.redirect('/login?session=undefined')
           }
-        } else {
-          console.log(`user undefiend in DB`);
-          console.log(`redirect in "login"`);
-        }
+        } // END if (err)
+
       }); // jwt
 
     } // if
 
-    // delete cookie
-    res.clearCookie("tokenkey");
-    res.redirect('/login')
+    // // delete cookie
+    // res.clearCookie("tokenkey");
+    // res.redirect('/login')
 
 
 

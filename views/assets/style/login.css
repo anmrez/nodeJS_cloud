@@ -13,14 +13,14 @@ html[data-theme="dark+purple"] {
 }
 
 html[data-theme="light+blue"] {
-  --background: #ebebeb;
+  --background: #f9f9f9;
   --color: #222;
   --color2: #0077ff;
   --background_in_hover: #8888;
 }
 
 html[data-theme="light+purple"] {
-  --background: #ebebeb;
+  --background: #f9f9f9;
   --color: #222;
   --color2: #a804ca;
   --background_in_hover: #8888;
