@@ -23,7 +23,7 @@ block content
             if val.isFolder
               li(class="view__files")
                 span(class="file__name")= val.name
-                a(href="?folder=" + val.name)
+                a(href="?folder=" + val.name class="folder__link")
           // рендер файлов
           each val in userFiles
             if val.isFolder == false
@@ -31,15 +31,36 @@ block content
                 span(class="file__name")= val.name
                 span(class="file__size")= val.size
                 div(class="file__control df_ja")
-                  a(href= 'download' + '?file=' + val.name class="df_ja") 
-                    include assets/icons/download.svg
-                  a(class="df_ja shareButton") 
-                    include assets/icons/share_v2.svg
-                    span(class="link__copied") Link copied
-                  input(class="share__link" value='download' + '?file='+ val.name + '?id=' + userID READONLY)
+                  if locationInFolder == false
+                    //- button 'download'
+                    a(href= 'download' + '?file=' + val.name class="df_ja") 
+                      include assets/icons/download.svg
+                    //- button 'share'
+                    a(class="df_ja shareButton") 
+                      include assets/icons/share_v2.svg
+                      span(class="link__copied") Link copied
+                    input(class="share__link" value='download' + '?file='+ val.name + '&id=' + userID READONLY)
+                    //- button 'delete'
+                    a(href= 'delete-file' + '?file=' + val.name class="df_ja ") 
+                      include assets/icons/bincan.svg
+
+                  else
+                    //- button 'download'
+                    a(href= 'download' + '?file=' + val.name + '&folder=' + folder class="df_ja") 
+                      include assets/icons/download.svg
+                      
+                    //- button 'share'
+                    a(class="df_ja shareButton") 
+                      include assets/icons/share_v2.svg
+                      span(class="link__copied") Link copied
+                    input(class="share__link" value='download' + '?file='+ val.name + '&id=' + userID + '&folder=' + folder  READONLY)
+                    
                     //- include assets/icons/share.svg
-                  a(href= 'delete-file' + '?file=' + val.name class="df_ja ") 
-                    include assets/icons/bincan.svg
+                    //- button 'delete'
+                    a(href= 'delete-file' + '?file=' + val.name + '&folder=' + folder  class="df_ja ") 
+                      include assets/icons/bincan.svg
+                      
+                      
           //- END each
         //-  если нет файлов
         else 
@@ -47,7 +68,8 @@ block content
           
         //- кнопка с загрузкой
         section(class="df_ja mt_20")
-          div(class="btn" id="btnUpload") choose file 
+          div(class="btn df_ja" id="btnUpload") choose file 
+            include assets/icons/download.svg
             //- input(id="input_files" class="input__files" form="formFiles" type="file" name="uploadFiles" value="choose file" multiple)
           p(class="ml_10") or drag file 
           //- input(type="submit" form="formFiles" value="submit" id="buttonForm")
@@ -58,7 +80,17 @@ block content
         input(id="input_files" type="file" name="uploadFiles" value="" multiple)
         input(type="submit" value="submit" id="buttonForm")
           
+  section(id="contextmenu" class="")
+    ul
+      li(id="") + new folder
+      li(id="") download
+      li(id="") share
+      li(id="") copy
+      li(id="contextmenuDeleteFile") delete file
+          
   script(type="text/javascript" src="../views/assets/js/drag.js")
   script(type="text/javascript" src="../views/assets/js/share.js")
   script(type="text/javascript" src="../views/assets/js/animation.js")
   script(type="text/javascript" src="../views/assets/js/sort.js")
+  
+  script(type="text/javascript" src="../views/assets/js/contextmenu.js")

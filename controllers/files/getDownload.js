@@ -4,7 +4,10 @@ const jwt = require('jsonwebtoken'),
   path = require('path');
 
 module.exports = async function (req, res) {
+  let file
   consoleLog(req, res, loggingConsole)
+  console.log(req.query);
+
 
   try { // try #1
     try { // try #2
@@ -12,28 +15,38 @@ module.exports = async function (req, res) {
 
       // get user id if token exists
       userID = jwt.verify(req.cookies.tokenkey, secret).id
-      // find path in user file
-      const file = path.join(appDir, 'userStorage', userID, req.query.file)
 
-      // if the user is in the system and downloads the file from the link
-      if (  file.split('?').length == 2 ) {
-        // download file
-        res.download(file.split('?')[0]); // send file
+      // find path in user file
+      if (req.query.folder) {
+        file = path.join( appDir, 'userStorage', userID, req.query.folder, req.query.file )
       } else {
-        // download file
-        res.download(file); // send file
+        file = path.join( appDir, 'userStorage', userID, req.query.file )
       }
 
+      // // if the user is in the system and downloads the file from the link
+      // if (  file.split('?').length == 2 ) {
+      //   // download file
+      //   res.download(file.split('?')[0]); // send file
+      // } else {
+      //   // download file
+      //   res.download(file); // send file
+      // }
+      // download file
+      res.download(file); // send file
 
       // try #2
     } catch (e) {
 
 
-      arr = req.query.file.split('?')
-      req.query.id = arr[1].split('=')[1]
-      req.query.file = arr[0]
+      // arr = req.query.file.split('?')
+      // req.query.id = arr[1].split('=')[1]
+      // req.query.file = arr[0]
       // find path in user file
-      const file = path.join(appDir, 'userStorage', req.query.id, req.query.file)
+      if (req.query.folder) {
+        file = path.join(appDir, 'userStorage', req.query.id, req.query.folder, req.query.file)
+      } else {
+        file = path.join(appDir, 'userStorage', req.query.id, req.query.file)
+      }
       // download file
       res.download(file); // send file
       res.download(file, function(error){

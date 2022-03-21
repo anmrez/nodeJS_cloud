@@ -5,12 +5,15 @@ const jwt = require('jsonwebtoken'),
   consoleLog = require('../lib/loggingConsole.js'),
   validRole = require('../lib/validRole.js')
 
-let userFiles = []
-let presenceOfFiles
 
 
 module.exports = function (req, res) {
+  let userFiles = []
+  let presenceOfFiles,  locationInFolder, folder
   consoleLog(req, res, loggingConsole)
+
+  console.log( req.query );
+
 
   // try/catch #1
   try {
@@ -20,9 +23,22 @@ module.exports = function (req, res) {
     // get user ID
     userID = jwt.verify(req.cookies.tokenkey, secret).id
     console.log(userID);
+
+
     // find path in user folder
-    pathFiles = path.join(appDir, 'userStorage', userID)
-    console.log(pathFiles);
+    if (req.query.folder) {
+      // если находимся в подкаталоге
+      pathFiles = path.join(  appDir, 'userStorage', userID, req.query.folder )
+      console.log(pathFiles);
+      locationInFolder = true
+      folder = req.query.folder
+
+      // иначе каталог пользователя
+    } else {
+      pathFiles = path.join( appDir, 'userStorage', userID )
+      console.log(pathFiles);
+      locationInFolder = false
+    }
 
       // try/catch #2
       try {
@@ -36,7 +52,8 @@ module.exports = function (req, res) {
         let userFileSize = []
         let units
         for (var i = 0; i < userFileName.length; i++) {
-          stats = fs.statSync(path.join(appDir, 'userStorage', userID, userFileName[i]))
+          // stats = fs.statSync(path.join(appDir, 'userStorage', userID, userFileName[i]))
+          stats = fs.statSync( path.join( pathFiles, userFileName[i] ) )
 
           // проверяем является ли это папкой
           folders[i] = stats.isDirectory()
@@ -115,6 +132,8 @@ module.exports = function (req, res) {
       userFiles: userFiles,
       userID: userID,
       presenceOfFiles: presenceOfFiles,
+      locationInFolder: locationInFolder,
+      folder: folder,
     }) // render 'home'
 
 

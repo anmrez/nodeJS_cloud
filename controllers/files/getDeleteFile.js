@@ -6,16 +6,25 @@ const jwt = require('jsonwebtoken'),
 
 
 
-module.exports = async function (req, res) {
-  consoleLog(req, res, loggingConsole)
 
+module.exports = async function (req, res) {
+  let file
+  consoleLog(req, res, loggingConsole)
+  console.log(req.query);
 
   try {
     // get user ID
     userID = jwt.verify(req.cookies.tokenkey, secret).id
+
     // find path in user file
-    const file = path.join(appDir, 'userStorage', userID, req.query.file)
-    console.log(`file: '${req.query.file}' delete`);
+    if (req.query.folder) {
+      file = path.join( appDir, 'userStorage', userID, req.query.folder, req.query.file )
+      console.log(`file: '${ req.query.file }' in folder '${ req.query.folder }' delete`);
+    } else {
+      file = path.join(appDir, 'userStorage', userID, req.query.file)
+      console.log(`file: '${req.query.file}' delete`);
+    }
+
     // delete file
     fs.unlinkSync(file);
     // redirect home
