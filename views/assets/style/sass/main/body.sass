@@ -32,6 +32,9 @@ li
   cursor: pointer
   opacity: 0
 
+
+// files
+
 .view__files,
 .view__settings
   height: 61px
@@ -45,12 +48,15 @@ li
   position: relative
   span
     cursor: default
+  .file__name
+    pointer-events: none
   &:hover
     background: var(--background_in_hover)
     border-radius: 0.4em
   .file__size
     position: absolute
-    right: 25%
+    // right: 25%
+    right: 3%
     font-size: 14px
 
 .folder__link
@@ -64,6 +70,7 @@ li
 // sorting
 
 .file__control
+  display: none !important
   width: 20%
   justify-content: space-between !important
 
@@ -109,10 +116,15 @@ li
 // icons
 .bincan__icon,
 .download__icon,
-.share__icon
+.share__icon,
+.rename__icon,
+.copy__icon,
+.folder__icon
   width: 50px
   stroke: var(--color)
   transition: $transition_Btn
+  #folderIconPlus
+    display: none
 
 
 #btnUpload
@@ -126,6 +138,9 @@ li
   &:hover
     .download__icon
       stroke: var(--background)
+
+
+
 
 .bincan__icon
   &:hover

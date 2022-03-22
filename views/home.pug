@@ -6,7 +6,7 @@ block content
     section(class="container")
       h1 Homer page
 
-  section(class="block")
+  section(class="block" id="blockFiles")
     section(class="container")
       section(class="files")
         //- если есть фалы
@@ -15,7 +15,7 @@ block content
           ul(id="files" class="header__files mt_30")
             div(class="df pasteFiles")
               h4 Files
-              p sort
+              p sorting:
                 span(id="sortName" class="active__up") name
                 span(id="sortSize" class="") size
           // рендер папок
@@ -82,11 +82,41 @@ block content
           
   section(id="contextmenu" class="")
     ul
-      li(id="") + new folder
-      li(id="") download
-      li(id="") share
-      li(id="") copy
-      li(id="contextmenuDeleteFile") delete file
+      li(id="contextmenuNewFolder" class="df_a")
+        span(class="menu__icons df_ja")
+          include assets/icons/folder.svg
+        div(class="") New folder
+      
+      li(id="contextmenuChooseFile" class="df_a")
+        span(class="menu__icons df_ja")
+          include assets/icons/download.svg
+        div(class="") Upload file
+        
+      li(id="contextmenuRenameFile" class="df_a")
+        span(class="menu__icons df_ja")
+          include assets/icons/rename.svg
+        div(class="") Rename
+      
+      li(id="contextmenuDownloadFile" class="df_a")
+        span(class="menu__icons df_ja")
+          include assets/icons/download.svg
+        div(class="") Download file
+        
+      li(id="contextmenuShareFile" class="df_a") 
+        span(class="menu__icons df_ja")
+          include assets/icons/share_v2.svg
+        div(class="") Share
+        
+      li(id="contextmenuCopyFile" class="df_a")
+        span(class="menu__icons df_ja")
+          include assets/icons/copy.svg
+        div(class="") Copy
+        
+      li(id="contextmenuDeleteFile" class="df_a")
+        span(class="menu__icons df_ja")
+          include assets/icons/bincan.svg
+        div(class="") Delete
+      
           
   script(type="text/javascript" src="../views/assets/js/drag.js")
   script(type="text/javascript" src="../views/assets/js/share.js")
