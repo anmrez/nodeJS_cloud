@@ -1,0 +1,33 @@
+// share
+.shareButton
+  cursor: pointer
+  position: relative
+
+.link__copied
+  font-size: 14px
+  position: absolute
+  top: -25px
+  border: 2px solid var(--background_in_hover)
+  background: $green_Opacity
+  white-space: nowrap
+  color: var(--color)
+  padding: 3px
+  pointer-events: none
+  border-radius: 0.2em
+  opacity: 0
+  // animate
+  // animation-name: linkCopied
+  animation-duration: 2s
+
+.share__link
+  display: none
+  background: none
+  border: 1px solid var(--background_in_hover)
+  color: $color_Text_Opacity
+  position: absolute
+  max-width: 300px
+  overflow: auto
+  transform: translateX(-300px)
+  font-size: 14px
+  &:focus
+    border: 1px solid var(--color2)

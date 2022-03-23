@@ -1,0 +1,70 @@
+// FMF - file managment form
+#fileInteractionWindow
+  border: 2px solid var(--background_in_hover)
+  border-radius: 0.2em
+  background: var(--background)
+  width: 500px
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translateX(-50%) translateY(-50%)
+  padding: 15px
+  display: none
+  &.active
+    display: block
+
+
+.FMF__header
+  h4
+    color: var(--color)
+  span
+    position: relative
+    width: 30px
+    height: 30px
+    cursor: pointer
+    transform: rotateZ(45deg)
+    border-radius: 1em
+    &:hover
+      &::after,
+      &::before
+        background: var(--background_in_hover)
+    &::after,
+    &::before
+      content: ''
+      display: block
+      width: 20px
+      height: 3px
+      transition: 0.2s
+      background: var(--color)
+      transform-origin: center center
+      position: absolute
+      left: 16%
+      top: 44%
+      border-radius: 0.2em
+    &::before
+      transform: rotateZ(90deg)
+
+.FMF__content
+  input
+    width: 80%
+    height: 30px
+    border-radius: 0.2em
+    font-size: 20px
+    padding: 0 10px
+    color: var(--color)
+    background: var(--background)
+    border: 1px solid var(--color)
+    font-family: Montserrat
+    font-weight: 300
+    &:focus
+      border: 1px solid var(--color2)
+
+
+.FMF__btn
+  display: flex
+  justify-content: right
+  a
+    margin-right: 10px
+  input
+    background: var(--background)
+    color: var(--color)

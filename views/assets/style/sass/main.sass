@@ -8,10 +8,51 @@ html
     &:hover
       color: var(--color2)
 
+body
+  font-family: sans-serif
+  font-family: Montserrat
+  font-size: $fontSize
+  position: relative
 
-@import "main/body"
+*
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+  outline: none
+  text-decoration: none
+
+li
+  list-style-type: disc
+  // color: $color_2
+
+
+.container
+  max-width: 1200px
+  margin: 0 auto
+  // display: flex
+  // justify-content: center
+
+.block
+  display: flex
+  justify-content: center
+
+.input__delete
+  width: 100%
+  height: 100%
+  cursor: pointer
+  opacity: 0
+
+
+// @import "main/body"
 @import "main/header"
 @import "main/footer"
-@import "main/drag"
 @import "main/boot"
+
+@import "home/drag"
 @import "home/contextmenu"
+@import "home/contextAnim"
+@import "home/icons"
+@import "home/interactionWindow"
+@import "home/files"
+@import "home/sorting"
+@import "home/share"

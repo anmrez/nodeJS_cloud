@@ -1,4 +1,13 @@
 const contextmenu = document.querySelector('#contextmenu')
+const contextmenuNewFolder = document.querySelector('#contextmenuNewFolder')
+const contextmenuUploadFile = document.querySelector('#contextmenuUploadFile')
+const contextmenuRenameFile = document.querySelector('#contextmenuRenameFile')
+const contextmenuDownloadFile = document.querySelector('#contextmenuDownloadFile')
+const contextmenuShareFile = document.querySelector('#contextmenuShareFile')
+const contextmenuCopyFile = document.querySelector('#contextmenuCopyFile')
+const contextmenuDeleteFile = document.querySelector('#contextmenuDeleteFile')
+const managementForm = document.querySelector('#fileInteractionWindow')
+
 let windowInnerWidth = window.innerWidth
 let windowInnerHeight = window.innerHeight
 
@@ -6,7 +15,7 @@ console.log(contextmenu);
 
 // === function ===
 
-
+// показать контекстное меню
 function contextmenuShow(posX, posY){
   // если контекстное меню выходит за экран
   if ( windowInnerHeight <= posY + contextmenu.offsetHeight) {
@@ -26,50 +35,69 @@ function contextmenuShow(posX, posY){
 
 }
 
+// скрыть контекстное меню
 function contextmenuHide(){
   contextmenu.style.opacity = `0`
   contextmenu.style.pointerEvents = 'none'
 }
 
+// базовый обработчик (новая папка и загрузка файлов)
 function contextmenuHandler() {
 
   // new folder
+  contextmenuNewFolder.addEventListener('click', function(){
+    fileInteractionWindowShow( 'Create new folder', 'New folder', false )
+  })
 
   // upload file
-  let uploadFile = document.querySelector('#contextmenuChooseFile')
-  uploadFile.addEventListener('click', function(){
+  contextmenuUploadFile.addEventListener('click', function(){
     input_files.click()
   })
 
 }
 
-// let  = document.querySelector('#')
-// .addEventListener('click', function(){
-  //
-  // })
+// скрывает форму управления файлом
+function fileInteractionWindowHidden(){
+  // скрываеим форму
+  managementForm.classList.remove('active')
+}
 
-function contextmenuHandlerFile( childNodes ) {
+// показывает форму управления файлом
+function fileInteractionWindowShow( newTitle, nameFile, additional){
+  // скрыть контекстное меню
+  contextmenuHide()
 
-  // rename
-  let renameFile = document.querySelector('#contextmenuRenameFile')
+  //показываем форму
+  managementForm.classList.add('active')
 
-  // download
-  let downloadFile = document.querySelector('#contextmenuDownloadFile')
-  downloadFile.addEventListener('click', function(){
-    childNodes[0].click()
-  })
+  // обрабатываем назыание операции
+  const name = document.querySelector('#nameOperation')
+  name.value = newTitle
 
-  // share
+  // обрабатываем заголовок формы
+  const title = managementForm.querySelector('#FMFTitle')
+  title.innerHTML = newTitle
 
-  // copy
+  // обрабатываем форму с новым название
+  const input = managementForm.querySelector('#newNameFile')
+  input.value = nameFile
 
-  // delete
-  let deleteFile = document.querySelector('#contextmenuDeleteFile')
-  deleteFile.addEventListener('click', function(){
-    childNodes[3].click()
-  })
+  if ( additional == true ) {
+    // обрабатываем форму со старым названием
+    const oldName = managementForm.querySelector('#oldNameFile')
+    oldName.value = nameFile
+  }
+
+  // обрабатываем кнопку
+  const button = managementForm.querySelector('.FMF__btn').lastChild
+  if ( newTitle == 'Share' ) {
+    button.value = 'Copy linc'
+  } else {
+    button.value = 'Save'
+  }
 
 }
+
 
 // === END function ===
 // === EventListener ===
@@ -91,24 +119,26 @@ document.addEventListener( "contextmenu", function(e) {
   // бфзовый обработчик (создание папки и загрузка фалов)
   contextmenuHandler()
   console.log(`______`);
+  console.log(e.target);
 
   // определяем ИД таргета (если не найдено то присваиваем 'NAN')
-  let targID, targIDParr, targClass, targClassparent
+  let targID, targIDParr, targClass, targClassparent, nameFile
   try {
     targClass = e.target.classList[0]
     targClassparent = e.target.offsetParent.classList[0]
     targID = e.target.id
     targIDParr =  e.target.offsetParent.id
     targChildNodes = e.target.lastChild.childNodes
+    nameFile = e.target.querySelector('.file__name').innerHTML
   } catch (e) {
     targClass = 'undefined'
     targClassparent = 'undefined'
     targID = 'undefined'
     targIDParr = 'undefined'
     targChildNodes = 'undefined'
+    nameFile = 'undefined'
   }
-
-  console.log(targChildNodes);
+  console.log( targChildNodes );
 
   // узнаем позиционирование клика
   posX = e.clientX
@@ -127,9 +157,6 @@ document.addEventListener( "contextmenu", function(e) {
 
     // отображаем контекстное меню
     contextmenuShow(posX, posY)
-
-    // связывает управление с файлом
-    contextmenuHandlerFile( targChildNodes )
 
   // if#1: если ПКМ была нажата вне файла
   } else {
@@ -153,6 +180,28 @@ document.addEventListener( "contextmenu", function(e) {
 
   } // END if#1
 
+
+  // handler 'rename'
+  contextmenuRenameFile.addEventListener('click', function(){
+    fileInteractionWindowShow( 'Rename', nameFile, true )
+  })
+
+  // handler 'download'
+  contextmenuDownloadFile.addEventListener('click', function(){
+    targChildNodes[0].click()
+  })
+
+  // handler 'share'
+  contextmenuShareFile.addEventListener('click', function(){
+    fileInteractionWindowShow( 'Share', targChildNodes[2].value, false )
+    // targChildNodes[2].value
+  })
+
+
+  // handler 'delete'
+  contextmenuDeleteFile.addEventListener('click', function(){
+    childNodes[3].click()
+  })
 
 }); // END addEventListener "contextmenu"
 
@@ -190,6 +239,7 @@ document.addEventListener( "mousedown", function(e) {
 
 
 }) // END addEventListener "mousedown"
+
 
 
 // === END EventListener ===

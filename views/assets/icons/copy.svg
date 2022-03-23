@@ -2,12 +2,15 @@
 	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
 	 xml:space="preserve">
 
-<path fill="none" stroke-width="18" stroke-linecap="round" stroke-miterlimit="10" d="M328.5,344v57.07
+<path class="copy__icon__file1" fill="none" stroke-width="18" stroke-linecap="round" stroke-miterlimit="10" d="M328.5,344v57.07
 	c0,6.87-5.57,12.43-12.43,12.43H133.93c-6.87,0-12.43-5.57-12.43-12.43V175.93c0-6.87,5.57-12.43,12.43-12.43H187"/>
-<path fill="none" stroke-width="18" stroke-linecap="round" stroke-miterlimit="10" d="M187,106.93v228.63
-	c0,4.66,3.78,8.43,8.43,8.43h186.13c4.66,0,8.43-3.78,8.43-8.43V167.49c0-2.24-0.89-4.38-2.47-5.96l-60.56-60.56
-	c-1.58-1.58-3.73-2.47-5.96-2.47H195.43C190.78,98.5,187,102.28,187,106.93z"/>
-<path fill="none" stroke-width="18" stroke-linecap="round" stroke-miterlimit="10" d="M317.09,98.5v70.15
-	c0,5.91,4.79,10.7,10.7,10.7H390"/>
+
+<g class="copy__icon__file2">
+	<path fill="none" stroke-width="18" stroke-linecap="round" stroke-miterlimit="10" d="M187,106.93v228.63
+		c0,4.66,3.78,8.43,8.43,8.43h186.13c4.66,0,8.43-3.78,8.43-8.43V167.49c0-2.24-0.89-4.38-2.47-5.96l-60.56-60.56
+		c-1.58-1.58-3.73-2.47-5.96-2.47H195.43C190.78,98.5,187,102.28,187,106.93z"/>
+	<path fill="none" stroke-width="18" stroke-linecap="round" stroke-miterlimit="10" d="M317.09,98.5v70.15
+		c0,5.91,4.79,10.7,10.7,10.7H390"/>
+</g>
 
 </svg>

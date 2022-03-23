@@ -1,6 +1,7 @@
  const path = require('path')
 
 const getHome = require(path.join('..', 'controllers', 'getHome.js')),
+  postHome = require(path.join('..', 'controllers', 'postHome.js')),
 
   // files
   postUpload = require(path.join('..', 'controllers', 'files', 'postUpload.js')),
@@ -27,6 +28,7 @@ const getHome = require(path.join('..', 'controllers', 'getHome.js')),
 
 // home
 exports.getHome = getHome
+exports.postHome = postHome
 
 // files
 exports.postUpload = postUpload

@@ -80,6 +80,7 @@ block content
         input(id="input_files" type="file" name="uploadFiles" value="" multiple)
         input(type="submit" value="submit" id="buttonForm")
           
+  //- context menu
   section(id="contextmenu" class="")
     ul
       li(id="contextmenuNewFolder" class="df_a")
@@ -87,7 +88,7 @@ block content
           include assets/icons/folder.svg
         div(class="") New folder
       
-      li(id="contextmenuChooseFile" class="df_a")
+      li(id="contextmenuUploadFile" class="df_a")
         span(class="menu__icons df_ja")
           include assets/icons/download.svg
         div(class="") Upload file
@@ -117,10 +118,24 @@ block content
           include assets/icons/bincan.svg
         div(class="") Delete
       
+      
+  form(id="fileInteractionWindow" class="active" action="/" method="post" data-item='FMF')
+    section(class="df_a just_bet FMF__header" data-item='FMF')
+      h4(id="FMFTitle") title
+      span(id="cancel")
+    section(class="FMF__content df_ja mt_20" data-item='FMF')
+      input(id="nameOperation"  name="operation" type="hidden" value="")
+      input(id="newNameFile"  name="newName" type="text" value="name file")
+      input(id="oldNameFile"  name="oldName" type="hidden" value="")
+    section(class="FMF__btn mt_20" data-item='FMF')
+      a(id="cancel" class="btn" ) Cancel
+      input(id="" class="btn" type="submit"  value="Save")
+          
+          
           
   script(type="text/javascript" src="../views/assets/js/drag.js")
   script(type="text/javascript" src="../views/assets/js/share.js")
-  script(type="text/javascript" src="../views/assets/js/animation.js")
   script(type="text/javascript" src="../views/assets/js/sort.js")
   
   script(type="text/javascript" src="../views/assets/js/contextmenu.js")
+  script(type="text/javascript" src="../views/assets/js/animation.js")

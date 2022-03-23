@@ -1,0 +1,69 @@
+// icons
+.bincan__icon,
+.download__icon,
+.share__icon,
+.rename__icon,
+.copy__icon,
+.folder__icon
+  width: 50px
+  stroke: var(--color)
+  transition: $transition_Btn
+  #folderIconPlus
+    display: none
+
+
+// bincan
+.bincan__icon
+  &:hover
+    stroke: $red
+.bincan__lid
+  animation-direction: normal
+  animation-duration: 0.3s
+  animation-timing-function: ease
+  animation-iteration-count: 1
+  animation-fill-mode: forwards
+  transform-origin: bottom right
+
+.download__icon,
+.share__icon
+  &:hover
+    stroke: var(--color2)
+
+
+// icons for button 'upload file' (use icon 'download')
+
+#btnUpload
+  font-size: 18px
+  .download__icon
+    padding-left: 10px
+    width: 40px
+    .download__icon__arrow
+      transform-origin: center center
+      transform: rotateZ(180deg) translateY(50px)
+  &:hover
+    .download__icon
+      stroke: var(--background)
+
+
+// icons rename
+.rename__icon__marker
+  animation-direction: normal
+  animation-duration: 1s
+  animation-timing-function: ease
+  animation-iteration-count: infinite
+  animation-fill-mode: forwards
+
+
+.copy__icon__file1,
+.copy__icon__file2
+  animation-direction: normal
+  animation-duration: 0.3s
+  animation-timing-function: ease
+  animation-iteration-count: 1
+  animation-fill-mode: forwards
+
+.copy__icon__file1
+  transform: translateX(31px) translateY(-34px)
+
+.copy__icon__file2
+  transform: translateX(-31px) translateY(34px)

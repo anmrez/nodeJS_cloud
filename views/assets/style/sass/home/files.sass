@@ -1,0 +1,31 @@
+// files
+
+.view__files,
+.view__settings
+  height: 61px
+  display: flex
+  justify-content: space-between
+  align-items: center
+  width: 900px
+  padding: 5px 10px
+  border-bottom: 1px solid var(--background_in_hover)
+  border-radius: 0.4em
+  position: relative
+  span
+    cursor: default
+  .file__name
+    pointer-events: none
+  &:hover
+    background: var(--background_in_hover)
+    border-radius: 0.4em
+  .file__size
+    pointer-events: none
+    position: absolute
+    // right: 25%
+    right: 3%
+    font-size: 14px
+
+.folder__link
+  width: 100%
+  height: 100%
+  position: absolute

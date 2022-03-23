@@ -1,0 +1,58 @@
+
+// animations
+
+// delete
+@keyframes bincanLid
+  0%
+    transform: rotate(0deg) translateY(0)
+  100%
+    transform: rotate(5deg) translateY(-20px)
+
+@keyframes bincanLidClose
+  0%
+    transform: rotate(5deg) translateY(-20px)
+  100%
+    transform: rotate(0deg) translateY(0)
+
+
+// rename
+@keyframes renameCursor
+  0%
+    opacity: 1
+  50%
+    opacity: 0
+  100%
+    opacity: 1
+
+@keyframes renameCursorClose
+  0%
+    opacity: 0.5
+  100%
+    opacity: 1
+
+
+// copy
+
+@keyframes copyMouseoverF1
+  0%
+    transform: translateX(31px) translateY(-34px)
+  100%
+    transform: translateX(0) translateY(0)
+
+@keyframes copyMouseoverF2
+  0%
+    transform: translateX(-31px) translateY(34px)
+  100%
+    transform: translateX(0) translateY(0)
+
+@keyframes copyMouseoutF1
+  0%
+    transform: translateX(0) translateY(0)
+  100%
+    transform: translateX(31px) translateY(-34px)
+
+@keyframes copyMouseoutF2
+  0%
+    transform: translateX(0) translateY(0)
+  100%
+    transform: translateX(-31px) translateY(34px)
