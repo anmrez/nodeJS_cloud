@@ -1,5 +1,8 @@
 extends layout/layout.pug
 
+block header__content
+  link(rel="stylesheet" href="/views/assets/style/home.css")
+
 block content
 
   section(class="block")
@@ -80,58 +83,22 @@ block content
         input(id="input_files" type="file" name="uploadFiles" value="" multiple)
         input(type="submit" value="submit" id="buttonForm")
           
-  //- context menu
-  section(id="contextmenu" class="")
-    ul
-      li(id="contextmenuNewFolder" class="df_a")
-        span(class="menu__icons df_ja")
-          include assets/icons/folder.svg
-        div(class="") New folder
-      
-      li(id="contextmenuUploadFile" class="df_a")
-        span(class="menu__icons df_ja")
-          include assets/icons/download.svg
-        div(class="") Upload file
-        
-      li(id="contextmenuRenameFile" class="df_a")
-        span(class="menu__icons df_ja")
-          include assets/icons/rename.svg
-        div(class="") Rename
-      
-      li(id="contextmenuDownloadFile" class="df_a")
-        span(class="menu__icons df_ja")
-          include assets/icons/download.svg
-        div(class="") Download file
-        
-      li(id="contextmenuShareFile" class="df_a") 
-        span(class="menu__icons df_ja")
-          include assets/icons/share_v2.svg
-        div(class="") Share
-        
-      li(id="contextmenuCopyFile" class="df_a")
-        span(class="menu__icons df_ja")
-          include assets/icons/copy.svg
-        div(class="") Copy
-        
-      li(id="contextmenuDeleteFile" class="df_a")
-        span(class="menu__icons df_ja")
-          include assets/icons/bincan.svg
-        div(class="") Delete
+  include includes/context__menu.pug
       
       
-  form(id="fileInteractionWindow" class="active" action="/" method="post" data-item='FMF')
+  form(id="fileInteractionWindow" class="" action="/" method="post" data-item='FMF')
     section(class="df_a just_bet FMF__header" data-item='FMF')
       h4(id="FMFTitle") title
       span(id="cancel")
     section(class="FMF__content df_ja mt_20" data-item='FMF')
       input(id="nameOperation"  name="operation" type="hidden" value="")
-      input(id="newNameFile"  name="newName" type="text" value="name file")
+      input(id="newNameFile"  name="newName" type="text" value="name file" autocomplete='off')
+      span(id="statusCopy" class="ml_10 df_ja")
       input(id="oldNameFile"  name="oldName" type="hidden" value="")
     section(class="FMF__btn mt_20" data-item='FMF')
       a(id="cancel" class="btn" ) Cancel
-      input(id="" class="btn" type="submit"  value="Save")
-          
-          
+      input(id="inputSubmit" class="btn" type="submit"  value="Save")
+      a(id="copyLinc" class="btn none" ) Copy linc
           
   script(type="text/javascript" src="../views/assets/js/drag.js")
   script(type="text/javascript" src="../views/assets/js/share.js")

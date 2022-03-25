@@ -1,7 +1,12 @@
 
 // animations
 
+
+// ====
 // delete
+// ====
+
+
 @keyframes bincanLid
   0%
     transform: rotate(0deg) translateY(0)
@@ -15,7 +20,12 @@
     transform: rotate(0deg) translateY(0)
 
 
+
+// ====
 // rename
+// ====
+
+
 @keyframes renameCursor
   0%
     opacity: 1
@@ -31,7 +41,11 @@
     opacity: 1
 
 
+
+// ====
 // copy
+// ====
+
 
 @keyframes copyMouseoverF1
   0%
@@ -56,3 +70,90 @@
     transform: translateX(0) translateY(0)
   100%
     transform: translateX(-31px) translateY(34px)
+
+
+// ====
+// share
+// ====
+
+// over
+@keyframes shareMouseoverCircle1
+  0%
+    transform: translateX(-200px) translateY(140px)
+    opacity: 0
+  30%
+    transform: translateX(-200px) translateY(140px)
+    opacity: 1
+  100%
+    transform: translateX(0) translateY(0)
+    opacity: 1
+
+@keyframes shareMouseoverCircle2
+  0%
+    transform: translateX(120px)
+  30%
+    transform: translateX(0)
+  100%
+    transform: translateX(0)
+
+@keyframes shareMouseoverCircle3
+  0%
+    transform: translateX(-200px) translateY(-140px)
+    opacity: 0
+  30%
+    transform: translateX(-200px) translateY(-140px)
+    opacity: 1
+  100%
+    transform: translateX(0) translateY(0)
+    opacity: 1
+
+// share__icon__line1
+@keyframes shareMouseoverLine
+  30%
+    stroke-dasharray: 300, 160
+    stroke-dashoffset: 300
+  100%
+    stroke-dasharray: 300, 160
+    stroke-dashoffset: 150
+
+
+// out
+@keyframes shareMouseoutCircle1
+  0%
+    transform: translateX(0) translateY(0)
+    opacity: 1
+  70%
+    transform: translateX(-200px) translateY(140px)
+    opacity: 1
+  100%
+    transform: translateX(-200px) translateY(140px)
+    opacity: 0
+
+@keyframes shareMouseoutCircle2
+  0%
+    transform: translateX(0)
+  70%
+    transform: translateX(0)
+  100%
+    transform: translateX(120px)
+
+@keyframes shareMouseoutCircle3
+  0%
+    transform: translateX(0) translateY(0)
+    opacity: 1
+  70%
+    transform: translateX(-200px) translateY(-140px)
+    opacity: 1
+  100%
+    transform: translateX(-200px) translateY(-140px)
+    opacity: 0
+
+
+// share__icon__line1
+@keyframes shareMouseoutLine
+  30%
+    stroke-dasharray: 300, 160
+    stroke-dashoffset: 150
+  100%
+    stroke-dasharray: 300, 160
+    stroke-dashoffset: 300

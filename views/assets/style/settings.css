@@ -26,79 +26,32 @@ html[data-theme="light+purple"] {
   --background_in_hover: #8888;
 }
 
-#checkBoxThemeZoneClicked {
-  user-select: none;
-}
-
-.settings__list a,
-.settings__list span,
-.settings__list .checkbox__theme {
-  cursor: pointer !important;
-}
-
-.check__box {
-  background: var(--background);
-  width: 40px;
-  height: 20px;
-  border-radius: 15px;
+.view__settings {
+  height: 61px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid var(--color2);
-  margin: 0 20px;
-}
-.check__box span {
-  display: block;
-  background: var(--color2);
-  border-radius: 50px;
-  width: 14px;
-  height: 14px;
-  position: relative;
-  transition: 0.3s;
-  left: -8px;
-}
-
-.check__box.active {
-  background: var(--background);
-}
-.check__box.active span {
-  left: 8px !important;
-}
-
-.shade__color__block {
-  margin-right: 50px;
-  width: 70px;
   justify-content: space-between;
-}
-.shade__color__block a {
+  align-items: center;
+  width: 900px;
   padding: 5px 10px;
-}
-.shade__color__block a .shade__color {
-  width: 20px;
-  height: 20px;
-  border: 1px solid var(--background_in_hover);
-  border-radius: 1em;
+  border-bottom: 1px solid var(--background_in_hover);
+  border-radius: 0.4em;
   position: relative;
 }
-.shade__color__block a .shade__color.active {
-  padding: 5px;
-  border: 2px solid var(--color);
+.view__settings span {
+  cursor: default;
 }
-.shade__color__block a .shade__color.active::after {
-  content: "";
-  display: block;
+.view__settings .file__name {
+  pointer-events: none;
+}
+.view__settings:hover {
+  background: var(--background_in_hover);
+  border-radius: 0.4em;
+}
+.view__settings .file__size {
+  pointer-events: none;
   position: absolute;
-  top: -15px;
-  border: 7px solid transparent;
-  border-top: 7px solid var(--color);
-}
-
-#shade1 {
-  background: #a804ca;
-}
-
-#shade2 {
-  background: #3694ff;
+  right: 3%;
+  font-size: 14px;
 }
 
 #settingPass,
@@ -363,23 +316,6 @@ html[data-theme="light+purple"] {
   padding: 0 20px;
 }
 
-.err__pass,
-.success__pass {
-  margin-left: 20px;
-  border-radius: 0.5em;
-  font-size: 18px;
-  padding: 5px 10px;
-  font-weight: 400;
-}
-
-.success__pass {
-  background: #1e5719aa;
-}
-
-.err__pass {
-  background: #cc0000;
-}
-
 .text__delAcc {
   color: #cc0000;
   cursor: default;
@@ -434,6 +370,98 @@ html[data-theme="light+purple"] {
 .delete__menu.active {
   opacity: 1;
   pointer-events: all;
+}
+
+#checkBoxThemeZoneClicked {
+  user-select: none;
+}
+
+.settings__list a,
+.settings__list span,
+.settings__list .checkbox__theme {
+  cursor: pointer !important;
+}
+
+.check__box {
+  background: var(--background);
+  width: 40px;
+  height: 20px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--color2);
+  margin: 0 20px;
+}
+.check__box span {
+  display: block;
+  background: var(--color2);
+  border-radius: 50px;
+  width: 14px;
+  height: 14px;
+  position: relative;
+  transition: 0.3s;
+  left: -8px;
+}
+
+.check__box.active {
+  background: var(--background);
+}
+.check__box.active span {
+  left: 8px !important;
+}
+
+.shade__color__block {
+  margin-right: 50px;
+  width: 70px;
+  justify-content: space-between;
+}
+.shade__color__block a {
+  padding: 5px 10px;
+}
+.shade__color__block a .shade__color {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--background_in_hover);
+  border-radius: 1em;
+  position: relative;
+}
+.shade__color__block a .shade__color.active {
+  padding: 5px;
+  border: 2px solid var(--color);
+}
+.shade__color__block a .shade__color.active::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -15px;
+  border: 7px solid transparent;
+  border-top: 7px solid var(--color);
+}
+
+#shade1 {
+  background: #a804ca;
+}
+
+#shade2 {
+  background: #3694ff;
+}
+
+.err__pass,
+.success__pass {
+  margin-left: 20px;
+  border-radius: 0.5em;
+  font-size: 18px;
+  padding: 5px 10px;
+  font-weight: 400;
+}
+
+.success__pass {
+  background: #1e5719aa;
+}
+
+.err__pass {
+  background: #cc0000;
 }
 
 /*# sourceMappingURL=settings.css.map */

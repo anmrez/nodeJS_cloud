@@ -47,6 +47,32 @@ const renameCursor = contextmenuRenameFile.querySelector('.rename__icon__marker'
   })
 
 
+// animation context menu 'share'
+const shareIconLines = contextmenuShareFile.querySelectorAll('line')
+const shareIconCircle1 = contextmenuShareFile.querySelector('.share__icon__circle1')
+const shareIconCircle2 = contextmenuShareFile.querySelector('.share__icon__circle2')
+const shareIconCircle3 = contextmenuShareFile.querySelector('.share__icon__circle3')
+
+  contextmenuShareFile.addEventListener('mouseover', function(){
+    shareIconCircle1.style.animationName = 'shareMouseoverCircle1'
+    shareIconCircle2.style.animationName = 'shareMouseoverCircle2'
+    shareIconCircle3.style.animationName = 'shareMouseoverCircle3'
+    shareIconLines.forEach((item) => {
+      item.style.animationName = 'shareMouseoverLine'
+    });
+
+  })
+
+  contextmenuShareFile.addEventListener('mouseout', function(){
+    shareIconCircle1.style.animationName = 'shareMouseoutCircle1'
+    shareIconCircle2.style.animationName = 'shareMouseoutCircle2'
+    shareIconCircle3.style.animationName = 'shareMouseoutCircle3'
+    shareIconLines.forEach((item) => {
+      item.style.animationName = 'shareMouseoutLine'
+    });
+  })
+
+
 // animation context menu 'copy'
 const copyIconFile1 = contextmenuCopyFile.querySelector('.copy__icon__file1')
 const copyIconFile2 = contextmenuCopyFile.querySelector('.copy__icon__file2')

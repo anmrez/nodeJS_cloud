@@ -1,4 +1,9 @@
 @import "variable"
+@import "settings/viewSet"
+@import "settings/pass"
+@import "settings/input"
+@import "settings/errors"
+@import "settings/deleteAcc"
 
 #checkBoxThemeZoneClicked
   user-select: none
@@ -69,53 +74,6 @@
 
 
 
-// password
-
-#settingPass,
-#settingName
-  position: relative
-  overflow: hidden
-  cursor: pointer
-  // transition: 0.5s
-  #triangle
-    border: 7px solid transparent
-    border-top: 7px solid var(--color)
-    position: relative
-    bottom: -5px
-    transition: 0.3s
-    transform-origin: center 3px
-    transform: rotateX(0deg)
-  form
-    position: absolute
-    left: 50%
-    top: 100px
-    transform: translateX(-50%)
-  &.active
-    // padding-bottom: 500px
-    #triangle
-      transform: rotateX(180deg)
-
-
-#passForm,
-#nameForm
-  height: 0
-  overflow: hidden
-  transition: 0.5s
-  pointer-events: none
-  opacity: 0
-  &.active
-    pointer-events: all
-    height: 500px
-    opacity: 1
-
-#nameForm
-  &.active
-    height: 250px
-
-@import "settings/input"
-@import "settings/errors"
-
-
 
 .err__pass,
 .success__pass
@@ -129,57 +87,3 @@
   background: $green_Opacity
 .err__pass
   background: $red
-
-
-
-// delete account
-
-.text__delAcc
-  color: $red
-  cursor: default
-  font-weight: 500
-
-#delAcc
-  &:hover
-    color: $red
-
-#btnDelAcc
-  margin-right: 50px
-  color: $red
-  border: none
-  font-family: Montserrat
-  font-size: 24px
-  &:hover
-    background: $red
-    color: var(--color)
-
-.btnDel
-  // background: var(--background)
-  background: var(--background_in_hover)
-  border-radius: 0.2em
-  padding: 5px 10px
-  font-size: 24px
-  transition: 0.2s
-  cursor: pointer
-  &:hover
-    background: $green_Opacity
-    color: var(--color)
-
-.delete__menu__inner
-  padding: 15px
-  border-radius: 0.2em
-  border: 2px solid $red
-  background: var(--background)
-  // background: var(--background_in_hover)
-
-.delete__menu
-  position: absolute
-  top: 50%
-  left: 50%
-  transform: translateX(-50%) translateY(50%)
-  opacity: 0
-  pointer-events: none
-  transition: 0.3s
-  &.active
-    opacity: 1
-    pointer-events: all

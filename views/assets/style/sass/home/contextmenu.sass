@@ -61,3 +61,39 @@
   &:hover
     .download__icon
       stroke: var(--color)
+
+
+// success copy
+#statusCopy
+  border-radius: 1em
+  // opacity: 0
+  pointer-events: none
+  width: 30px
+  height: 30px
+  position: relative
+  &.success
+    background: $green_Opacity
+    &::before
+      content: ''
+      display: block
+      width: 8px
+      height: 16px
+      border-right: 2px solid var(--color)
+      border-bottom: 2px solid var(--color)
+      transform: rotateZ(45deg) translateY(0)
+  &.err
+    background: $red
+    &::before,
+    &::after
+      content: ''
+      display: block
+      width: 16px
+      height: 2px
+      background: var(--color)
+      position: absolute
+      top: 50%
+      left: 50%
+    &::after
+      transform: translateX(-50%) translateY(-50%) rotateZ(45deg)
+    &::before
+      transform: translateX(-50%) translateY(-50%) rotateZ(-45deg)

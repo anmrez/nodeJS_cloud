@@ -8,6 +8,9 @@ const contextmenuCopyFile = document.querySelector('#contextmenuCopyFile')
 const contextmenuDeleteFile = document.querySelector('#contextmenuDeleteFile')
 const managementForm = document.querySelector('#fileInteractionWindow')
 
+const btnCancel = document.querySelectorAll('#cancel')
+const btnCopyLicn = managementForm.querySelector('#copyLinc')
+
 let windowInnerWidth = window.innerWidth
 let windowInnerHeight = window.innerHeight
 
@@ -41,7 +44,7 @@ function contextmenuHide(){
   contextmenu.style.pointerEvents = 'none'
 }
 
-// базовый обработчик (новая папка и загрузка файлов)
+// базовый обработчик контекстного меню (новая папка и загрузка файлов)
 function contextmenuHandler() {
 
   // new folder
@@ -89,14 +92,33 @@ function fileInteractionWindowShow( newTitle, nameFile, additional){
   }
 
   // обрабатываем кнопку
-  const button = managementForm.querySelector('.FMF__btn').lastChild
-  if ( newTitle == 'Share' ) {
-    button.value = 'Copy linc'
-  } else {
-    button.value = 'Save'
-  }
+  const submit = managementForm.querySelector('#inputSubmit')
+  const copyLinc = managementForm.querySelector('#copyLinc')
 
-}
+  // если заголовок равен поделиться
+  if ( newTitle == 'Share' ) {
+
+    // скрываем кнопку отправки формы
+    submit.classList.add('none')
+    // плказываем кнопку копирования формы
+    copyLinc.classList.remove('none')
+    // делайм форму только для чтения
+    input.readOnly = true
+
+  } else {
+
+    submit.classList.remove('none')
+    copyLinc.classList.add('none')
+    input.readOnly = false
+
+    const status = managementForm.querySelector('#statusCopy')
+    status.classList.remove('err')
+    status.classList.remove('success')
+
+  } // END 'share'
+
+
+} // END fileInteractionWindowShow
 
 
 // === END function ===
@@ -119,7 +141,7 @@ document.addEventListener( "contextmenu", function(e) {
   // бфзовый обработчик (создание папки и загрузка фалов)
   contextmenuHandler()
   console.log(`______`);
-  console.log(e.target);
+  // console.log(e.target);
 
   // определяем ИД таргета (если не найдено то присваиваем 'NAN')
   let targID, targIDParr, targClass, targClassparent, nameFile
@@ -138,7 +160,7 @@ document.addEventListener( "contextmenu", function(e) {
     targChildNodes = 'undefined'
     nameFile = 'undefined'
   }
-  console.log( targChildNodes );
+  // console.log( targChildNodes );
 
   // узнаем позиционирование клика
   posX = e.clientX
@@ -184,24 +206,26 @@ document.addEventListener( "contextmenu", function(e) {
   // handler 'rename'
   contextmenuRenameFile.addEventListener('click', function(){
     fileInteractionWindowShow( 'Rename', nameFile, true )
-  })
+  }, { once: true })
+
 
   // handler 'download'
   contextmenuDownloadFile.addEventListener('click', function(){
     targChildNodes[0].click()
-  })
+  }, { once: true })
 
   // handler 'share'
   contextmenuShareFile.addEventListener('click', function(){
     fileInteractionWindowShow( 'Share', targChildNodes[2].value, false )
     // targChildNodes[2].value
-  })
+  }, { once: true })
 
 
   // handler 'delete'
   contextmenuDeleteFile.addEventListener('click', function(){
-    childNodes[3].click()
-  })
+    targChildNodes[3].click()
+  }, { once: true })
+
 
 }); // END addEventListener "contextmenu"
 
@@ -239,6 +263,60 @@ document.addEventListener( "mousedown", function(e) {
 
 
 }) // END addEventListener "mousedown"
+
+
+// доваляем прослушиватели на кнопки отмена
+btnCancel.forEach((item) => {
+  item.addEventListener('click', function(){
+    fileInteractionWindowHidden()
+  })
+});
+
+
+// добавляем прослушиватель на кнопку "копирование ссылки"
+
+btnCopyLicn.addEventListener('click', copyLincShare)
+btnCopyLicn.addEventListener('Touch', copyLincShare)
+
+
+
+function copyLincShare(){
+  const input = managementForm.querySelector('#newNameFile')
+  const status = managementForm.querySelector('#statusCopy')
+
+  // копирование ссылки в буфер обмена
+    if ( navigator.clipboard ){
+      navigator.clipboard.writeText( input.value )
+      .then(() => {
+        // текст сохранен в буффер
+        status.classList.remove('err')
+        status.classList.add('success')
+        pagelogs.innerHTML = input.value
+      })
+      .catch(err => {
+        // если ошибка
+        console.log('Something went wrong', err);
+        status.classList.remove('success')
+        status.classList.add('err')
+        pagelogs.innerHTML = err
+      });
+
+    } else {
+      // выделить текст
+
+      try {
+        // скопировать выделенный текст в буффер обмена
+        document.execCommand('copy')
+        status.classList.remove('err')
+        status.classList.add('success')
+      } catch (e) {
+        console.log(e);
+        status.classList.remove('success')
+        status.classList.add('err')
+      }
+
+    } // END if navigator.clipboard
+  } // END copyLincShare()
 
 
 
