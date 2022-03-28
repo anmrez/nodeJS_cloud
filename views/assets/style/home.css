@@ -89,6 +89,7 @@ html[data-theme="light+purple"] {
 }
 #contextmenu .menu__icons {
   margin-right: 10px;
+  pointer-events: none;
 }
 #contextmenu .menu__icons svg {
   width: 35px;
@@ -111,6 +112,7 @@ html[data-theme="light+purple"] {
   background: var(--background_in_hover);
 }
 #contextmenu ul.outside #contextmenuRenameFile,
+#contextmenu ul.outside #contextmenuMoveFile,
 #contextmenu ul.outside #contextmenuDownloadFile,
 #contextmenu ul.outside #contextmenuShareFile,
 #contextmenu ul.outside #contextmenuCopyFile,
@@ -349,7 +351,8 @@ html[data-theme="light+purple"] {
 .share__icon,
 .rename__icon,
 .copy__icon,
-.folder__icon {
+.folder__icon,
+.move__icon {
   width: 50px;
   stroke: var(--color);
   transition: 0.3s;
@@ -359,7 +362,8 @@ html[data-theme="light+purple"] {
 .share__icon #folderIconPlus,
 .rename__icon #folderIconPlus,
 .copy__icon #folderIconPlus,
-.folder__icon #folderIconPlus {
+.folder__icon #folderIconPlus,
+.move__icon #folderIconPlus {
   display: none;
 }
 
@@ -469,10 +473,10 @@ html[data-theme="light+purple"] {
   display: block;
 }
 
-.FMF__header h4 {
+.FIW__header h4 {
   color: var(--color);
 }
-.FMF__header span {
+.FIW__header span {
   position: relative;
   width: 30px;
   height: 30px;
@@ -480,10 +484,10 @@ html[data-theme="light+purple"] {
   transform: rotateZ(45deg);
   border-radius: 1em;
 }
-.FMF__header span:hover::after, .FMF__header span:hover::before {
+.FIW__header span:hover::after, .FIW__header span:hover::before {
   background: var(--background_in_hover);
 }
-.FMF__header span::after, .FMF__header span::before {
+.FIW__header span::after, .FIW__header span::before {
   content: "";
   display: block;
   width: 20px;
@@ -496,11 +500,11 @@ html[data-theme="light+purple"] {
   top: 44%;
   border-radius: 0.2em;
 }
-.FMF__header span::before {
+.FIW__header span::before {
   transform: rotateZ(90deg);
 }
 
-.FMF__content input {
+.FIW__content input {
   width: 80%;
   height: 30px;
   border-radius: 0.2em;
@@ -512,24 +516,45 @@ html[data-theme="light+purple"] {
   font-family: Montserrat;
   font-weight: 300;
 }
-.FMF__content input:focus {
+.FIW__content input:focus {
   border: 1px solid var(--color2);
 }
 
-.FMF__btn {
+#FIWFolder {
+  width: 80%;
+}
+#FIWFolder li {
+  cursor: pointer;
+  height: 35px;
+  list-style-type: none;
+  border-radius: 0.2em;
+}
+#FIWFolder li:hover {
+  background: var(--background_in_hover);
+}
+#FIWFolder li .triangle {
+  border: 5px solid transparent;
+  border-left: 5px solid var(--color);
+  transition: 0.2s;
+  transform-origin: 2px 5px;
+}
+#FIWFolder li span {
+  pointer-events: none;
+}
+
+.FIW__btn {
   display: flex;
   justify-content: right;
 }
-.FMF__btn a {
+.FIW__btn a {
   margin-right: 10px;
 }
-.FMF__btn input {
+.FIW__btn input {
   background: var(--background);
   color: var(--color);
 }
 
-.view__files,
-.view__settings {
+.view__files {
   height: 61px;
   display: flex;
   justify-content: space-between;
@@ -540,21 +565,17 @@ html[data-theme="light+purple"] {
   border-radius: 0.4em;
   position: relative;
 }
-.view__files span,
-.view__settings span {
+.view__files span {
   cursor: default;
 }
-.view__files .file__name,
-.view__settings .file__name {
+.view__files .file__name {
   pointer-events: none;
 }
-.view__files:hover,
-.view__settings:hover {
+.view__files:hover {
   background: var(--background_in_hover);
   border-radius: 0.4em;
 }
-.view__files .file__size,
-.view__settings .file__size {
+.view__files .file__size {
   pointer-events: none;
   position: absolute;
   right: 3%;

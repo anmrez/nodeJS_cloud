@@ -23,32 +23,18 @@ module.exports = async function (req, res) {
         file = path.join( appDir, 'userStorage', userID, req.query.file )
       }
 
-      // // if the user is in the system and downloads the file from the link
-      // if (  file.split('?').length == 2 ) {
-      //   // download file
-      //   res.download(file.split('?')[0]); // send file
-      // } else {
-      //   // download file
-      //   res.download(file); // send file
-      // }
-      // download file
       res.download(file); // send file
 
       // try #2
     } catch (e) {
 
-
-      // arr = req.query.file.split('?')
-      // req.query.id = arr[1].split('=')[1]
-      // req.query.file = arr[0]
-      // find path in user file
       if (req.query.folder) {
         file = path.join(appDir, 'userStorage', req.query.id, req.query.folder, req.query.file)
       } else {
         file = path.join(appDir, 'userStorage', req.query.id, req.query.file)
       }
       // download file
-      res.download(file); // send file
+      // res.download(file); // send file
       res.download(file, function(error){
         if (error) {
           res.status(404);
@@ -57,9 +43,11 @@ module.exports = async function (req, res) {
             codeError: 404,
             textError: `файл не найден`
           });
+        } else {
+          res.redirect('/')
         }
 
-      })
+      }) // END res.file
 
     } // END try/catch #2
 

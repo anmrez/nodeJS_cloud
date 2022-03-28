@@ -21,46 +21,63 @@ block content
               p sorting:
                 span(id="sortName" class="active__up") name
                 span(id="sortSize" class="") size
-          // рендер папок
+                
+                
+          //- рендер папок
           each val in userFiles
             if val.isFolder
               li(class="view__files")
                 span(class="file__name")= val.name
-                a(href="?folder=" + val.name class="folder__link")
-          // рендер файлов
-          each val in userFiles
-            if val.isFolder == false
-              li(class="view__files")
-                span(class="file__name")= val.name
-                span(class="file__size")= val.size
-                div(class="file__control df_ja")
+                a(href="?folder=" + val.name class="folder__link" data-nameFile= val.name data-type="folder" )
+                ul(class="file__control df_ja")
                   if locationInFolder == false
                     //- button 'download'
-                    a(href= 'download' + '?file=' + val.name class="df_ja") 
+                    li(href= 'download' + '?folder=' + val.name class="df_ja") 
                       include assets/icons/download.svg
                     //- button 'share'
-                    a(class="df_ja shareButton") 
+                    li(class="df_ja shareButton") 
+                      include assets/icons/share_v2.svg
+                      span(class="link__copied") Link copied
+                    input(class="share__link" value='download' + '?folder='+ val.name + '&id=' + userID READONLY)
+                    //- button 'delete'
+                    li(href= 'delete-file' + '?folder=' + val.name class="df_ja ") 
+                      include assets/icons/bincan.svg
+          //- рендер файлов
+          each val in userFiles
+            if val.isFolder == false
+              li(class="view__files" data-nameFile= val.name data-type="file")
+                span(class="file__name")= val.name
+                span(class="file__size")= val.size
+                ul(class="file__control df_ja")
+                  if locationInFolder == false
+                    //- button 'download'
+                    li(href= 'download' + '?file=' + val.name class="df_ja") 
+                      include assets/icons/download.svg
+                    //- button 'share'
+                    li(class="df_ja shareButton") 
                       include assets/icons/share_v2.svg
                       span(class="link__copied") Link copied
                     input(class="share__link" value='download' + '?file='+ val.name + '&id=' + userID READONLY)
                     //- button 'delete'
-                    a(href= 'delete-file' + '?file=' + val.name class="df_ja ") 
+                    li(href= 'delete-file' + '?file=' + val.name class="df_ja ") 
                       include assets/icons/bincan.svg
-
+                      
+                      
+                  //- if locationInFolder == true
                   else
                     //- button 'download'
-                    a(href= 'download' + '?file=' + val.name + '&folder=' + folder class="df_ja") 
+                    li(href= 'download' + '?file=' + val.name + '&folder=' + folder class="df_ja") 
                       include assets/icons/download.svg
                       
                     //- button 'share'
-                    a(class="df_ja shareButton") 
+                    li(class="df_ja shareButton") 
                       include assets/icons/share_v2.svg
                       span(class="link__copied") Link copied
                     input(class="share__link" value='download' + '?file='+ val.name + '&id=' + userID + '&folder=' + folder  READONLY)
                     
                     //- include assets/icons/share.svg
                     //- button 'delete'
-                    a(href= 'delete-file' + '?file=' + val.name + '&folder=' + folder  class="df_ja ") 
+                    li(href= 'delete-file' + '?file=' + val.name + '&folder=' + folder  class="df_ja ") 
                       include assets/icons/bincan.svg
                       
                       
@@ -86,19 +103,29 @@ block content
   include includes/context__menu.pug
       
       
-  form(id="fileInteractionWindow" class="" action="/" method="post" data-item='FMF')
-    section(class="df_a just_bet FMF__header" data-item='FMF')
-      h4(id="FMFTitle") title
+  form(id="fileInteractionWindow" class="active" action="/" method="post" data-item='FIW')
+    section(class="df_a just_bet FIW__header" data-item='FIW')
+      h4(id="FIWTitle") title
       span(id="cancel")
-    section(class="FMF__content df_ja mt_20" data-item='FMF')
+    section(class="FIW__content df_ja mt_20" data-item='FIW')
+      ul(id="FIWFolder" class='none mb_10')
+        each val in userFiles
+          if val.isFolder
+            li(class="df_a" data-folder= val.name )
+              span(class="triangle ml_5")
+              span(class="ml_5")= val.name
       input(id="nameOperation"  name="operation" type="hidden" value="")
       input(id="newNameFile"  name="newName" type="text" value="name file" autocomplete='off')
       span(id="statusCopy" class="ml_10 df_ja")
       input(id="oldNameFile"  name="oldName" type="hidden" value="")
-    section(class="FMF__btn mt_20" data-item='FMF')
+    section(class="FIW__btn mt_20" data-item='FIW')
       a(id="cancel" class="btn" ) Cancel
       input(id="inputSubmit" class="btn" type="submit"  value="Save")
       a(id="copyLinc" class="btn none" ) Copy linc
+      
+      
+  p(id='pageLogs')
+  
           
   script(type="text/javascript" src="../views/assets/js/drag.js")
   script(type="text/javascript" src="../views/assets/js/share.js")
@@ -106,3 +133,5 @@ block content
   
   script(type="text/javascript" src="../views/assets/js/contextmenu.js")
   script(type="text/javascript" src="../views/assets/js/animation.js")
+  script(type="text/javascript" src="../views/assets/js/request.js")
+  

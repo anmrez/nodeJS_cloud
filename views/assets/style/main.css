@@ -203,6 +203,10 @@ header .btn__header {
   display: none;
 }
 
+.ml_5 {
+  margin-left: 5px;
+}
+
 .ml_10 {
   margin-left: 10px;
 }
@@ -229,6 +233,10 @@ header .btn__header {
 
 .mt_50 {
   margin-top: 50px;
+}
+
+.mb_10 {
+  margin-bottom: 10px;
 }
 
 .mb_50 {

@@ -1,0 +1,21 @@
+
+<svg version="1.2" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 512 512" xml:space="preserve" class="move__icon">
+
+
+<g id="move__icon__file">
+	<path fill="none" stroke-width="18" stroke-linecap="round" stroke-miterlimit="10" d="M154.5,141.68v228.63
+		c0,4.66,3.78,8.43,8.43,8.43h186.13c4.66,0,8.43-3.78,8.43-8.43V202.24c0-2.24-0.89-4.38-2.47-5.96l-60.56-60.56
+		c-1.58-1.58-3.73-2.47-5.96-2.47H162.93C158.28,133.25,154.5,137.03,154.5,141.68z"/>
+	<path fill="none" stroke-width="18" stroke-linecap="round" stroke-miterlimit="10" d="M284.59,133.25v70.15
+		c0,5.91,4.79,10.7,10.7,10.7h62.22"/>
+</g>
+
+<g id="move__icon__arrow">
+	<line fill="none" stroke-width="18" stroke-linecap="round" stroke-miterlimit="10" x1="191" y1="284.74" x2="321" y2="284.74"/>
+	<polyline fill="none" stroke-width="18" stroke-linecap="round" stroke-miterlimit="10" points="285.64,249.38
+		321,284.74 285.64,320.09 		"/>
+</g>
+
+
+</svg>

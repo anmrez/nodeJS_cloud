@@ -1,4 +1,4 @@
-// FMF - file managment form
+// FIW - file managment form
 #fileInteractionWindow
   border: 2px solid var(--background_in_hover)
   border-radius: 0.2em
@@ -14,7 +14,7 @@
     display: block
 
 
-.FMF__header
+.FIW__header
   h4
     color: var(--color)
   span
@@ -44,7 +44,7 @@
     &::before
       transform: rotateZ(90deg)
 
-.FMF__content
+.FIW__content
   input
     width: 80%
     height: 30px
@@ -59,8 +59,26 @@
     &:focus
       border: 1px solid var(--color2)
 
+#FIWFolder
+  width: 80%
+  li
+    cursor: pointer
+    height: 35px
+    list-style-type: none
+    border-radius: 0.2em
+    &:hover
+      background: var(--background_in_hover)
+    .triangle
+      border: 5px solid transparent
+      border-left: 5px solid var(--color)
+      transition: 0.2s
+      transform-origin: 2px 5px
+      // transform: rotateZ(90deg)
+    span
+      pointer-events: none
 
-.FMF__btn
+
+.FIW__btn
   display: flex
   justify-content: right
   a

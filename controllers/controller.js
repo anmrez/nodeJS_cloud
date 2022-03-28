@@ -2,6 +2,7 @@
 
 const getHome = require(path.join('..', 'controllers', 'getHome.js')),
   postHome = require(path.join('..', 'controllers', 'postHome.js')),
+  postUser = require(path.join('..', 'controllers', 'postUser.js')),
 
   // files
   postUpload = require(path.join('..', 'controllers', 'files', 'postUpload.js')),
@@ -29,6 +30,7 @@ const getHome = require(path.join('..', 'controllers', 'getHome.js')),
 // home
 exports.getHome = getHome
 exports.postHome = postHome
+exports.postUser = postUser
 
 // files
 exports.postUpload = postUpload
