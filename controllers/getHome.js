@@ -163,7 +163,8 @@ module.exports = function (req, res) {
 
             // delete cookie
             res.clearCookie("tokenkey");
-            res.redirect('/login?session=undefined')
+            res.redirect('/login')
+            // res.redirect('/login?session=undefined')
           }
         } // END if (err)
 

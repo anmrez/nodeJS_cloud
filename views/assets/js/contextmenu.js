@@ -256,6 +256,34 @@ function copyLincShare () {
 } // END copyLincShare()
 
 
+// обрабатываем вложенности папок в ферме
+function handlerFolderFIW () {
+  const folder = managementForm.querySelector('#FIWFolder')
+  const folderPath = user.folder
+  const mainFolder = folder.childNodes[0]
+  console.log(user);
+  console.log(mainFolder);
+
+  let j = 0
+  let length = 1
+  let newFolder
+  for (var i = 0; i < folderPath.length; i++) {
+    // console.log(`i: ${i}; j:${j}`);
+    // console.log( folderPath[i].length );
+    // console.log( length );
+    if ( folderPath[i].length == length ) {
+      newFolder = mainFolder.cloneNode(true)
+      newFolder.innerHTML = folderPath[i][j]
+      newFolder.dataset.folder = folderPath[i]
+      newFolder.dataset.link = '/' + folderPath[i]
+      newFolder.dataset.length = length
+      folder.append(newFolder)
+    }
+
+  }
+  // user[i][j]
+
+} // END handlerFolderFIW()
 
 // === END function ====
 // =====================

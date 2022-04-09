@@ -20,8 +20,12 @@ module.exports = async function (req, res) {
     })
 
   } catch (e) {
+    let session = req.query.session;
+    console.log(req.query.error);
+
     role = false
     res.render('login',{
+      session: session,
       users,
       errors: req.query.error,
       role: role,

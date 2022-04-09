@@ -523,22 +523,33 @@ html[data-theme="light+purple"] {
 #FIWFolder {
   width: 80%;
 }
-#FIWFolder li {
+#FIWFolder div {
+  font-size: 24px;
+  font-weight: 300;
   cursor: pointer;
   height: 35px;
   list-style-type: none;
   border-radius: 0.2em;
+  padding-left: 5px;
 }
-#FIWFolder li:hover {
+#FIWFolder div.active::before {
+  content: "";
+  display: block;
+  width: 7px;
+  height: 15px;
+  border-bottom: 2px solid #1e5719aa;
+  border-right: 2px solid #1e5719aa;
+}
+#FIWFolder div:hover {
   background: var(--background_in_hover);
 }
-#FIWFolder li .triangle {
+#FIWFolder div::before {
+  content: "";
+  display: block;
   border: 5px solid transparent;
   border-left: 5px solid var(--color);
-  transition: 0.2s;
-  transform-origin: 2px 5px;
 }
-#FIWFolder li span {
+#FIWFolder div span {
   pointer-events: none;
 }
 

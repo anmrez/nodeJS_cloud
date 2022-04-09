@@ -6,7 +6,6 @@ const express = require('express'),
   fs = require('fs'),
   path = require('path'),
   favicon = require('serve-favicon'),
-  // exphbs = require('express-handlebars'),
   bodyParser = require('body-parser'),
   routes = require('./lib/routing.js'),
   mongoose = require('mongoose'),
@@ -40,12 +39,7 @@ app.use(routes)
 
 
 
-// security
-// app.use(express.urlencoded({ limit: "1kb", extended: true }));
-// app.use(express.json({ limit: "1kb" }));
-// app.use(express.multipart({ limit:"1mb" }));
-
-
+// stating server
 async function start(){
   try {
     await mongoose.connect(config.url, {

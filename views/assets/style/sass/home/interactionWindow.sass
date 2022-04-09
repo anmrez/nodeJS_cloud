@@ -61,19 +61,32 @@
 
 #FIWFolder
   width: 80%
-  li
+  ul
+    // &:hover
+    //   background: var(--background_in_hover)
+  div
+    font-size: 24px
+    font-weight: 300
     cursor: pointer
     height: 35px
     list-style-type: none
     border-radius: 0.2em
+    padding-left: 5px
+    &.active
+      &::before
+        content: ''
+        display: block
+        width: 7px
+        height: 15px
+        border-bottom: 2px solid $green_Opacity
+        border-right: 2px solid $green_Opacity
     &:hover
       background: var(--background_in_hover)
-    .triangle
+    &::before
+      content: ''
+      display: block
       border: 5px solid transparent
       border-left: 5px solid var(--color)
-      transition: 0.2s
-      transform-origin: 2px 5px
-      // transform: rotateZ(90deg)
     span
       pointer-events: none
 

@@ -22,11 +22,11 @@ module.exports = async function (req, res) {
       // проверка паролей на совпадение
       if (!bcrypt.compareSync(req.body.password, checkUser[0].password)) {
         // `пароли не совпадают`
-        res.redirect("/login/?error=2")
+        res.redirect("/login/?error=incorrectPassword")
       } else {
         // `пароли совпадают`
         const token = generateToken(checkUser[0]._id, checkUser[0].name, checkUser[0].role)
-        
+
         // создание куки с токеном (длительность зависит от чекбокса)
         if (req.body.rememberUser) {
           sendCookie(req, res, 'tokenkey', token, true)
@@ -38,7 +38,7 @@ module.exports = async function (req, res) {
 
     // если пользователь не найден
     } else {
-      res.redirect("/login/?error=1")
+      res.redirect("/login/?error=userUndefined")
       console.log(`пользователь не найден`);
     } // if (checkUser.length > 0)
 

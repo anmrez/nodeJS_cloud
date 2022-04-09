@@ -1,5 +1,6 @@
 extends layout/layout__login.pug
 
+
 block content
   section(class="block")
     section(class="container")
@@ -10,14 +11,29 @@ block content
             a(href="/") Home
         else
         //- error
-          if errors
+          if errors == 'userundefined'
             section(class="df_ja err")
               span(class="df_ja")
                 p !
               p Error: user not found
-              p #{textError}
+              
+              
           //- END errors
+          
+        // check session
+        include mixins/error.pug
+        if session == 'expired'
+          +err( 'session ' + session )
+        if session == 'undefined'
+          +err( 'session ' + session )
+        if errors == 'userUndefined'
+          +err( 'Error: User is not found' )
+        if errors == 'incorrectPassword'
+          +err( 'Error: incorrect password' )
+            
+            
         h3 Login
+                    
           //- form
           form(id="formLogin" class="df_ja df_coll" action="/login" method="post")
           

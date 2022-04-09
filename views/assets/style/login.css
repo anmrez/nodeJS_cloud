@@ -282,6 +282,18 @@ html[data-theme="light+purple"] {
   display: flex;
 }
 
+.notice span {
+  background: #cc0000;
+  width: 20px;
+  height: 20px;
+  border-radius: 1em;
+  margin-right: 5px;
+}
+.notice span p {
+  color: var(--color);
+  font-weight: 400;
+}
+
 #sectionInputCheckbox {
   width: 100%;
   position: relative;

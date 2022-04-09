@@ -109,8 +109,11 @@ block content
       span(id="cancel")
     section(class="FIW__content df_ja mt_20" data-item='FIW')
       ul(id="FIWFolder" class='none mb_10')
-        each val in userFiles
-          if val.isFolder
+        div(class="df_a" data-folder="Main" data-link="/" data-length="0") Main folder
+
+        //- ul(class="df_a " data-folder= MainFolder data-link="/" ) Main folder
+        //- each val in userFiles
+        //-   if val.isFolder
             li(class="df_a" data-folder= val.name )
               span(class="triangle ml_5")
               span(class="ml_5")= val.name

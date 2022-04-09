@@ -1,17 +1,15 @@
 
 const xhr = new XMLHttpRequest();
+
+// отправляем POST запрос на '/user'
 xhr.open('POST', 'user', false);
 xhr.send();
 
+// получаем JSON с путями папок и ID
 let user = JSON.parse(xhr.responseText)
 
-// user.folder.split()
 for (var i = 0; i < user.folder.length; i++) {
-  try {
-    user.folder[i] = user.folder[i].split('\\')
-  } catch (e) {
-    user.folder[i] = user.folder[i].split('//')
-  }
+  // убираем первый элкмент (пустой)
   user.folder[i].splice(0, 1)
 }
-console.log(user.folder);
+// console.log(user.folder);

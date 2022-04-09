@@ -40,8 +40,13 @@ module.exports = function (req, res) {
         // если это являеться папкой
         if ( stats.isDirectory() ) {
 
+          // уднаем от корня путь до папки
+          let temp = path.join( folder, folderName[i] )
+          // убираем разделители в адресе
+          temp = temp.split( path.sep )
+
           // добавить в object пути папок
-          object.folder[ object.folder.length ] = path.join( folder, folderName[i] )
+          object.folder[ object.folder.length ] = temp
 
           // console.log( folderName[i] );
           scanningFolders( path.join( folder, folderName[i] ) )
