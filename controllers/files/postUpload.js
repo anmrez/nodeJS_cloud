@@ -12,11 +12,13 @@ module.exports = async function (req, res) {
   consoleLog(req, res, loggingConsole)
 
   userID = jwt.verify(req.cookies.tokenkey, secret).id
-
+  console.log(req.query);
 
   try {
-    // путь к папке
-    pathFiles = path.join(appDir, 'userStorage', userID)
+
+
+    // путь к папке пользователя
+    pathFiles = path.join( appDir, 'userStorage', userID )
     // создание папки если она отстуствует
     await fs.promises.mkdir(pathFiles, { recursive: true })
 
@@ -25,21 +27,47 @@ module.exports = async function (req, res) {
     let files = req.files.uploadFiles
     // запись файлов на сервер
     if (files.length == null) {
-      // создание пути
-      pathFiles = path.join(appDir, 'userStorage', userID, files.name)
+
+      if ( req.query.path != null ){
+        // создание пути
+        pathFiles = path.join(appDir, 'userStorage', userID, req.query.path, files.name)
+      } else {
+        pathFiles = path.join(appDir, 'userStorage', userID, files.name)
+      }
+
       // сохранение
       files.mv(pathFiles)
+
     } else {
+
+      // пройтись по списку файлов и записать их
       for (var i = 0; i < files.length; i++) {
-        // создание пути
-        pathFiles = path.join(appDir, 'userStorage', userID, files[i].name)
+
+        if ( req.query.path != null ){
+          // создание пути
+          pathFiles = path.join(appDir, 'userStorage', userID, req.query.path, files.name)
+        } else {
+          pathFiles = path.join(appDir, 'userStorage', userID, files.name)
+        }
+
+
         // сохранение
         files[i].mv(pathFiles)
       } // for
     } // if
 
 
-    res.redirect('/')
+    // если находимся в папке
+    if ( req.query.path != null ) {
+      // перенаправляем туда откуда был сделан запрос
+      let href = '/?path=' + req.query.path
+      res.redirect(href)
+
+    } else {
+      // иначе редирект домой
+      res.redirect('/')
+    }
+
   } catch (e) {
     console.log(`=======`);
     console.log(`error:`);

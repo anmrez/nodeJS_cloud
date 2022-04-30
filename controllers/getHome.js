@@ -9,10 +9,12 @@ const jwt = require('jsonwebtoken'),
 
 module.exports = function (req, res) {
   let userFiles = []
-  let presenceOfFiles,  locationInFolder, folder
+  let presenceOfFiles,  locationInFolder,
+  pathFolder = ''
+  let units = ` bt` // единыца измерения
+  let folders = []
+  let userFileSize = [] // массив с размерами файлов
   consoleLog(req, res, loggingConsole)
-
-  console.log( req.query );
 
 
   // try/catch #1
@@ -22,16 +24,25 @@ module.exports = function (req, res) {
 
     // get user ID
     userID = jwt.verify(req.cookies.tokenkey, secret).id
-    console.log(userID);
+    // console.log(userID);
 
 
     // find path in user folder
-    if (req.query.folder) {
+    if (req.query.path) {
       // если находимся в подкаталоге
-      pathFiles = path.join(  appDir, 'userStorage', userID, req.query.folder )
-      console.log(pathFiles);
+
+      // добавляем разделитель после папок в пути
+      req.query.path+= `/`
+
+      // путь к файлу/папке
+      pathFiles = path.join(  appDir, 'userStorage', userID, req.query.path )
+      // console.log(pathFiles);
+
+      // находия в папке
       locationInFolder = true
-      folder = req.query.folder
+
+      // путь папок
+      pathFolder = req.query.path
 
       // иначе каталог пользователя
     } else {
@@ -47,53 +58,19 @@ module.exports = function (req, res) {
         console.log(`userFileName:`);
         console.log(userFileName);
 
-        // пройтись по массиву с названиями и узнать обьем каждого файла
-        let folders = []
-        let userFileSize = []
-        let units
-        for (var i = 0; i < userFileName.length; i++) {
-          // stats = fs.statSync(path.join(appDir, 'userStorage', userID, userFileName[i]))
-          stats = fs.statSync( path.join( pathFiles, userFileName[i] ) )
+        // let folders = []
+        // let userFileSize = []
+        // let units
 
-          // проверяем является ли это папкой
-          folders[i] = stats.isDirectory()
-
-          fileSizeInBytes = stats.size;
-
-          // записаем кол-во байтов
-          userFileSize[i] = fileSizeInBytes
-
-          // определяем единизу измерения размера файла
-          units = ` bt`
-          if (fileSizeInBytes / 1024 > 1) {
-            userFileSize[i] = fileSizeInBytes / 1024
-            units = ` kb`
-
-            if (fileSizeInBytes / (1024 * 1024) > 1) {
-              userFileSize[i] = fileSizeInBytes / (1024 * 1024)
-              units = ` mb`
-
-              if (fileSizeInBytes / (1024 * 1024 * 1024) > 1) {
-                userFileSize[i] = fileSizeInBytes / (1024 * 1024 * 1024)
-                units = ` gb`
-              }
-            }
-          }
-
-          // проваряем чтобы небыло нуля в конце ( != 1.0)
-          if (userFileSize[i].toFixed(1).split('.')[1] != 0) {
-            userFileSize[i] = userFileSize[i].toFixed(1)
-          }
-          // add units in size
-          userFileSize[i] = userFileSize[i] + units
-        } // END for
+        // узнать обьем каждого файла и его тип
+        fileOptions()
 
 
-        // если в папке пользователя найдены файлы
+        // если в папке пользователя есть файлы
         if (  userFileName.length > 0 ) {
           // обнуляем массив (при удалении файла последний дюпается)
           userFiles = []
-          // обьединить все обьекты в массиву
+          // обьединить все параметры в обьект, а его в массив
           for (var i = 0; i < userFileName.length; i++) {
             userFiles[i] = {
               name: userFileName[i],
@@ -124,7 +101,6 @@ module.exports = function (req, res) {
 
       } // END try/catch #2
 
-
     res.render('home', {
       userName: jwt.verify(req.cookies.tokenkey, secret).name,
       role: role,
@@ -133,51 +109,121 @@ module.exports = function (req, res) {
       userID: userID,
       presenceOfFiles: presenceOfFiles,
       locationInFolder: locationInFolder,
-      folder: folder,
+      path: pathFolder,
     }) // render 'home'
 
 
   // try/catch #1
   } catch (e) {
 
+    // определяем ошибку
+    jwt.verify(req.cookies.tokenkey, secret, function(err, decoded) {
+      if (err) {
 
-    if (loggingConsole) {
-      // console.log(e);
+        // если сессия устарела
+        // jwt expired
+        if (err.message == 'jwt expired') {
+          console.log(`jwt err:`);
+          console.log(err);
 
-      // определяем ошибку
-      jwt.verify(req.cookies.tokenkey, secret, function(err, decoded) {
-        if (err) {
+          // delete cookie
+          res.clearCookie("tokenkey");
+          res.redirect('/login?session=expired')
+        } else {
+          console.log(`user undefiend in DB`);
+          console.log(`redirect in "login"`);
 
-          // если сессия устарела
-          // jwt expired
-          if (err.message == 'jwt expired') {
-            console.log(`jwt err:`);
-            console.log(err);
+          // delete cookie
+          res.clearCookie("tokenkey");
+          res.redirect('/login')
+          // res.redirect('/login?session=undefined')
+        }
+      } // END if (err)
 
-            // delete cookie
-            res.clearCookie("tokenkey");
-            res.redirect('/login?session=expired')
-          } else {
-            console.log(`user undefiend in DB`);
-            console.log(`redirect in "login"`);
-
-            // delete cookie
-            res.clearCookie("tokenkey");
-            res.redirect('/login')
-            // res.redirect('/login?session=undefined')
-          }
-        } // END if (err)
-
-      }); // jwt
-
-    } // if
-
-    // // delete cookie
-    // res.clearCookie("tokenkey");
-    // res.redirect('/login')
-
-
+    }); // jwt
 
 
   } // END try/catch #1
+
+
+
+  function fileOptions (){
+
+    // функция для нахождения обьема, ед. измерения, и типа файла( папка/файл )
+    for (var i = 0; i < userFileName.length; i++) {
+
+      stats = fs.statSync( path.join( pathFiles, userFileName[i] ) )
+
+      // проверяем является ли это папкой
+      folders[i] = stats.isDirectory()
+
+      // узнаем обьем файла (в байтах)
+      fileSizeInBytes = stats.size;
+
+      // записаем кол-во байтов
+      userFileSize[i] = fileSizeInBytes
+
+      // определяем единизу измерения файла
+      units = definitionUnits( fileSizeInBytes, userFileSize[i] )
+
+      // определяем размер файла ( ЕД )
+      userFileSize[i] = definitionSize ( units, fileSizeInBytes )
+
+
+      // проверяем чтобы небыло нуля в конце ( != 1.0)
+      if (userFileSize[i].toFixed(1).split('.')[1] != 0) {
+        userFileSize[i] = userFileSize[i].toFixed(1)
+      }
+      // add units in size
+      userFileSize[i] = userFileSize[i] + units
+    } // END for
+
+  } // END
+
+
+  function definitionUnits( byte ) {
+    // определяет единицу измерения
+    if (byte / (1024 * 1024 * 1024) > 1) {
+      return ` gb`
+    } else {
+
+      if (byte / (1024 * 1024) > 1) {
+        return ` mb`
+      } else {
+
+        if (byte / 1024 > 1) {
+          return ` kb`
+        } else {
+
+          return ` bt`
+
+        } // kb
+
+      } // mb
+
+    } // gb
+
+  } // END definitionUnits()
+
+
+  function definitionSize ( unit, byte ) {
+    // определяет обьем в соотвествии с единицой измерения
+    if ( unit == ` kb` ) {
+      return byte / 1024
+    }
+
+    if ( unit == ` mb` ) {
+      return byte / 1024 / 1024
+    }
+
+    if ( unit == ` gb` ) {
+      return byte / 1024 / 1024 / 1024
+    } else {
+      return byte
+    }
+
+  } // END definitionSize()
+
+
+
 } // module

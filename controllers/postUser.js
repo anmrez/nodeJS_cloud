@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken'),
   consoleLog = require('../lib/loggingConsole.js')
 
 module.exports = function (req, res) {
-  consoleLog(req, res, loggingConsole)
+  // consoleLog(req, res, loggingConsole)
 
   // var xhr = new XMLHttpRequest();
   // xhr.open('POST', 'user', false);

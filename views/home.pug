@@ -13,22 +13,28 @@ block content
     section(class="container")
       section(class="files")
         //- если есть фалы
-        if presenceOfFiles
-          //- отображение шапки
-          ul(id="files" class="header__files mt_30")
-            div(class="df pasteFiles")
-              h4 Files
-              p sorting:
-                span(id="sortName" class="active__up") name
-                span(id="sortSize" class="") size
-                
-                
+        //- if presenceOfFiles
+        //- отображение шапки
+        ul(id="files" class="header__files mt_30")
+          div(class="df pasteFiles")
+            h4 Files
+            p sorting:
+              span(id="sortName" class="active__up") name
+              span(id="sortSize" class="") size
+        
+        // отображение кнопки назад (если находимся в папке)
+        if locationInFolder
+          section(class="mt_10 mb_10")
+            a(id="backFolder" class="") #{path}
+              
+              
+        if presenceOfFiles        
           //- рендер папок
           each val in userFiles
             if val.isFolder
               li(class="view__files")
                 span(class="file__name")= val.name
-                a(href="?folder=" + val.name class="folder__link" data-nameFile= val.name data-type="folder" )
+                a(href="?path=" + path + val.name class="folder__link" data-nameFile= val.name data-type="folder" )
                 ul(class="file__control df_ja")
                   if locationInFolder == false
                     //- button 'download'
@@ -66,75 +72,63 @@ block content
                   //- if locationInFolder == true
                   else
                     //- button 'download'
-                    li(href= 'download' + '?file=' + val.name + '&folder=' + folder class="df_ja") 
+                    li(href= 'download' + '?file=' + val.name + '&path=' + path class="df_ja") 
                       include assets/icons/download.svg
                       
                     //- button 'share'
                     li(class="df_ja shareButton") 
                       include assets/icons/share_v2.svg
                       span(class="link__copied") Link copied
-                    input(class="share__link" value='download' + '?file='+ val.name + '&id=' + userID + '&folder=' + folder  READONLY)
+                    input(class="share__link" value='download' + '?file='+ val.name + '&id=' + userID + '&path=' + path  READONLY)
                     
                     //- include assets/icons/share.svg
                     //- button 'delete'
-                    li(href= 'delete-file' + '?file=' + val.name + '&folder=' + folder  class="df_ja ") 
+                    li(href= 'delete-file' + '?file=' + val.name + '&path=' + path  class="df_ja ") 
                       include assets/icons/bincan.svg
                       
                       
           //- END each
         //-  если нет файлов
         else 
-          p you don't have any files uploaded
+          p(class="df_ja mt_20") you don't have any files uploaded
           
         //- кнопка с загрузкой
-        section(class="df_ja mt_20")
+        section(class="df_ja mt_20" id="menuChoose")
           div(class="btn df_ja" id="btnUpload") choose file 
             include assets/icons/download.svg
-            //- input(id="input_files" class="input__files" form="formFiles" type="file" name="uploadFiles" value="choose file" multiple)
           p(class="ml_10") or drag file 
-          //- input(type="submit" form="formFiles" value="submit" id="buttonForm")
   
   section(class="block" id="formDrag")
     section(class="container")
-      form(id="formFiles" class="" action="/upload" method="post" enctype="multipart/form-data")
-        input(id="input_files" type="file" name="uploadFiles" value="" multiple)
-        input(type="submit" value="submit" id="buttonForm")
+      // если находимся в подпапке
+      if locationInFolder
+        form(id="formFiles" class="" action="/upload?path=" + path method="post" enctype="multipart/form-data")
+          input(id="input_files" type="file" name="uploadFiles" value="" multiple)
+          input(type="submit" value="submit" id="buttonForm")
+      else 
+        form(id="formFiles" class="" action="/upload" + path method="post" enctype="multipart/form-data")
+          input(id="input_files" type="file" name="uploadFiles" value="" multiple)
+          input(type="submit" value="submit" id="buttonForm")
           
   include includes/context__menu.pug
+  include includes/FIW.pug
       
       
-  form(id="fileInteractionWindow" class="active" action="/" method="post" data-item='FIW')
-    section(class="df_a just_bet FIW__header" data-item='FIW')
-      h4(id="FIWTitle") title
-      span(id="cancel")
-    section(class="FIW__content df_ja mt_20" data-item='FIW')
-      ul(id="FIWFolder" class='none mb_10')
-        div(class="df_a" data-folder="Main" data-link="/" data-length="0") Main folder
+  p(id='pageLogs') 
 
-        //- ul(class="df_a " data-folder= MainFolder data-link="/" ) Main folder
-        //- each val in userFiles
-        //-   if val.isFolder
-            li(class="df_a" data-folder= val.name )
-              span(class="triangle ml_5")
-              span(class="ml_5")= val.name
-      input(id="nameOperation"  name="operation" type="hidden" value="")
-      input(id="newNameFile"  name="newName" type="text" value="name file" autocomplete='off')
-      span(id="statusCopy" class="ml_10 df_ja")
-      input(id="oldNameFile"  name="oldName" type="hidden" value="")
-    section(class="FIW__btn mt_20" data-item='FIW')
-      a(id="cancel" class="btn" ) Cancel
-      input(id="inputSubmit" class="btn" type="submit"  value="Save")
-      a(id="copyLinc" class="btn none" ) Copy linc
       
-      
-  p(id='pageLogs')
   
-          
-  script(type="text/javascript" src="../views/assets/js/drag.js")
-  script(type="text/javascript" src="../views/assets/js/share.js")
-  script(type="text/javascript" src="../views/assets/js/sort.js")
+  script(type="text/javascript" src="../views/assets/js/home/contextmenu/handlerMouse.js")
+  script(type="text/javascript" src="../views/assets/js/home/contextmenu/contextmenu.js")
+  script(type="text/javascript" src="../views/assets/js/home/contextmenu/handlerButton.js")
   
-  script(type="text/javascript" src="../views/assets/js/contextmenu.js")
-  script(type="text/javascript" src="../views/assets/js/animation.js")
-  script(type="text/javascript" src="../views/assets/js/request.js")
+  script(type="text/javascript" src="../views/assets/js/home/FIW/handlerFolder.js")
+  script(type="text/javascript" src="../views/assets/js/home/FIW/requestFIW.js")
+  script(type="text/javascript" src="../views/assets/js/home/FIW/handlerFIW.js")
+  script(type="text/javascript" src="../views/assets/js/home/requestDataUser.js")
   
+  script(type="text/javascript" src="../views/assets/js/home/animation.js")
+  script(type="text/javascript" src="../views/assets/js/home/backFolder.js")
+  //* script(type="text/javascript" src="../views/assets/js/home/share.js")
+  script(type="text/javascript" src="../views/assets/js/home/sort.js")
+  script(type="text/javascript" src="../views/assets/js/home/drag.js")

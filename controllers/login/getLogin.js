@@ -9,8 +9,8 @@ module.exports = async function (req, res) {
 
   const users = await User.find({}).lean()
 
-  // console.log(req.query.error);
   try {
+    // если есть токен
     let role;
     role = validRole(req, jwt.verify(req.cookies.tokenkey, secret).role)
 
@@ -20,8 +20,8 @@ module.exports = async function (req, res) {
     })
 
   } catch (e) {
+    // если нет токена
     let session = req.query.session;
-    console.log(req.query.error);
 
     role = false
     res.render('login',{

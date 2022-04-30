@@ -40,6 +40,7 @@ window.addEventListener("drop",function(e){
 // обработчик
 async function handler(e) {
   // console.log(e);
+  // отключение событий по умолчанию при дропе файлов
   e.preventDefault()
   e.stopPropagation()
 
@@ -56,14 +57,20 @@ async function handler(e) {
 //   alert(`${name} = ${value.name}`); // key1=value1, потом key2=value2
 // }
 
-  console.log(`files:`);
-  console.log(files);
+  // console.log(`files:`);
+  // console.log(files);
   // но это не мессив, поэтому делаем массивом
 
   // добавляем перетащенные файлы в инпут
   inputFile.files = e.dataTransfer.files
   console.log(`input:`);
-  console.log(inputFile.files);
+  console.log( inputFile.files );
+
+  if ( files.length > 0 ) {
+    // отправляем форму на сервер
+    buttonForm.click()
+  }
+
   // // отправляем форму на сервер
   // buttonForm.click()
 
@@ -84,12 +91,14 @@ async function handler(e) {
 } // handler(e)
 
 
-
+// событие на кнопку отправки файла 'choose filde/upload'
 const btnUpload = document.getElementById('btnUpload')
 btnUpload.addEventListener('click', function(){
-  input_files.click()
+  // открывает окно выбора файлов
+  inputFile.click()
 })
 
+// событие на изменение инпута
 inputFile.addEventListener('change', function(){
   // отправляем форму на сервер
   buttonForm.click()

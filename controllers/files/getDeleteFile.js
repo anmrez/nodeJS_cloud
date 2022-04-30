@@ -17,9 +17,9 @@ module.exports = async function (req, res) {
     userID = jwt.verify(req.cookies.tokenkey, secret).id
 
     // find path in user file
-    if (req.query.folder) {
-      file = path.join( appDir, 'userStorage', userID, req.query.folder, req.query.file )
-      console.log(`file: '${ req.query.file }' in folder '${ req.query.folder }' delete`);
+    if (req.query.path) {
+      file = path.join( appDir, 'userStorage', userID, req.query.path, req.query.file )
+      console.log(`file: '${ req.query.file }' in folder '${ req.query.path }' delete`);
     } else {
       file = path.join(appDir, 'userStorage', userID, req.query.file)
       console.log(`file: '${req.query.file}' delete`);

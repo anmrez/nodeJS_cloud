@@ -10,6 +10,7 @@ module.exports = async function (req, res) {
 
 
   try { // try #1
+
     try { // try #2
 
 
@@ -17,8 +18,8 @@ module.exports = async function (req, res) {
       userID = jwt.verify(req.cookies.tokenkey, secret).id
 
       // find path in user file
-      if (req.query.folder) {
-        file = path.join( appDir, 'userStorage', userID, req.query.folder, req.query.file )
+      if (req.query.path) {
+        file = path.join( appDir, 'userStorage', userID, req.query.path, req.query.file )
       } else {
         file = path.join( appDir, 'userStorage', userID, req.query.file )
       }
@@ -28,11 +29,16 @@ module.exports = async function (req, res) {
       // try #2
     } catch (e) {
 
-      if (req.query.folder) {
-        file = path.join(appDir, 'userStorage', req.query.id, req.query.folder, req.query.file)
+      if (req.query.path) {
+
+        file = path.join(appDir, 'userStorage', req.query.id, req.query.path, req.query.file)
+
       } else {
+
         file = path.join(appDir, 'userStorage', req.query.id, req.query.file)
+
       }
+
       // download file
       // res.download(file); // send file
       res.download(file, function(error){
@@ -44,7 +50,8 @@ module.exports = async function (req, res) {
             textError: `файл не найден`
           });
         } else {
-          res.redirect('/')
+          // ????
+          // res.redirect('/')
         }
 
       }) // END res.file

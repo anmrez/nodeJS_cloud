@@ -1,0 +1,22 @@
+
+
+form(id="fileInteractionWindow" class="noactive" action="/" method="post" data-item='FIW')
+  
+  section(class="df_a just_bet FIW__header" data-item='FIW')
+    h4(id="FIWTitle") title
+    span(id="cancel")
+      
+  section(class="FIW__content df_ja mt_20" data-item='FIW')
+    ul(id="FIWFolder" class='none mb_10')
+      div(class="df_a" data-folder="Main" data-link="/" data-level="0") Main folder
+        span(class="FIW__Folder__Target")
+
+    input(id="nameOperation"  name="operation" type="hidden" value="")
+    input(id="newNameFile"  name="newName" type="text" value="name file" autocomplete='off')
+    span(id="statusCopy" class="ml_10 df_ja")
+    input(id="oldNameFile"  name="oldName" type="hidden" value="")
+      
+  section(class="FIW__btn mt_20" data-item='FIW')
+    a(id="cancel" class="btn" ) Cancel
+    a(id="inputSubmit" class="btn" onclick="requestHandler()") save
+    a(id="copyLinc" class="btn none" ) Copy linc
